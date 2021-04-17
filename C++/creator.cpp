@@ -25,9 +25,15 @@ int main() {
     }
 
     string line(67, '-');
+    string str_i;
 
     for (int i = 1; i <= n; ++i) {
-        string str_i = to_string(i);
+        if (i < 10) {
+            str_i = "0" + to_string(i);
+        }
+        else {
+            str_i = to_string(i);
+        }
         ofstream outf("ex_" + str_i + ".cpp");
 
         if (!outf) {
