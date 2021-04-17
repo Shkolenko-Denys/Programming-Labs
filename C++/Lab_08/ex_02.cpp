@@ -10,12 +10,12 @@
 #include <cstdlib> // system()
 
 int main() {
-	std::cout.setf(std::ios::showpos);
-	std::cout << 1 << "\n";
-	std::cout << 2 << "\n";
+    std::cout.setf(std::ios::showpos);
+    std::cout << 1 << "\n";
+    std::cout << 2 << "\n";
 
-	std::cout.unsetf(std::ios::showpos);
-	std::cout << 3 << "\n";
+    std::cout.unsetf(std::ios::showpos);
+    std::cout << 3 << "\n";
 
     system("pause");
     return 0;
