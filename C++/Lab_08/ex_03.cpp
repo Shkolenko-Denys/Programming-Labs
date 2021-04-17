@@ -13,6 +13,8 @@
 using namespace std;
 
 int main() {
+    cout.setf(ios::showpoint | ios::scientific | ios::uppercase);
+    cout << 30.23 << "\n";
 
     system("pause");
     return 0;
