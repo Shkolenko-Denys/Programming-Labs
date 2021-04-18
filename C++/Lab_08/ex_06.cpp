@@ -13,6 +13,7 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
+#include <cstring>
 #include <cstdlib>
 
 using namespace std;
@@ -28,7 +29,7 @@ using namespace std;
 //     cout << setw(40 + (len / 2)) << str << "\n";
 // }
 
-void center(char *str) {
+void center(const char *str) {
     int len = strlen(str);
     cout.width(40 + (len / 2));
     cout << str << "\n";
