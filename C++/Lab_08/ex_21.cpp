@@ -21,7 +21,7 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib> // system()
+#include <cstdlib>
 
 using namespace std;
 

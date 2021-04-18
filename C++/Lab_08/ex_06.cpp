@@ -13,11 +13,29 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib> // system()
+#include <cstdlib>
 
 using namespace std;
 
+// void center(const string str) {
+//     int len = str.size();
+//     cout.width(40 + (len / 2));
+//     cout << str << "\n";
+// }
+
+// void center(const char *str) {
+//     int len = strlen(str);
+//     cout << setw(40 + (len / 2)) << str << "\n";
+// }
+
+void center(char *str) {
+    int len = strlen(str);
+    cout.width(40 + (len / 2));
+    cout << str << "\n";
+}
+
 int main() {
+    center("Hello World!");
 
     system("pause");
     return 0;

@@ -6,11 +6,27 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib> // system()
+#include <iomanip>
+#include <cmath>
+#include <cstdlib>
 
 using namespace std;
 
+void center(const string str) {
+    int len = str.size();
+    cout << setw(40 + (len / 2)) << str << "\n";
+}
+
 int main() {
+    cout << fixed << setprecision(5);
+    for (int i = 2; i <= 100; ++i) {
+        cout << setw(10) << i << setw(10) << log(i) << setw(10) << log10(i) << "\n";
+    }
+    cout << "\n\n";
+
+    center("Hello World!");
+
+    cout << "\n\n";
 
     system("pause");
     return 0;

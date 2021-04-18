@@ -7,7 +7,7 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib> // system()
+#include <cstdlib>
 
 int main() {
     std::cout.setf(std::ios::showpos);

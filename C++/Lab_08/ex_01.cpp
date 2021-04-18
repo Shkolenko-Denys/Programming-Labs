@@ -13,7 +13,7 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib> // system()
+#include <cstdlib>
 
 #define KILOGRAMS_PER_POUND 0.453592
 #define KILOGRAMS_PER_TONNE 1000

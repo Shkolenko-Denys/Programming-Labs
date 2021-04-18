@@ -7,11 +7,13 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib> // system()
-
-using namespace std;
+#include <iomanip>
+#include <cstdlib>
 
 int main() {
+    std::cout << std::hex;
+    std::cout << std::setiosflags(std::ios::showbase);
+    std::cout << 100 << std::endl;
 
     system("pause");
     return 0;
