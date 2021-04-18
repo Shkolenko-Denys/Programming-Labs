@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstdlib> // system()
+#include <cstdlib>
 
 using namespace std;
 
@@ -48,7 +48,7 @@ int main() {
         " Description: \n" <<
         " " << line << "</Header>-*/\n\n" <<
         "#include <iostream>\n" <<
-        "#include <cstdlib> // system()\n\n" <<
+        "#include <cstdlib>\n\n" <<
         "using namespace std;\n\n" <<
         "int main() {\n\n" <<
         "    system(\"pause\");\n" <<

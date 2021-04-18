@@ -25,7 +25,34 @@
 
 using namespace std;
 
+class ft_to_cms {
+    double feet;
+    double cms;
+public:
+    void set(double f = 0) {
+        feet = f;
+        cms = f * 30.48;
+    }
+    friend ostream& operator<< (ostream &out, const ft_to_cms &obj);
+    friend istream& operator>> (istream &in, ft_to_cms &obj);
+};
+
+ostream& operator<< (ostream &out, const ft_to_cms &obj) {
+    out << "ft: " << obj.feet << " ; cms: " << obj.cms << "\n\n";
+    return out;
+}
+
+istream& operator>> (istream &in, ft_to_cms &obj) {
+    cout << " Enter ft: ";
+    in >> obj.feet;
+    obj.cms = obj.feet * 30.48;
+    return in;
+}
+
 int main() {
+    ft_to_cms obj;
+    cin >> obj;
+    cout << obj;
 
     system("pause");
     return 0;

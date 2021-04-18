@@ -8,12 +8,42 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <Windows.h>
 #include <cstdlib>
 
 using namespace std;
 
-int main() {
+class Watch {
+    int hour;
+    int min;
+    int sec;
+public:
+    Watch(time_t time) {
+        tm* now = localtime(&time);
+        hour = now->tm_hour;
+        min = now->tm_min;
+        sec = now->tm_sec;
+    }
+    friend ostream& operator<< (ostream &out, Watch &obj);
+};
 
+ostream& operator<< (ostream &out, Watch &obj) {
+    out <<
+    setw(2) << setfill('0') << obj.hour << ":" <<
+    setw(2) << setfill('0') << obj.min << ":" <<
+    setw(2) << setfill('0') << obj.sec << "\n\n";
+    return out;
+}
+
+int main() {
+    for (int i = 0; i < 10; ++i) {
+        Watch now(time(NULL));
+        cout << now;
+        Sleep(1000);
+        system("cls");
+    }
     system("pause");
     return 0;
 }
