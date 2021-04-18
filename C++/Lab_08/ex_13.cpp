@@ -9,10 +9,16 @@
 #include <iostream>
 #include <cstdlib>
 
-using namespace std;
-
 int main() {
+    std::cout.setf(std::ios::hex, std::ios::basefield);
+    std::cout << " hex: " << 100 << "\n";
 
+    std::cout.setf(std::ios::oct, std::ios::basefield);
+    std::cout << " oct: " << 100 << "\n";
+    
+    std::cout.setf(std::ios::dec, std::ios::basefield);
+    std::cout << " dec: " << 100 << "\n\n";
+    
     system("pause");
     return 0;
 }

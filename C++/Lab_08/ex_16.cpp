@@ -14,14 +14,17 @@ void showflags();
 
 int main() {
     showflags();
-    cout.setf(ios::oct);
+
+    cout.setf(ios::oct, ios::basefield);
     showflags();
 
-    cout << hex << 1 << "\n";
+    cout << hex << 100 << "\n";
     showflags();
-    cout << 2 << "\n";
+
+    cout << 200 << "\n";
     showflags();
-    cout << dec << 3 << "\n";
+    
+    cout << dec << 300 << "\n";
     showflags();
 
     system("pause");

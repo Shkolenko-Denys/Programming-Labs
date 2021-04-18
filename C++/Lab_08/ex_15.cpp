@@ -6,11 +6,18 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 
-using namespace std;
-
 int main() {
+    std::cout << std::hex << " hex: " << 100 << "\n";
+    std::cout << std::oct << " oct: " << 100 << "\n";
+    std::cout << std::dec << " dec: " << 100 << "\n\n";
+
+    std::cout << std::setw(20) <<
+    std::setprecision(6) <<
+    std::setfill('*') <<
+    std::left << 1000.5364 << "\n\n";
 
     system("pause");
     return 0;
