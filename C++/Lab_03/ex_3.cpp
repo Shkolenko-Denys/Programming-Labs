@@ -8,7 +8,7 @@ union integer {
     void swap();
 };
 integer::integer(int num) {
-	n = num;
+    n = num;
 }
 
 void integer::swap() {
@@ -19,13 +19,13 @@ void integer::swap() {
 }
 
 int main() {
-	int number;
-	do {
-		cout << "Enter the number: ";
-		cin >> number;
-	    integer myint(number);
-	    myint.swap();
-	    cout << endl;
-	} while (number);
+    int number;
+    do {
+        cout << "Enter the number: ";
+        cin >> number;
+        integer myint(number);
+        myint.swap();
+        cout << endl;
+    } while (number);
     return 0;
 }

@@ -18,22 +18,22 @@
 void edit_arr(char arr[][SLEN], int nrows);
 
 int main(void) {
-	char plan_for_day[NROWS][SLEN] = {
-		"to finish laboratory work # 11",
-		"write a report # 11",
-		"send the report at midnight",
-		"write lectures on math",
-		"go to sleep",
-	};
-	edit_arr(plan_for_day, NROWS);
-	for (int i = 0; i < NROWS; i++) {
-		puts(plan_for_day[i]); // automatically '\n' in the end
-	}
-	return 0;
+    char plan_for_day[NROWS][SLEN] = {
+        "to finish laboratory work # 11",
+        "write a report # 11",
+        "send the report at midnight",
+        "write lectures on math",
+        "go to sleep",
+    };
+    edit_arr(plan_for_day, NROWS);
+    for (int i = 0; i < NROWS; i++) {
+        puts(plan_for_day[i]); // automatically '\n' in the end
+    }
+    return 0;
 }
 
 void edit_arr(char arr[][SLEN], int nrows) {
-	for (int i = 0; i < nrows; i++) {
-		sscanf(arr[i], "%s", arr[i]); // reads to the first space
-	}
+    for (int i = 0; i < nrows; i++) {
+        sscanf(arr[i], "%s", arr[i]); // reads to the first space
+    }
 }

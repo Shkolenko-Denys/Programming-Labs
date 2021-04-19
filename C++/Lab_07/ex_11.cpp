@@ -11,8 +11,8 @@ int range ;
 public :
 vehicle (int w, int r)
 {
-	num_wheels = w;
-	range = r;
+    num_wheels = w;
+    range = r;
 }
 void showv ()
 {
@@ -26,34 +26,34 @@ enum motor mtr ;
 public :
 motorized ( enum motor m, int w, int r) : vehicle (w, r)
 {
-	mtr = m;
+    mtr = m;
 }
 void showm ()
 {
-	cout << " Motor : ";
-	switch (mtr )
-	{
-		case gas : cout << "Gas \n";
-		break ;
-		case electric : cout << " Electric \n";
-		break ;
-		case diesel : cout << " Diesel \n";
-		break ;
-	}
+    cout << " Motor : ";
+    switch (mtr )
+    {
+        case gas : cout << "Gas \n";
+        break ;
+        case electric : cout << " Electric \n";
+        break ;
+        case diesel : cout << " Diesel \n";
+        break ;
+    }
 }
 };
 class road_use : public vehicle
 {
-	int passengers ;
-	public :
-	road_use (int p, int w, int r) : vehicle (w, r)
-	{
-		passengers = p;
-	}
-	void showr ()
-	{
-		cout << " Passengers : " << passengers << '\n';
-	}
+    int passengers ;
+    public :
+    road_use (int p, int w, int r) : vehicle (w, r)
+    {
+        passengers = p;
+    }
+    void showr ()
+    {
+        cout << " Passengers : " << passengers << '\n';
+    }
 };
 enum steering { power , rack_pinion , manual };
 class car : public motorized , public road_use
@@ -69,8 +69,8 @@ case power : cout << " Power \n"; break ; case rack_pinion : cout << " Rack and 
 \n";
 break ; case manual : cout << " Manual \n";
 break ; } } }; int main () { car c(power , gas , 4, 500 , 5);
-	c. show ();
-	return 0;
+    c. show ();
+    return 0;
 }
 При компиляции программы вы могли увидеть предупреждающее сообщение
 (или, возможно, сообщение об ошибке), связанное с использованием инструкции
@@ -82,88 +82,88 @@ using namespace std;
 
 // A base class for various types of vehicles.
 class vehicle {
-	int num_wheels;
-	int range;
+    int num_wheels;
+    int range;
 public:
-	vehicle(int w, int r) {
-		num_wheels = w;
-		range = r;
-	}
+    vehicle(int w, int r) {
+        num_wheels = w;
+        range = r;
+    }
 
-	void showv () {
-		cout << " Wheels : " << num_wheels << "\n";
-		cout << " Range : " << range << "\n";
-	}
+    void showv () {
+        cout << " Wheels : " << num_wheels << "\n";
+        cout << " Range : " << range << "\n";
+    }
 };
 
 enum motor { gas, electric, diesel };
 
 class motorized : virtual public vehicle {
-	enum motor mtr;
+    enum motor mtr;
 public:
-	motorized(int w, int r, enum motor m) : vehicle (w, r) {
-		mtr = m;
-	}
-	void showm() {
-		cout << " Motor : ";
-		switch (mtr) {
-			case gas:
-				cout << " Gas" << "\n";
-				break;
-			case electric:
-				cout << " Electric" << "\n";
-				break;
-			case diesel:
-				cout << " Diesel" << "\n";
-				break;
-		}
-	}
+    motorized(int w, int r, enum motor m) : vehicle (w, r) {
+        mtr = m;
+    }
+    void showm() {
+        cout << " Motor : ";
+        switch (mtr) {
+            case gas:
+                cout << " Gas" << "\n";
+                break;
+            case electric:
+                cout << " Electric" << "\n";
+                break;
+            case diesel:
+                cout << " Diesel" << "\n";
+                break;
+        }
+    }
 };
 
 class road_use : virtual public vehicle {
-	int passengers;
+    int passengers;
 public:
-	road_use (int w, int r, int p) : vehicle (w, r) {
-		passengers = p;
-	}
+    road_use (int w, int r, int p) : vehicle (w, r) {
+        passengers = p;
+    }
 
-	void showr() {
-		cout << " Passengers : " << passengers << "\n";
-	}
+    void showr() {
+        cout << " Passengers : " << passengers << "\n";
+    }
 };
 
 enum steering { power, rack_pinion, manual };
 
 class car : public motorized, public road_use {
-	enum steering strng;
+    enum steering strng;
 public:
-	car (int w, int r, enum motor m, int p, enum steering s) :
-	vehicle(w, r), motorized (w, r, m), road_use (w, r, p) {
-		strng = s;
-	}
-	void show() {
-		showv();
-		showr();
-		showm();
-		cout << " Steering : ";
-		switch (strng) {
-			case power:
-				cout << " Power \n";
-				break;
-			case rack_pinion:
-				cout << " Rack and Pinion\n";
-				break;
-			case manual:
-				cout << " Manual \n";
-				break;
-		}
-	}
+    car (int w, int r, enum motor m, int p, enum steering s) :
+    vehicle(w, r), motorized (w, r, m), road_use (w, r, p) {
+        strng = s;
+    }
+    void show() {
+        showv();
+        showr();
+        showm();
+        cout << " Steering : ";
+        switch (strng) {
+            case power:
+                cout << " Power \n";
+                break;
+            case rack_pinion:
+                cout << " Rack and Pinion\n";
+                break;
+            case manual:
+                cout << " Manual \n";
+                break;
+        }
+    }
 };
 
 int main () {
-	car c(4, 500, gas, 5, power);
-	c.show();
-	return 0;
+    car c(4, 500, gas, 5, power);
+    c.show();
+    return 0;
 }
 
 // Any enumeration type can assume any value within the number of bits of its

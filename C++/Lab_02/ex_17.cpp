@@ -14,7 +14,7 @@ time_and_date::time_and_date (time_t *tp) {
 }
 
 void time_and_date::show () {
-	cout << now->tm_mday << '-' << (now->tm_mon + 1) << '-' << (now->tm_year + 1900) << endl;
+    cout << now->tm_mday << '-' << (now->tm_mon + 1) << '-' << (now->tm_year + 1900) << endl;
     cout << now->tm_hour << ':' << now->tm_min << ':' << now->tm_sec << endl;
 }
 

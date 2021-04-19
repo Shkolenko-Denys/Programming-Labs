@@ -16,26 +16,26 @@
 char *my_strncpy(char *s1, const char *s2, int n);
 
 int main(void) {
-	char s1[] = "Happy ";
-	char s2[] = "New Year! Merry Christmas!";
-	int n;
-	do {
-		fseek(stdin, 0, SEEK_END); // clipboard clearing
-		fputs(" How many chars need to write? ", stdout);
-	} while (!scanf("%d", &n));
-	fseek(stdin, 0, SEEK_END); // clipboard clearing
-	my_strncpy(s1, s2, n);
-	puts(s1);
-	return 0;
+    char s1[] = "Happy ";
+    char s2[] = "New Year! Merry Christmas!";
+    int n;
+    do {
+        fseek(stdin, 0, SEEK_END); // clipboard clearing
+        fputs(" How many chars need to write? ", stdout);
+    } while (!scanf("%d", &n));
+    fseek(stdin, 0, SEEK_END); // clipboard clearing
+    my_strncpy(s1, s2, n);
+    puts(s1);
+    return 0;
 }
 
 char *my_strncpy(char *s1, const char *s2, int n)  {
-	int count = 0;
-	char *tmp = s1 + strlen(s1); 
-	while (count != n && *s2 != '\0') {
-		*tmp++ = *s2++;
-		count++; 
-	}
-	*tmp = '\0';
-	return s1;
+    int count = 0;
+    char *tmp = s1 + strlen(s1); 
+    while (count != n && *s2 != '\0') {
+        *tmp++ = *s2++;
+        count++; 
+    }
+    *tmp = '\0';
+    return s1;
 }

@@ -12,7 +12,7 @@ class planet {
         friend double light(planet a);
 };
 planet::planet(int dist) {
-	dist_from_sun = dist;
+    dist_from_sun = dist;
 }
 double light(planet x) {
     return (x.dist_from_sun / x.milpersec);

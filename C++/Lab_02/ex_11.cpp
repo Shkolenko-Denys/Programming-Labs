@@ -13,7 +13,7 @@ void sleep (const char *seconds){
 }
 
 int main () {
-	cout << "Counting: ";
+    cout << "Counting: ";
     for (size_t i = 0; i < 10; i++){
         sleep(1);
         cout << i << " ";

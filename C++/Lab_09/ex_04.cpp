@@ -12,17 +12,17 @@
 using namespace std;
 
 ostream& tdm(ostream &out) {
-	time_t rawtime;
-	struct tm *timeinfo;
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	out << "The current date/time is: " << asctime(timeinfo);
-	return out;
+    time_t rawtime;
+    struct tm *timeinfo;
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    out << "The current date/time is: " << asctime(timeinfo);
+    return out;
 }
 
 int main() {
-	cout << "\n" << tdm << "\n\n";
+    cout << "\n" << tdm << "\n\n";
 
-	system("pause");
-	return 0;
+    system("pause");
+    return 0;
 }

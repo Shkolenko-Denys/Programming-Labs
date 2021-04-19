@@ -12,16 +12,16 @@ double min (double a, double b) {
 }
 
 int main () {
-	char a, b;
-	int c, d;
-	double e, f;
+    char a, b;
+    int c, d;
+    double e, f;
 
-	cout << "Enter 2 char: ";
-	cin >> a >> b;
-	cout << "Enter 2 integers: ";
-	cin >> c >> d;
-	cout << "Enter 2 double: ";
-	cin >> e >> f;
+    cout << "Enter 2 char: ";
+    cin >> a >> b;
+    cout << "Enter 2 integers: ";
+    cin >> c >> d;
+    cout << "Enter 2 double: ";
+    cin >> e >> f;
 
     cout << "Min char: " << min(a, b) << endl;
     cout << "Min integer: " << min(c, d) << endl;

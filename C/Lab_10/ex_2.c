@@ -11,18 +11,18 @@
 #include <stdio.h>
 
 int main(void) {
-	int data[30][100] = {0}; // initialize array to zeros
-	char line[] = " +--------------+---------------------+----------------+";
-	printf("%s\n", line);
-	printf(" |   data[x][y] |        code         |     address    |\n");
-	printf("%s\n", line);
-	printf(" | data[22][56] |  *(data + 22) + 56  | %p |\n", *(data + 22) + 56);
-	printf(" | data[22][56] |       &data[22][56] | %p |\n", &data[22][56]);
-	printf(" |  data[22][0] |           data + 22 | %p |\n", data + 22);
-	printf(" |  data[22][0] |            data[22] | %p |\n", data[22]);
-	printf(" |   data[0][0] |                data | %p |\n", data);
-	printf(" |   data[0][0] |             data[0] | %p |\n", data[0]);
-	printf(" |   data[0][0] |         &data[0][0] | %p |\n", &data[0][0]);
-	printf("%s\n", line);
-	return 0;
+    int data[30][100] = {0}; // initialize array to zeros
+    char line[] = " +--------------+---------------------+----------------+";
+    printf("%s\n", line);
+    printf(" |   data[x][y] |        code         |     address    |\n");
+    printf("%s\n", line);
+    printf(" | data[22][56] |  *(data + 22) + 56  | %p |\n", *(data + 22) + 56);
+    printf(" | data[22][56] |       &data[22][56] | %p |\n", &data[22][56]);
+    printf(" |  data[22][0] |           data + 22 | %p |\n", data + 22);
+    printf(" |  data[22][0] |            data[22] | %p |\n", data[22]);
+    printf(" |   data[0][0] |                data | %p |\n", data);
+    printf(" |   data[0][0] |             data[0] | %p |\n", data[0]);
+    printf(" |   data[0][0] |         &data[0][0] | %p |\n", &data[0][0]);
+    printf("%s\n", line);
+    return 0;
 }

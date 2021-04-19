@@ -22,31 +22,31 @@
 char* pr(char* const str);
 
 int main(void) {
-	char* x; // x - pointer to char
-	fputs(" Output: ", stdout); /* fputs() - stay on this line, no '\n';
-	printf(" Output: ") - will give the same result, but
-	puts(" Output: ") - automatically '\n' in the end */
-	x = pr("Ho Ho Ho!"); /* x gets the address of the first character in the string */
-	printf("\n x = %p\n", x); // print this address
-	return 0;
+    char* x; // x - pointer to char
+    fputs(" Output: ", stdout); /* fputs() - stay on this line, no '\n';
+    printf(" Output: ") - will give the same result, but
+    puts(" Output: ") - automatically '\n' in the end */
+    x = pr("Ho Ho Ho!"); /* x gets the address of the first character in the string */
+    printf("\n x = %p\n", x); // print this address
+    return 0;
 }
 
 char* pr(char* const str) { // constant pointer to char
-	/* the char value, what this pointer points, can be changed.
-	But we can't change the value of the pointer, it can't point to another char */
-	char* pc; // pointer to char, will be changed
-	pc = str; // now pc have address of first char in str
-	while (*pc) { // while *pc != '\0'
-		putchar(*pc++); /* *pc++ is treated as *(pc++).
-		pc will be changed after the first use */
-	}
-	do {
-		putchar(*--pc); /* *--pc is treated as *(--pc).
-		pc will be changed before the first use */
-	} while (pc != str); /* (pc != str) it's the same with (pc - str),
-	but time of logical operations ==, !=, ||, && much less than
-	the time of additive operations +, - */
-	return pc; // here we can use just pc, without ()
+    /* the char value, what this pointer points, can be changed.
+    But we can't change the value of the pointer, it can't point to another char */
+    char* pc; // pointer to char, will be changed
+    pc = str; // now pc have address of first char in str
+    while (*pc) { // while *pc != '\0'
+        putchar(*pc++); /* *pc++ is treated as *(pc++).
+        pc will be changed after the first use */
+    }
+    do {
+        putchar(*--pc); /* *--pc is treated as *(--pc).
+        pc will be changed before the first use */
+    } while (pc != str); /* (pc != str) it's the same with (pc - str),
+    but time of logical operations ==, !=, ||, && much less than
+    the time of additive operations +, - */
+    return pc; // here we can use just pc, without ()
 }
 
 /*

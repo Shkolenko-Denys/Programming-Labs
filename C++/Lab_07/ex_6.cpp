@@ -6,23 +6,23 @@ myderived. Он должен передать указатель на иници
 #include <cstring>
 using namespace std;
 class mybase {
-	char str[80];
+    char str[80];
 public:
-	mybase(char *s) { strcpy (str, s); }
-	char *get() { return str; }
+    mybase(char *s) { strcpy (str, s); }
+    char *get() { return str; }
 };
 class myderived : public mybase {
-	int len;
+    int len;
 public:
  // add myderived() here...
-	int getlen() { return len; }
-	void show() { cout << get () << '\n'; }
+    int getlen() { return len; }
+    void show() { cout << get () << '\n'; }
 };
 int main() {
-	myderived obо("hello");
-	obj.show();
-	cout << obj.getlen() << '\n';
-	return 0;
+    myderived obо("hello");
+    obj.show();
+    cout << obj.getlen() << '\n';
+    return 0;
 } */
 
 #include <iostream>
@@ -31,26 +31,26 @@ int main() {
 using namespace std;
 
 class mybase {
-	char str[80];
+    char str[80];
 public:
-	mybase(const char *s) { strcpy(str, s); }
-	char* get() { return str; }
+    mybase(const char *s) { strcpy(str, s); }
+    char* get() { return str; }
 };
 
 class myderived : public mybase {
-	int len;
+    int len;
 public:
-	myderived(const char *input_str) : mybase(input_str) {
-		len = strlen(input_str);
-	}
-	int getlen() { return len; }
-	void show() { cout << get() << "\n"; }
+    myderived(const char *input_str) : mybase(input_str) {
+        len = strlen(input_str);
+    }
+    int getlen() { return len; }
+    void show() { cout << get() << "\n"; }
 };
 
 int main() {
-	char word[] = "hello";
-	myderived obj(word);
-	obj.show();
-	cout << "len: " <<obj.getlen() << "\n";
-	return 0;
+    char word[] = "hello";
+    myderived obj(word);
+    obj.show();
+    cout << "len: " <<obj.getlen() << "\n";
+    return 0;
 }

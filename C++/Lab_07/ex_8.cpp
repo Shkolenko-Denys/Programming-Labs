@@ -4,17 +4,17 @@
 #include <iostream>
 using namespace std;
 class A {
-	int i;
+    int i;
 public:
-	A(int a) { i = a; }
+    A(int a) { i = a; }
 };
 class B {
-	int j;
+    int j;
 public:
-	B(int a) { j = a; }
+    B(int a) { j = a; }
 };
 class C : public A, public B {
-	int k;
+    int k;
 public:
 // Create C() so that it initializes k and passes arguments to both A() and B()
 }; */
@@ -24,31 +24,31 @@ public:
 using namespace std;
 
 class A {
-	int i;
+    int i;
 public:
-	A(int a) { i = a; }
-	int get() { return i;}
+    A(int a) { i = a; }
+    int get() { return i;}
 };
 
 class B {
-	int j;
+    int j;
 public:
-	B(int a) { j = a; }
-	int get() { return j;}
+    B(int a) { j = a; }
+    int get() { return j;}
 };
 class C : public A, public B {
-	int k;
+    int k;
 public:
-	C(int a, int b, int c) : A(a), B(b), k(c)
-	{
-	}
-	void show() {
-		cout << A::get() << " " << B::get() << " " << k << "\n";
-	}
+    C(int a, int b, int c) : A(a), B(b), k(c)
+    {
+    }
+    void show() {
+        cout << A::get() << " " << B::get() << " " << k << "\n";
+    }
 };
 
 int main() {
-	C obj(1, 2, 3);
-	obj.show();
-	return 0;
+    C obj(1, 2, 3);
+    obj.show();
+    return 0;
 }

@@ -16,7 +16,7 @@ int main() {
     Dice cube;
     srand(time(0));
     for(int i = 0; i < 5; i++) {
-    	cube.roll();
+        cube.roll();
     }
     return 0;
 }

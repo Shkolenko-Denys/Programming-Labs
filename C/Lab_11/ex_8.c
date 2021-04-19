@@ -14,34 +14,34 @@
 int is_within(char ch, char *str);
 
 int main(void) {
-	char secret_text[] = "Have a nice day!";
-	char ch;
-	char mode; // about continue the program
-	puts("Secret text: **** * **** ****");
+    char secret_text[] = "Have a nice day!";
+    char ch;
+    char mode; // about continue the program
+    puts("Secret text: **** * **** ****");
 
-	do {
-		fputs("Your char: ", stdout);
-		ch = getchar();
-		fseek(stdin, 0, SEEK_END); // clipboard clearing
+    do {
+        fputs("Your char: ", stdout);
+        ch = getchar();
+        fseek(stdin, 0, SEEK_END); // clipboard clearing
 
-		if (is_within(ch, secret_text)) {
-			puts("So you guessed it");
-		} else {
-			puts("Did not guess!");
-		}
+        if (is_within(ch, secret_text)) {
+            puts("So you guessed it");
+        } else {
+            puts("Did not guess!");
+        }
 
-		printf("\n Continue (y/n)? ");
-		while ((mode = getchar()) == ' ' || mode == '\n' || mode == '\t'); // skip space
-		fseek(stdin, 0, SEEK_END); // clipboard clearing
-		putchar('\n');
-	} while (mode == 'Y' || mode == 'y');
-	return 0;
+        printf("\n Continue (y/n)? ");
+        while ((mode = getchar()) == ' ' || mode == '\n' || mode == '\t'); // skip space
+        fseek(stdin, 0, SEEK_END); // clipboard clearing
+        putchar('\n');
+    } while (mode == 'Y' || mode == 'y');
+    return 0;
 }
 
 int is_within(char ch, char *str) {
-	for (int i = 0; str[i] != '\0'; i++) {
-		if (str[i] == ch)
-			return 1;
-	}
-	return 0;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == ch)
+            return 1;
+    }
+    return 0;
 }

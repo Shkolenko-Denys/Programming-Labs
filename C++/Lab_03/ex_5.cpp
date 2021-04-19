@@ -3,17 +3,17 @@ using namespace std;
 
 inline int myabs(int a) {
     if (a < 0)
-    	return -a;
+        return -a;
     return a;
 }
 inline long myabs(long a) {
     if (a < 0)
-    	return -a;
+        return -a;
     return a;
 }
 inline double myabs(double a) {
     if (a < 0)
-    	return -a;
+        return -a;
     return a;
 }
 

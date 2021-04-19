@@ -15,19 +15,19 @@ Area::Area(double h, double w) {
 
 class Rectangle : public Area {
     public:
-    	using Area::Area; // с++11
+        using Area::Area; // с++11
         // Rectangle(double h, double w) : Area(height, width) {};
         double area();
 };
 class Isosceles : public Area {
     public:
-    	using Area::Area; // с++11
+        using Area::Area; // с++11
         // Isosceles(double h, double w) : Area(height, width) {};
         double area();
 };
 class Cylinder : public Area {
     public:
-    	using Area::Area; // с++11
+        using Area::Area; // с++11
         // Cylinder(double h, double w) : Area(height, width) {};
         double area();
 };

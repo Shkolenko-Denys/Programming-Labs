@@ -26,75 +26,75 @@ void sum_arrs(int n, int m, int **arr);
 void show_arrs(int n, int m, int **arr);
 
 int main(void) {
-	int n, m;
-	int **matrix; // matrix - pointer to an array of pointers
-	char line[] = "==================";
-	do {
-		fseek(stdin, 0, SEEK_END); // buffer cleaning
-		printf(" Enter the number of arrays: ");
-	} while (!scanf("%d", &n));
-	/* Allocating memory for a two-dimensional array - a matrix with n rows of m elements */
-	matrix = (int**)malloc((n + 1) * sizeof(int*)); // (n + 1) for the result array
-	if (!matrix) {
-		puts(" Not Enough Memory");
-	}
-	else {
-		do {
-			fseek(stdin, 0, SEEK_END); // buffer cleaning
-			printf(" Enter the size of the arrays: ");
-		} while (!scanf("%d", &m));
-		for (int i = 0; i <= n; i++) {
-			matrix[i] = (int*)malloc(m * sizeof(int));
-		}
-		if (!matrix[n]) {
-			puts(" Not Enough Memory");
-		}
-		else {
-			fill_arrs(n, m, matrix);
-			printf("%s\n", line);
-			sum_arrs(n, m, matrix);
-			show_arrs(n + 1, m, matrix);
-			for (int i = 0; i < n; i++) {
-				free(matrix[i]); // freeing up memory space
-			}
-		}
-		free(matrix); // freeing up memory space
-	}
-	putchar('\n');
-	return 0;
+    int n, m;
+    int **matrix; // matrix - pointer to an array of pointers
+    char line[] = "==================";
+    do {
+        fseek(stdin, 0, SEEK_END); // buffer cleaning
+        printf(" Enter the number of arrays: ");
+    } while (!scanf("%d", &n));
+    /* Allocating memory for a two-dimensional array - a matrix with n rows of m elements */
+    matrix = (int**)malloc((n + 1) * sizeof(int*)); // (n + 1) for the result array
+    if (!matrix) {
+        puts(" Not Enough Memory");
+    }
+    else {
+        do {
+            fseek(stdin, 0, SEEK_END); // buffer cleaning
+            printf(" Enter the size of the arrays: ");
+        } while (!scanf("%d", &m));
+        for (int i = 0; i <= n; i++) {
+            matrix[i] = (int*)malloc(m * sizeof(int));
+        }
+        if (!matrix[n]) {
+            puts(" Not Enough Memory");
+        }
+        else {
+            fill_arrs(n, m, matrix);
+            printf("%s\n", line);
+            sum_arrs(n, m, matrix);
+            show_arrs(n + 1, m, matrix);
+            for (int i = 0; i < n; i++) {
+                free(matrix[i]); // freeing up memory space
+            }
+        }
+        free(matrix); // freeing up memory space
+    }
+    putchar('\n');
+    return 0;
 }
 
 void fill_arrs(int n, int m, int **arr) {
-	for (int i = 0; i < n; i++) {
-		printf(" array #%d:\n", i + 1);
-		for (int j = 0; j < m; j++) {
-			do {
-				fseek(stdin, 0, SEEK_END); // buffer cleaning
-				printf("  element[%d] = ", j);
-			} while (!scanf("%d", &arr[i][j]));
-		}
-	}
+    for (int i = 0; i < n; i++) {
+        printf(" array #%d:\n", i + 1);
+        for (int j = 0; j < m; j++) {
+            do {
+                fseek(stdin, 0, SEEK_END); // buffer cleaning
+                printf("  element[%d] = ", j);
+            } while (!scanf("%d", &arr[i][j]));
+        }
+    }
 }
 
 void sum_arrs(int n, int m, int **arr) {
-	int s;
-	for (int j = 0; j < m; j++) {
-		s = 0; // sum of column
-		for (int i = 0; i < n; i++) {
-			s += arr[i][j];
-		}
-		arr[n][j] = s;
-	}
+    int s;
+    for (int j = 0; j < m; j++) {
+        s = 0; // sum of column
+        for (int i = 0; i < n; i++) {
+            s += arr[i][j];
+        }
+        arr[n][j] = s;
+    }
 }
 
 void show_arrs(int n, int m, int **arr) {
-	/* this function should not alter the array, it uses const */
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			printf("%4d", arr[i][j]);
-		}
-		putchar('\n');
-	}
+    /* this function should not alter the array, it uses const */
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("%4d", arr[i][j]);
+        }
+        putchar('\n');
+    }
 }
 
 /*

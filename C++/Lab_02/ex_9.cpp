@@ -2,13 +2,13 @@
 using namespace std;
 
 double ato_all (const char *s) {
-	return atof(s);
+    return atof(s);
 }
 // long ato_all (const char *s) {
-// 	return atol(s);
+//     return atol(s);
 // }
 // int ato_all (const char *s) {
-// 	return atoi(s);
+//     return atoi(s);
 // }
 
 int main () {

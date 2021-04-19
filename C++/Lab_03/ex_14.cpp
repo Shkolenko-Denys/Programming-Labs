@@ -3,24 +3,24 @@
 using namespace std;
 
 class strtype {
-	char *p;
-	int len;
+    char *p;
+    int len;
 public:
-	strtype(const char *ptr);
-	~strtype();
-	friend char *get_string(strtype *p);
+    strtype(const char *ptr);
+    ~strtype();
+    friend char *get_string(strtype *p);
 };
 strtype::strtype(const char *ptr) {
-	len = strlen(ptr);
-	p = new char[len+1];
-	if (!p) {
-		cout << "Allocation error." << endl;
-		exit(1);
-	}
-	strcpy(p, ptr);
+    len = strlen(ptr);
+    p = new char[len+1];
+    if (!p) {
+        cout << "Allocation error." << endl;
+        exit(1);
+    }
+    strcpy(p, ptr);
 }
 strtype::~strtype() {
-	delete[] p;
+    delete[] p;
 }
 char *get_string(strtype *p) {
     return p->p;
