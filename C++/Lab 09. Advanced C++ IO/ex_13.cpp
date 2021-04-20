@@ -22,13 +22,10 @@ int main(int argc, char *argv[]) {
         }
 
         string strBuf;
-        while (fin) {
-            getline(fin, strBuf);
-            if (fin) {
-                cout << strBuf << endl;
-            }
-            fin.close();
+        while (getline(fin, strBuf)) {
+            cout << strBuf << endl;
         }
+        fin.close();
     }
     system("pause");
     return 0;
