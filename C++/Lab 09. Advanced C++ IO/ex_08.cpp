@@ -16,7 +16,7 @@ using namespace std;
 int main() {
     ofstream fout("phones.txt");
     if (!fout) {
-        cerr << " phones.txt cannot be opened for writing!" << endl;
+        cerr << " phones.txt could not be opened for writing!" << endl;
         exit(1);
     }
     fout << "Ivan Tormozenko, +38067 415 5113" << endl;

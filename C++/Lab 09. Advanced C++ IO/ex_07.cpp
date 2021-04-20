@@ -16,12 +16,12 @@ using namespace std;
 int main() {
     ifstream fin("text_doc_ex_07.txt");
     if (!fin) {
-        cerr << " text_doc_ex_07.txt cannot be opened for reading!" << endl;
+        cerr << " text_doc_ex_07.txt could not be opened for reading!" << endl;
         exit(1);
     }
     ofstream fout("text_doc_ex_07_COPY.txt");
     if (!fout) {
-        cerr << " text_doc_ex_07_COPY.txt cannot be opened for writing!" << endl;
+        cerr << " text_doc_ex_07_COPY.txt could not be opened for writing!" << endl;
         exit(1);
     }
     fout << fin.rdbuf();

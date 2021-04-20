@@ -14,16 +14,15 @@ using namespace std;
 int main() {
     ifstream fin("text_doc_ex_09.txt");
     if (!fin) {
-        cerr << " text_doc_ex_09.txt cannot be opened for reading!" << endl;
+        cerr << " text_doc_ex_09.txt could not be opened for reading!" << endl;
         exit(1);
     }
 
-    int count = 0;
+    size_t count = 0;
     string str_input;
 
-    while (fin) {
-        fin >> str_input;
-        if (fin) { ++count; }
+    while (fin >> str_input) {
+        ++count;
     }
     fin.close();
 
