@@ -43,7 +43,7 @@ int main() {
 
     ofstream fout("text_doc_ex_10_COPY.txt", ios::binary);
     if (!fout) {
-        cerr << " text_doc_ex_10_COPY.txt cannot be opened for writing!" << endl;
+        cerr << " text_doc_ex_10_COPY.txt could not be opened for writing!" << endl;
         exit(1);
     }
     fout.write(buffer, fin.gcount());
