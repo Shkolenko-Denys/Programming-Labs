@@ -12,8 +12,8 @@
 
 using namespace std;
 
-long get_file_size(ifstream &stream) {
-    long size = 0;
+size_t get_file_size(ifstream &stream) {
+    size_t size = 0;
     stream.seekg(0, ios::end);
     size = stream.tellg();
     stream.seekg(0);
@@ -30,7 +30,7 @@ int main() {
         exit(1);
     }
 
-    long file_size = get_file_size(fin);
+    size_t file_size = get_file_size(fin);
     char *buffer = new char[file_size];
 
     fin.read(buffer, file_size);
