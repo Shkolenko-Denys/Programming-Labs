@@ -54,7 +54,7 @@ int main() {
     fout << person1;
     fout.close();
 
-    cout << " Successfully :) " << "\n\n";
+    cout << " Successfully :) \n\n";
     system("pause");
     return 0;
 }
