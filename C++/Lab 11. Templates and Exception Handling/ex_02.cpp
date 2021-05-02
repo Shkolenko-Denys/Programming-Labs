@@ -17,7 +17,7 @@
 #include <cstdlib>
 
 template <typename T>
-size_t find(const T &object, const T *const list, size_t size) {
+int find(const T &object, const T *const list, size_t size) {
     for (size_t i = 0; i < size; ++i) {
         if (list[i] == object) {
             return i;
@@ -31,7 +31,7 @@ bool is_equal(double x, double y) {
     return std::fabs(x - y) < std::numeric_limits<double>::epsilon();
 }
 template <>
-size_t find(const double &object, const double *const list, size_t size) {
+int find(const double &object, const double *const list, size_t size) {
     for (size_t i = 0; i < size; ++i) {
         if (is_equal(list[i], object)) {
             return i;
