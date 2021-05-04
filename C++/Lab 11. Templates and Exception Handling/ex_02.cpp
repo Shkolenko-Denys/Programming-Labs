@@ -45,9 +45,34 @@ int main() {
     double double_arr[5] = {0.0, 1.1, 2.2, 3.3, 4.4};
     char char_arr[5] = {'a', 'b', 'c', 'd', 'e'};
 
-    std::cout << " elem 2 by index " << find(2, int_arr, 5) << "\n";
-    std::cout << " elem 3.3 by index " << find(3.3, double_arr, 5) << "\n";
-    std::cout << " elem e by index " << find('e', char_arr, 5) << "\n\n";
+    int index;
+    index = find(2, int_arr, 5);
+    if (index != -1) {
+        std::cout << " elem 2 by index " << index << "\n";
+    } else {
+        std::cout << " elem 2 not found\n";
+    }
+
+    index = find(3.3, double_arr, 5);
+    if (index != -1) {
+        std::cout << " elem 3.3 by index " << index << "\n";
+    } else {
+        std::cout << " elem 3.3 not found\n";
+    }
+
+    index = find('e', char_arr, 5);
+    if (index != -1) {
+        std::cout << " elem e by index " << index << "\n";
+    } else {
+        std::cout << " elem e not found\n";
+    }
+
+    index = find('q', char_arr, 5);
+    if (index != -1) {
+        std::cout << " elem q by index " << index << "\n\n";
+    } else {
+        std::cout << " elem q not found\n\n";
+    }
 
     system("pause");
     return 0;
