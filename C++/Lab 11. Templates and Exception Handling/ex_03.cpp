@@ -5,7 +5,7 @@
  и стек. Подсказка: вот начало родового класса, реализующего стек. Посмотрите
  Example 2.6 из Unit 2 и закончите написание кода.
  template <class StackType> class Stack {
-    StackType stck[size]; // holds the stack
+    StackType stck[SIZE]; // holds the stack
     int len; // index of len of stack
  public:
     void init(); // initialize stack
@@ -20,9 +20,11 @@
 #include <iostream>
 #include <cstdlib>
 
-template <class StackType = int, int size = 10>
+#define SIZE 10
+
+template <class StackType>
 class Stack {
-    StackType stck[size];
+    StackType stck[SIZE];
     int len;
 public:
     Stack() { len = 0; }
@@ -30,9 +32,9 @@ public:
     StackType pop();
 };
 
-template <class QueueType = int, int size = 10>
+template <class QueueType>
 class Queue {
-    QueueType q[size];
+    QueueType q[SIZE];
     int first;
     int last;
 public:
@@ -43,7 +45,7 @@ public:
 
 int main() {
     Stack<char> s1;
-    Stack<> s2;
+    Stack<int> s2;
     s1.push('a');
     s1.push('b');
     s1.push('c');
@@ -57,7 +59,7 @@ int main() {
     std::cout << "\n";
 
     Queue<char> q1;
-    Queue<> q2;
+    Queue<int> q2;
     q1.push('a');
     q1.push('b');
     q1.push('c');
@@ -74,17 +76,17 @@ int main() {
 }
 
 // Stack
-template <class StackType, int size>
-void Stack<StackType, size>::push(const StackType &obj) {
-    if (len == size) {
+template <class StackType>
+void Stack<StackType>::push(const StackType &obj) {
+    if (len == SIZE) {
         std::cerr << " Stack Overflow\n";
         exit(EXIT_FAILURE);
     }
     stck[len] = obj;
     len++;
 }
-template <class StackType, int size>
-StackType Stack<StackType, size>::pop() {
+template <class StackType>
+StackType Stack<StackType>::pop() {
     if (len == 0) {
         std::cerr << " Stack is empty\n";
         exit(EXIT_FAILURE);
@@ -95,9 +97,9 @@ StackType Stack<StackType, size>::pop() {
 
 
 // Queue
-template <class QueueType, int size>
-void Queue<QueueType, size>::push(const QueueType &obj) {
-    if (last == size - 1) {
+template <class QueueType>
+void Queue<QueueType>::push(const QueueType &obj) {
+    if (last == SIZE - 1) {
         std::cerr << " Queue Overflow\n";
         exit(EXIT_FAILURE);
     }
@@ -106,8 +108,8 @@ void Queue<QueueType, size>::push(const QueueType &obj) {
         first = 0;
     }
 }
-template <class QueueType, int size>
-QueueType Queue<QueueType, size>::pop() {
+template <class QueueType>
+QueueType Queue<QueueType>::pop() {
     if (first > last || first == -1) {
         std::cerr << " Queue is empty\n";
         exit(EXIT_FAILURE);
