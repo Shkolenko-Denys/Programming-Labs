@@ -1,44 +1,49 @@
-// Create cpp-files in the current folder
+/*-------------------------------------------------------------------<Header>-
+ Name: creator.cpp
+ Title: Creator
+ Description: Create cpp-file(s) in the current folder.
+ Place creator.exe in the folder where the cpp-file(s) should be created.
+ -------------------------------------------------------------------</Header>-*/
 
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-
-using namespace std;
+#include <iostream>     // std::cout, std::cin, std::cerr
+#include <fstream>      // std::ofstream
+#include <string>       // std::string, std::to_string
+#include <limits>       // std::numeric_limits
+#include <cstdlib>      // system
 
 int main() {
-    int n;
+    int n; // number of files
 
     while (true) {
-        cout << "Enter the number of files: ";
-        cin >> n;
+        std::cout << " Enter the number of files: ";
+        std::cin >> n;
 
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(32767, '\n');
-            cout << "Oops, that input is invalid. Please try again.\n\n";
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cerr << " Oops, that input is invalid. Please try again.\n\n";
         }
-        else {
-            cin.ignore(32767, '\n'); // remove unnecessary values
+        else { // remove unnecessary values
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             break;
         }
     }
 
-    string line(67, '-');
-    string str_i;
+    std::string line(67, '-');
+    std::string str_i;
 
     for (int i = 1; i <= n; ++i) {
         if (i < 10) {
-            str_i = "0" + to_string(i);
+            str_i = "0" + std::to_string(i);
         }
         else {
-            str_i = to_string(i);
+            str_i = std::to_string(i);
         }
-        ofstream outf("ex_" + str_i + ".cpp");
+        std::ofstream outf("ex_" + str_i + ".cpp");
 
         if (!outf) {
-            cerr << "ERROR!\n\n";
-            exit(1);
+            std::cerr << " File could not be opened for writing!\n\n";
+            exit(EXIT_FAILURE);
         }
 
         outf <<
@@ -57,7 +62,7 @@ int main() {
 
         outf.close();
     }
-    cout << "\nFile(s) created successfully!\n\n";
+    std::cout << "\n File(s) created successfully!\n\n";
     system("pause");
     return 0;
 }
