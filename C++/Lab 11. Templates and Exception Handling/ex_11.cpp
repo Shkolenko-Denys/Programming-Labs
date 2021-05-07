@@ -12,43 +12,32 @@
 
 #include <iostream>
 #include <exception>
+#include <cassert>
+#include <cstdlib>
 
 void my_terminate() {
-    std::cerr << " terminate handler called\n";
-    abort();
+    std::cerr << " my_terminate handler called\n";
+    system("pause");
+    // abort();
+    exit(EXIT_FAILURE);
 }
 
 void my_unexpected() {
-    std::cerr << " unexpected called\n";
-    throw 100;
+    std::cerr << " my_unexpected called\n";
 }
 
-void myfunction() throw (int) {
-    throw 'a';
+void my_function() throw() {
+    throw 100; // called unexpected()
 }
 
 int main() {
-    std::set_terminate (my_terminate);
+    std::set_terminate(my_terminate);
     std::set_unexpected(my_unexpected);
-    try {
-        myfunction();
-    }
-    catch (int) {
-        std::cerr << " caught int\n";
-    }
-    catch (double) {
-        // ...
-    }
-
-    try {
-        throw 'a';
-    }
-    catch (int) {
-        std::cerr << " caught int\n";
-    }
-    catch (double) {
-        // ...
-    }
+    
+    my_function();
+    
+    throw 'c';
+    // called terminate()
 
     return 0;
 }
