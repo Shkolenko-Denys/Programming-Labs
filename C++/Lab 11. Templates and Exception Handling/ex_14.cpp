@@ -55,7 +55,7 @@ public:
 };
 
 template <class T, int size>
-T& arraytype<T, size>::operator[](const int &i) {
+T& arraytype<T, size>::operator[] (const int &i) {
     if (i < 0 || i >= size) {
         throw i;
     }
