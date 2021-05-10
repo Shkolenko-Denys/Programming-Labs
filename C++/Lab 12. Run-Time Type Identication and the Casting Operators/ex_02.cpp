@@ -6,11 +6,9 @@
  typeid, а оператор dynamic_cast
  -------------------------------------------------------------------</Header>-*/
 
-#include <iostream>
-#include <cstdlib>
-#include <typeinfo>
-
-using namespace std;
+#include <iostream>     // std::cout
+#include <cstdlib>      // rand
+#include <typeinfo>     // typeid
 
 class Shape {
 public:
@@ -20,28 +18,28 @@ public:
 class Rectangle : public Shape {
 public:
     void example() {
-        cout << "*****\n*   *\n*   *\n*****\n";
+        std::cout << "*****\n*   *\n*   *\n*****\n";
     }
 };
 
 class Triangle : public Shape {
 public:
     void example() {
-        cout << "*\n* *\n*  *\n*****\n";
+        std::cout << "*\n* *\n*  *\n*****\n";
     }
 };
 
 class Line : public Shape {
 public:
     void example() {
-        cout << "*****\n";
+        std::cout << "*****\n";
     }
 };
 
 class NullShape : public Shape {
 public:
     void example() {
-        cout << "Null !!! \n";
+        std::cout << "Null !!! \n";
     }
 };
 
@@ -60,7 +58,7 @@ int main() {
     Shape *p;
     for (int i = 0; i < 10; i++) {
         p = generator(); // get next object
-        cout << " class " << typeid(*p).name() << endl;
+        std::cout << " class " << typeid(*p).name() << std::endl;
         // draw object only if it is not a NullShape
         if (!dynamic_cast <NullShape *> (p)) {
             p->example();
