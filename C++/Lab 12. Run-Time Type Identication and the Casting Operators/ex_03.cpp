@@ -55,7 +55,7 @@ int main() {
     /*
     error: cannot 'dynamic_cast' 'ptrb' (of type 'class Num<int>*')
     to type 'class Num<int>' (target is not pointer or reference)
-    53 |     ptrd = dynamic_cast <Num <int>> (ptrb);
+    54 |     ptrd = dynamic_cast <Num <int>> (ptrb);
        |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     */
 
@@ -63,14 +63,11 @@ int main() {
     ptrd = dynamic_cast <Num <int> *> (ptrb);
     /*
     error: cannot convert 'Num<int>*' to 'Square<double>*' in assignment
-    64 |     ptrd = dynamic_cast <Num <int> *> (ptrb);
+    63 |     ptrd = dynamic_cast <Num <int> *> (ptrb);
        |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        |            |
        |            Num<int>*
     */
-
-    // 3)
-    dynamic_cast <Num <int> *> (ptrb);
 
     std::cout << "Generate some objects.\n";
     for (int i = 0; i < 10; i++) {
