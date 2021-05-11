@@ -50,6 +50,7 @@ int main() {
     Num<int> *ptrb;
     Square<double> *ptrd;
 
+    // 1)
     ptrd = dynamic_cast <Num <int>> (ptrb);
     /*
     error: cannot 'dynamic_cast' 'ptrb' (of type 'class Num<int>*')
@@ -58,6 +59,7 @@ int main() {
        |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     */
 
+    // 2)
     ptrd = dynamic_cast <Num <int> *> (ptrb);
     /*
     error: cannot convert 'Num<int>*' to 'Square<double>*' in assignment
@@ -66,6 +68,9 @@ int main() {
        |            |
        |            Num<int>*
     */
+
+    // 3)
+    dynamic_cast <Num <int> *> (ptrb);
 
     std::cout << "Generate some objects.\n";
     for (int i = 0; i < 10; i++) {
