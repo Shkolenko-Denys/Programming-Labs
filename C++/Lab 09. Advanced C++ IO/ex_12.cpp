@@ -23,6 +23,6 @@ int main() {
     // the getline() function works exactly the same as the get() function,
     // but it can read newline characters.
 
-    system("pause");
+     
     return 0;
 }

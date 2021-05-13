@@ -38,6 +38,6 @@ int main() {
     cin >> number;
     cout << number;
 
-    system("pause");
+     
     return 0;
 }

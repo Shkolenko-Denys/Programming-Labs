@@ -18,7 +18,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 template <class StackType = int, int size = 10>
 class Stack {
@@ -68,8 +67,6 @@ int main() {
         std::cout << " Pop q1: " << q1.pop() << "\n";
         std::cout << " Pop q2: " << q2.pop() << "\n";
     }
-
-    system("pause");
     return 0;
 }
 
@@ -78,7 +75,6 @@ template <class StackType, int size>
 void Stack<StackType, size>::push(const StackType &obj) {
     if (len == size) {
         std::cerr << " Stack Overflow\n";
-        system("pause");
         exit(EXIT_FAILURE);
     }
     stck[len] = obj;
@@ -88,20 +84,17 @@ template <class StackType, int size>
 StackType Stack<StackType, size>::pop() {
     if (len == 0) {
         std::cerr << " Stack is empty\n";
-        system("pause");
         exit(EXIT_FAILURE);
     }
     len--;
     return stck[len];
 }
 
-
 // Queue
 template <class QueueType, int size>
 void Queue<QueueType, size>::push(const QueueType &obj) {
     if (last == size - 1) {
         std::cerr << " Queue Overflow\n";
-        system("pause");
         exit(EXIT_FAILURE);
     }
     q[++last] = obj;
@@ -113,7 +106,6 @@ template <class QueueType, int size>
 QueueType Queue<QueueType, size>::pop() {
     if (first > last || first == -1) {
         std::cerr << " Queue is empty\n";
-        system("pause");
         exit(EXIT_FAILURE);
     }
     return q[first++];

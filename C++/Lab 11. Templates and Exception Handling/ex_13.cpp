@@ -8,7 +8,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 template <typename T>
 T abs(const T &n) {
@@ -19,7 +18,5 @@ int main() {
     std::cout << " Absolute value of -10: " << abs(-10) << "\n";
     std::cout << " Absolute value of -10L: " << abs(-10L) << "\n";
     std::cout << " Absolute value of -10.01: " << abs(-10.01) << "\n\n";
-
-    system("pause");
     return 0;
 }

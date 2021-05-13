@@ -44,6 +44,6 @@ int main() {
         Sleep(1000);
         system("cls");
     }
-    system("pause");
+     
     return 0;
 }

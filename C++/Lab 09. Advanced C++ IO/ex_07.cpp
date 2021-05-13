@@ -33,7 +33,7 @@ int main() {
     cout << size << " characters copied.\n\n";
     fin.close();
 
-    system("pause");
+     
     return 0;
 }
 

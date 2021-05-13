@@ -23,7 +23,7 @@ int main() {
     cout << reset << 100 << "\n\n";
     // showflags();
 
-    system("pause");
+     
     return 0;
 }
 

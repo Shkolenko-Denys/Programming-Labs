@@ -50,6 +50,6 @@ int main() {
 
     cout << s2 << "\n";
 
-    system("pause");
+     
     return 0;
 }

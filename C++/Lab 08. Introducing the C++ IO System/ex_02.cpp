@@ -7,7 +7,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 int main() {
     std::cout.setf(std::ios::showpos);
@@ -16,7 +15,5 @@ int main() {
 
     std::cout.unsetf(std::ios::showpos);
     std::cout << 3 << "\n";
-
-    system("pause");
     return 0;
 }

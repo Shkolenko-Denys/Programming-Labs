@@ -13,11 +13,9 @@
 #include <iostream>
 #include <exception>
 #include <cassert>
-#include <cstdlib>
 
 void my_terminate() {
     std::cerr << " my_terminate handler called\n";
-    system("pause");
     // abort();
     exit(EXIT_FAILURE);
 }

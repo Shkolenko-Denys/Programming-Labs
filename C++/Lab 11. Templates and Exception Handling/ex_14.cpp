@@ -38,11 +38,12 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
+
+#define SIZE 10
 
 using namespace std;
 
-template <class T, int size = 10>
+template <class T, int size = SIZE>
 class arraytype {
     T arr[size];
 public:
@@ -66,13 +67,13 @@ int main() {
     arraytype<int> int_obj;
     arraytype<double> double_obj;
     cout << " Int array: ";
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < SIZE; i++) {
         cout << int_obj[i] << " ";
     }
     cout << "\n";
 
     cout << " Double array: ";
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < SIZE; i++) {
         cout << double_obj[i] << " ";
     }
     cout << "\n";
@@ -82,6 +83,5 @@ int main() {
     } catch (int i) {
         cout << "Index value of " << i << " is out of bounds.\n";
     }
-    system("pause");
     return 0;
 }

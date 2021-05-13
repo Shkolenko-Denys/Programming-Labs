@@ -23,6 +23,6 @@ ostream& tdm(ostream &out) {
 int main() {
     cout << "\n" << tdm << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

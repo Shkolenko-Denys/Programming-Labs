@@ -28,6 +28,6 @@ int main() {
     // When outf goes out of scope, the destructor of the ofstream class
     // will automatically close our file.
 
-    system("pause");
+     
     return 0;
 }

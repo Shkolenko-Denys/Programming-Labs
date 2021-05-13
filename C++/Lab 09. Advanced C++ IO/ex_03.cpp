@@ -56,6 +56,6 @@ int main() {
     cin >> date;
     cout << date << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

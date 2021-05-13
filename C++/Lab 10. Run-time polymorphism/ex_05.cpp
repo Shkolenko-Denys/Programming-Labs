@@ -56,6 +56,6 @@ int main() {
     cout << " refNum2: " << "\n";
     refNum2.shownum();
 
-    system("pause");
+     
     return 0;
 }

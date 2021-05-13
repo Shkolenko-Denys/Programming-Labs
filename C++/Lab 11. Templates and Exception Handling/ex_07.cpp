@@ -6,7 +6,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -25,7 +24,5 @@ int main() {
 
     cout << " array_1: " << find_frequent(array_1, 5) << "\n";
     cout << " array_2: " << find_frequent(array_2, 2) << "\n\n";
-
-    system("pause");
     return 0;
 }

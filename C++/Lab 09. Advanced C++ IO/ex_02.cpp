@@ -22,6 +22,6 @@ int main() {
     cout.precision(5);
     cout << 10. / 3. << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

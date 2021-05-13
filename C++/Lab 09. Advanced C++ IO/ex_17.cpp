@@ -23,6 +23,6 @@ int main()
     cout << tabs << "Hello World!" << "\n\n";
     // "Hello World" - the first words of a real programmer :)
 
-    system("pause");
+     
     return 0;
 }

@@ -8,7 +8,6 @@
 #include <iostream>
 #include <ctime>
 #include <algorithm>
-#include <cstdlib>
 
 using namespace std;
 
@@ -47,8 +46,6 @@ int main() {
     cout << " obj_2 : " << obj_2 << "\n";
     obj_2.heapSort();
     cout << " sorted: " << obj_2 << "\n\n";
-
-    system("pause");
     return 0;
 }
 

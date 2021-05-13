@@ -14,7 +14,6 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
-#include <cstdlib>
 
 template <typename T>
 int find(const T &object, const T *const list, size_t size) {
@@ -73,7 +72,5 @@ int main() {
     } else {
         std::cout << " elem q not found\n\n";
     }
-
-    system("pause");
     return 0;
 }

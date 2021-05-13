@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
 
 template <class StackType_1, class StackType_2, int size = 10>
 class Stack {
@@ -41,8 +40,6 @@ int main() {
         s2.pop(std::cout) << "\n";
     }
     std::cout << "\n";
-
-    system("pause");
     return 0;
 }
 
@@ -50,7 +47,6 @@ template <class StackType_1, class StackType_2, int size>
 void Stack<StackType_1, StackType_2, size>::push(const StackType_1 &obj_1, const StackType_2 &obj_2) {
     if (len == size) {
         std::cerr << " Stack Overflow\n";
-        system("pause");
         exit(EXIT_FAILURE);
     }
     stck_1[len] = obj_1;
@@ -62,7 +58,6 @@ template <class StackType_1, class StackType_2, int size>
 std::ostream& Stack<StackType_1, StackType_2, size>::pop(std::ostream &out) {
     if (len == 0) {
         std::cerr << " Stack is empty\n";
-        system("pause");
         exit(EXIT_FAILURE);
     }
     len--;

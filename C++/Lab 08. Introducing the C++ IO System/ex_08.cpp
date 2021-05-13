@@ -15,6 +15,6 @@ int main() {
     std::cout << std::setiosflags(std::ios::showbase);
     std::cout << 100 << std::endl;
 
-    system("pause");
+     
     return 0;
 }

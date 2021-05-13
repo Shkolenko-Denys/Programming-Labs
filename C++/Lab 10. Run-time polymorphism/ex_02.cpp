@@ -38,6 +38,6 @@ int main() {
     cout << "\n Successfully :) \n" <<
     "By the way, this is a useful program! \n\n";
 
-    system("pause");
+     
     return 0;
 }

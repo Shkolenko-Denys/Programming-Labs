@@ -19,7 +19,6 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include <cstdlib>
 
 template <class T>
 class Input {
@@ -49,7 +48,5 @@ int main() {
 
     Input<char> input_2(" Enter the char: ", 'e', 'x');
     std::cout << "\n Value: " << input_2.get_value() << "\n\n";
-
-    system("pause");
     return 0;
 }

@@ -19,6 +19,6 @@ int main() {
     std::cout.setf(std::ios::dec, std::ios::basefield);
     std::cout << " dec: " << 100 << "\n\n";
     
-    system("pause");
+     
     return 0;
 }

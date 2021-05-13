@@ -27,7 +27,7 @@ int main() {
     cout << dec << 300 << "\n";
     showflags();
 
-    system("pause");
+     
     return 0;
 }
 

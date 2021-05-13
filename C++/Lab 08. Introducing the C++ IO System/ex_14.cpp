@@ -19,6 +19,6 @@ int main() {
     cout << 1000.5364;
     cout << "\n\n";
     
-    system("pause");
+     
     return 0;
 }

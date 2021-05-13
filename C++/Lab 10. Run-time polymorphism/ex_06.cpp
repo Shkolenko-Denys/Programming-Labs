@@ -46,6 +46,6 @@ int main() {
     Dist &refDist = metric;
     refDist.trav_time();
 
-    system("pause");
+     
     return 0;
 }

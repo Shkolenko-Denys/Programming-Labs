@@ -71,6 +71,6 @@ ostream& operator<< (ostream &out, const earth &obj) {
 int main() {
     earth obj(93000000, 365);
     cout << obj;
-    system("pause");
+     
     return 0;
 }

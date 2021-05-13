@@ -34,6 +34,6 @@ int main() {
     }
     delete[] alphabet_nums;
 
-    system("pause");
+     
     return 0;
 }

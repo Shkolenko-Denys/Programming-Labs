@@ -12,7 +12,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -32,6 +31,5 @@ double divide(const double &a, const double &b) {
 int main() {
     cout << " Result_1 : " << divide(5.5, 0) << "\n";
     cout << " Result_2 : " << divide(5.5, 2) << "\n\n";
-    system("pause");
     return 0;
 }

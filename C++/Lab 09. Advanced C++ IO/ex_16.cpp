@@ -33,6 +33,6 @@ int main() {
     
     cout << "\n Successfully :) \n\n";
 
-    system("pause");
+     
     return 0;
 }

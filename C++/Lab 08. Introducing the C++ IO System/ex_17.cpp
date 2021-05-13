@@ -64,6 +64,6 @@ int main() {
     cin >> obj;
     cout << obj;
 
-    system("pause");
+     
     return 0;
 }

@@ -54,6 +54,6 @@ int main()
     Box box10(10);
     cout << box10 << "\n";
 
-    system("pause");
+     
     return 0;
 }

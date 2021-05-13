@@ -7,7 +7,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -26,7 +25,5 @@ int main() {
 
     cout.flags(f); // 2
     cout << 100 << "\n";
-
-    system("pause");
     return 0;
 }

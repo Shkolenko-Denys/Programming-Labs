@@ -34,6 +34,6 @@ int main() {
 
     cout << " Output: " << ch << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

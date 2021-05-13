@@ -182,6 +182,6 @@ int main() {
     }
     db.close();
 
-    system("pause");
+     
     return 0;
 }

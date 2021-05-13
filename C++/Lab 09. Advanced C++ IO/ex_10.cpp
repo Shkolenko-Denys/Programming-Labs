@@ -69,6 +69,6 @@ int main() {
     // spaces on both sides: count - 1 
     cout << " Words: " << count - 1 << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

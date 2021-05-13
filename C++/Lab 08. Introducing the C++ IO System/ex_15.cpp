@@ -19,6 +19,6 @@ int main() {
     std::setfill('*') <<
     std::left << 1000.5364 << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

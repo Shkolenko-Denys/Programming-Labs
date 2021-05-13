@@ -64,6 +64,6 @@ ostream& operator<< (ostream &out, const strtype &obj) {
 int main() {
     strtype s1("This is a test."), s2("I HATE C++!!!!! :)");
     cout << s1 << "\n" << s2;
-    system("pause");
+     
     return 0;
 }

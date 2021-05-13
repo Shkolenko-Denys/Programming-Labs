@@ -9,7 +9,6 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <cstdlib>
 
 using namespace std;
 
@@ -22,6 +21,5 @@ int main() {
     }
     cout << "\n\n";
 
-    system("pause");
     return 0;
 }

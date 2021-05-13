@@ -33,6 +33,6 @@ int main(int argc, char *argv[]) {
         fin.close();
         cout << " Amount: " << count << "\n\n";
     }
-    system("pause");
+     
     return 0;
 }

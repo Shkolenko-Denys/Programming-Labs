@@ -104,6 +104,6 @@ int main() {
     }
     cout << obj2;
 
-    system("pause");
+     
     return 0;
 }

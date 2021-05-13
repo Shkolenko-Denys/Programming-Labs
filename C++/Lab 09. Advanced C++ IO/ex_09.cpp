@@ -28,6 +28,6 @@ int main() {
 
     cout << " Words: " << count << "\n\n";
 
-    system("pause");
+     
     return 0;
 }

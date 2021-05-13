@@ -26,6 +26,6 @@ int main() {
     fout.close();
 
     cout << "\n Successfully :) \n\n";
-    system("pause");
+     
     return 0;
 }

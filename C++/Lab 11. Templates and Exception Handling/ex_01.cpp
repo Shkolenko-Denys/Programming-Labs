@@ -8,7 +8,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 template <typename T>
 const T& min(const T &a, const T &b) {
@@ -24,7 +23,5 @@ int main() {
  
     char ch = min('c', 'a');
     std::cout << ch << "\n\n";
-
-    system("pause");
     return 0;
 }

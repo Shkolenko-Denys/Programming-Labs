@@ -10,7 +10,6 @@
 // зовнішнє (main) і всередині класу MyClass
 
 #include <iostream>     // std::cout
-#include <cstdlib>      // system
 
 class MyClass {
     int *data;
@@ -53,6 +52,5 @@ int main () {
 
     delete p1;
     delete p2;
-    system("pause");
     return 0;
 }

@@ -38,6 +38,6 @@ void center(const char *str) {
 int main() {
     center("Hello World!");
 
-    system("pause");
+     
     return 0;
 }

@@ -75,6 +75,6 @@ int main() {
 
     cout << b.pop() << endl;
 
-    system("pause");
+     
     return 0;
 }

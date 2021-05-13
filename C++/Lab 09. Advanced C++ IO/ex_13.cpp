@@ -27,6 +27,6 @@ int main(int argc, char *argv[]) {
         }
         fin.close();
     }
-    system("pause");
+     
     return 0;
 }

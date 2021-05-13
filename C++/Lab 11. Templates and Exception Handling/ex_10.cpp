@@ -6,7 +6,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 template <class StackType = int, int size = 3>
 class Stack {
@@ -51,7 +50,6 @@ int main() {
             std::cerr << " Error: " << exception << "\n\n";
         }
     }
-    system("pause");
     return 0;
 }
 
