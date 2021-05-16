@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -37,7 +36,5 @@ int main() {
 
     cout << "\n Successfully :) \n" <<
     "By the way, this is a useful program! \n\n";
-
-     
     return 0;
 }

@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -26,6 +25,5 @@ int main() {
     fout.close();
 
     cout << "\n Successfully :) \n\n";
-     
     return 0;
 }

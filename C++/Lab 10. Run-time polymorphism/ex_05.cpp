@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
 
 using namespace std;
 
@@ -55,7 +54,5 @@ int main() {
     refNum1.shownum();
     cout << " refNum2: " << "\n";
     refNum2.shownum();
-
-     
     return 0;
 }

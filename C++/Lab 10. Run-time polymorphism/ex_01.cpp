@@ -6,7 +6,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -18,7 +17,5 @@ ostream& up_scientific(ostream &stream) {
 
 int main() {
     cout << up_scientific << 555.55 << "\n\n";
-
-     
     return 0;
 }

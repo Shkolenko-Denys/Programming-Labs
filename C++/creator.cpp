@@ -52,11 +52,8 @@ int main() {
         " Title: —\n" <<
         " Description: \n" <<
         " " << line << "</Header>-*/\n\n" <<
-        "#include <iostream>\n" <<
-        "#include <cstdlib>\n\n" <<
-        "using namespace std;\n\n" <<
+        "#include <iostream>\n\n" <<
         "int main() {\n\n" <<
-        "    system(\"pause\");\n" <<
         "    return 0;\n" <<
         "}";
 

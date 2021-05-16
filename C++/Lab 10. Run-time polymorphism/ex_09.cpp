@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
 
 using namespace std;
 
@@ -63,7 +62,6 @@ int main() {
     }
 
     cout << "\n\n";
-     
     return 0;
 }
 

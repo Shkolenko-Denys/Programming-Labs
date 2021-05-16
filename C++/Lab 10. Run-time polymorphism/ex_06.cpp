@@ -12,7 +12,6 @@
  -------------------------------------------------------------------</Header>-*/
 
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -45,7 +44,5 @@ int main() {
 
     Dist &refDist = metric;
     refDist.trav_time();
-
-     
     return 0;
 }

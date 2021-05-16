@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -33,6 +32,5 @@ int main(int argc, char *argv[]) {
         fin.close();
         cout << " Amount: " << count << "\n\n";
     }
-     
     return 0;
 }
