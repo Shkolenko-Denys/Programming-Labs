@@ -14,19 +14,19 @@
 using namespace std;
 
 class Example {
-    static int count;
+    static int s_count;
     const int data;
 public:
     Example(const int &d) : data(d) {
-        count++;
+        s_count++;
     }
     ~Example() {
-        count--;
+        s_count--;
     }
-    int get_count() { return count; }
+    int get_count() { return s_count; }
 };
 
-int Example::count = 0;
+int Example::s_count = 0;
 
 int main() {
     Example obj1(12), obj2(2);
