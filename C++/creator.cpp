@@ -54,6 +54,7 @@ int main() {
         " Description: \n" <<
         " " << line << "</Header>-*/\n\n" <<
         "#include <iostream>\n\n" <<
+        "using namespace std;\n\n" <<
         "int main() {\n\n" <<
         "    return 0;\n" <<
         "}";
