@@ -43,6 +43,7 @@ int main() {
 
         if (!outf) {
             std::cerr << " File could not be opened for writing!\n\n";
+            system("pause");
             exit(EXIT_FAILURE);
         }
 
