@@ -7,6 +7,8 @@
  пространств имен наиболее предпочтительно? Пары примеров будет достаточно.
  -------------------------------------------------------------------</Header>-*/
 
+#include <iostream>
+
 // Example #1
 class coord {
     int x, y; // coordinate values
@@ -29,7 +31,7 @@ public:
     Num() { n = 0; }
     Num(const int &num) { n = num; }
     virtual void shownum() const { // used const
-        cout << n << endl;
+        std::cout << n << std::endl;
     }
 };
 
@@ -38,6 +40,6 @@ public:
     Outhex() { n = 0; }
     Outhex(const int &num) { n = num; }
     virtual void shownum() const override { // used const
-        cout << hex << n << endl;
+        std::cout << std::hex << n << std::endl;
     }
 };
