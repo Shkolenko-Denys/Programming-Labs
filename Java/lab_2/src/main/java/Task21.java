@@ -66,5 +66,4 @@ public class Task21 {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
 }
