@@ -8,7 +8,7 @@ public class FractionNumber extends Fraction {
 
     public FractionNumber(int whole, int numerator, int denominator) {
         super(numerator, denominator);
-        this.whole = whole;
+        setWhole(whole);
     }
 
     public int getWhole() {
@@ -19,19 +19,22 @@ public class FractionNumber extends Fraction {
         this.whole = whole;
     }
 
-    public void add(double number) {
+    public void add(int number) {
         whole += number;
     }
 
-    public void sub(double number) {
+    public void sub(int number) {
         whole -= number;
     }
 
-    public void mult(double number) {
+    public void mult(int number) {
         whole *= number;
     }
 
-    public void div(double number) {
+    public void div(int number) {
+        if (number == 0) {
+            throw new IllegalArgumentException("division by zero");
+        }
         whole /= number;
     }
 

@@ -8,8 +8,8 @@ public class Fraction implements Arithmetic {
     private int denominator;
 
     public Fraction(int numerator, int denominator) {
-        this.numerator = numerator;
-        this.denominator = denominator;
+        setNumerator(numerator);
+        setDenominator(denominator);
     }
 
     public int getNumerator() {
@@ -31,19 +31,22 @@ public class Fraction implements Arithmetic {
         this.denominator = denominator;
     }
 
-    public void add(double number) {
+    public void add(int number) {
         numerator += number * denominator;
     }
 
-    public void sub(double number) {
+    public void sub(int number) {
         numerator -= number * denominator;
     }
 
-    public void mult(double number) {
+    public void mult(int number) {
         numerator *= number;
     }
 
-    public void div(double number) {
+    public void div(int number) {
+        if (number == 0) {
+            throw new IllegalArgumentException("division by zero");
+        }
         denominator *= number;
     }
 
@@ -56,7 +59,8 @@ public class Fraction implements Arithmetic {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Fraction fraction = (Fraction) o;
-        return numerator == fraction.numerator && denominator == fraction.denominator;
+        return numerator == fraction.numerator
+                && denominator == fraction.denominator;
     }
 
     @Override

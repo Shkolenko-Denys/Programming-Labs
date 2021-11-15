@@ -12,12 +12,13 @@ public class Employee extends Human {
     private final String dateOfEmployment;
 
     public Employee(String surname, String name, String patronymic,
-                    String birthday, Genders gender, EducationLevels education,
-                    int educationDocId, String institute, String homeAddress) {
+                    String birthday, Genders gender, String homeAddress,
+                    EducationLevels education, int educationDocId,
+                    String institute) {
         super(surname, name, patronymic, birthday, gender, homeAddress);
-        this.education = education;
-        this.educationDocId = educationDocId;
-        this.institute = institute;
+        setEducation(education);
+        setEducationDocId(educationDocId);
+        setInstitute(institute);
         this.dateOfEmployment = LocalDateTime.now().format(DateTimeFormatter
                 .ofPattern("dd.MM.yyyy"));
     }

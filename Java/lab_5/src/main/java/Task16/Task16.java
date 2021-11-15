@@ -84,7 +84,7 @@ public class Task16 {
         String homeAddress = in.nextLine();
 
         Employee employee = new Employee(surname, name, patronymic, birthday,
-                gender, education, educationDocId, institute, homeAddress);
+                gender, homeAddress, education, educationDocId, institute);
 
         System.out.println(employee);
     }

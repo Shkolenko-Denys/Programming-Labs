@@ -13,9 +13,9 @@ public class Message implements Readable, Writeable {
     private String edited;
 
     public Message(String author, String topic, String text) {
-        this.author = author;
-        this.topic = topic;
-        this.text = text;
+        setAuthor(author);
+        setTopic(topic);
+        setText(text);
         this.created = LocalDateTime.now().format(DateTimeFormatter
                 .ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
@@ -68,13 +68,12 @@ public class Message implements Readable, Writeable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return author.equals(message.author) && topic.equals(message.topic)
-                && text.equals(message.text);
+        return text.equals(message.text);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(author, topic, text);
+        return Objects.hash(text);
     }
 
     @Override

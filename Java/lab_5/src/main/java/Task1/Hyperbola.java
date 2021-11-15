@@ -8,8 +8,8 @@ public class Hyperbola implements MathFunction {
     private double b;
 
     public Hyperbola(double a, double b) {
-        this.a = a;
-        this.b = b;
+        setA(a);
+        setB(b);
     }
 
     public double getA() {

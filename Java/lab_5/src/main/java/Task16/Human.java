@@ -13,12 +13,12 @@ public abstract class Human implements Formal {
 
     public Human(String surname, String name, String patronymic,
                  String birthday, Genders gender, String homeAddress) {
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.homeAddress = homeAddress;
+        setSurname(surname);
+        setName(name);
+        setPatronymic(patronymic);
+        setBirthday(birthday);
+        setGender(gender);
+        setHomeAddress(homeAddress);
     }
 
     public String getSurname() {
