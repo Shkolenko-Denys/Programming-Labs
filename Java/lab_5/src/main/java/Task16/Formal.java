@@ -1,7 +1,5 @@
 package Task16;
 
-import Task16.Genders;
-
 public interface Formal {
 
     String getSurname();

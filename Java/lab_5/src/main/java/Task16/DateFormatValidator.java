@@ -5,12 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
-public class DateFormatValidator implements DateValidator {
-    private final String dateFormat;
-
-    public DateFormatValidator(String dateFormat) {
-        this.dateFormat = dateFormat;
-    }
+public record DateFormatValidator(
+        String dateFormat) implements DateValidator {
 
     @Override
     public boolean isValid(String dateStr) {
