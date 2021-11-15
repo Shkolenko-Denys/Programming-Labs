@@ -39,7 +39,6 @@ public class Task1 {
             System.out.println("x = " + hyperbola.getXbyY(y));
         } catch (IllegalArgumentException e) {
             System.out.println(" Error: " + e);
-            System.exit(1);
         }
     }
 }

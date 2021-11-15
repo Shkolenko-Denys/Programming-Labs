@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task16 {
@@ -27,18 +26,7 @@ public class Task16 {
         System.out.println("""
                 0 -- man
                 other number -- woman""");
-        int number;
-        while (true) {
-            try {
-                System.out.print("Gender: ");
-                number = in.nextInt();
-                in.nextLine();  // for '\n'
-                break;
-            } catch (InputMismatchException e) {
-                in.nextLine();  // for '\n'
-                System.out.println(" Error: " + e);
-            }
-        }
+        int number = Task40.input_int("Gender");
         Genders gender;
         if (number == 0) {
             gender = Genders.MAN;
@@ -54,17 +42,9 @@ public class Task16 {
                 4 -- Bachelor's
                 5 -- Master's
                 other number -- Doctorate""");
-        while (true) {
-            try {
-                System.out.print("Education: ");
-                number = in.nextInt();
-                in.nextLine();  // for '\n'
-                break;
-            } catch (InputMismatchException e) {
-                in.nextLine();  // for '\n'
-                System.out.println(" Error: " + e);
-            }
-        }
+
+        number = Task40.input_int("Education");
+
         EducationLevels education;
         switch (number) {
             case 0 -> education = EducationLevels.EARLY_CHILDHOOD;
@@ -76,19 +56,7 @@ public class Task16 {
             default -> education = EducationLevels.DOCTORATE;
         }
 
-        int educationDocId;
-        while (true) {
-            try {
-                System.out.print("Education document id: ");
-                educationDocId = in.nextInt();
-                in.nextLine();  // for '\n'
-                break;
-            } catch (InputMismatchException e) {
-                in.nextLine();  // for '\n'
-                System.out.println(" Error: " + e);
-            }
-        }
-
+        int educationDocId = Task40.input_int("Education document id");
         System.out.print("Institute: ");
         String institute = in.nextLine();
 
