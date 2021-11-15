@@ -1,10 +1,9 @@
 import java.util.Objects;
 
-public class Hyperbola {
+public class Hyperbola implements MathFunction {
 
     private double a;
     private double b;
-    private final double eps = 1e-7;
 
     public Hyperbola(double a, double b) {
         this.a = a;
@@ -16,7 +15,7 @@ public class Hyperbola {
     }
 
     public void setA(double a) {
-        if (Math.abs(a) < eps) {
+        if (Math.abs(a) < EPS) {
             throw new IllegalArgumentException("the 'a' cannot be zero");
         }
         this.a = a;
@@ -27,7 +26,7 @@ public class Hyperbola {
     }
 
     public void setB(double b) {
-        if (Math.abs(b) < eps) {
+        if (Math.abs(b) < EPS) {
             throw new IllegalArgumentException("the 'b' cannot be zero");
         }
         this.b = b;

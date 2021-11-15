@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Fraction {
+public class Fraction implements Arithmetic {
 
     private int numerator;
     private int denominator;

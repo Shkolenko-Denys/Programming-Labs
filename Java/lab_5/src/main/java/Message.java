@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Message {
+public class Message implements Readable, Writeable {
 
     private String author;
     private String topic;
