@@ -1,3 +1,6 @@
+package Task16;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task16 {
@@ -7,6 +10,23 @@ public class Task16 {
      * образовании, учебное заведение выдавшее документ, дата поступления
      * на работу, домашний адрес).
      * */
+
+    private static int input_int(String name) {
+        Scanner in = new Scanner(System.in);
+        int number;
+
+        while (true) {
+            System.out.print("Enter the '" + name + "': ");
+            try {
+                number = in.nextInt();
+                in.nextLine();  // for '\n'
+                return number;
+            } catch (InputMismatchException e) {
+                in.nextLine();  // for '\n'
+                System.out.println(" Error: " + e);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -26,7 +46,7 @@ public class Task16 {
         System.out.println("""
                 0 -- man
                 other number -- woman""");
-        int number = Task40.input_int("Gender");
+        int number = input_int("Gender");
         Genders gender;
         if (number == 0) {
             gender = Genders.MAN;
@@ -43,7 +63,7 @@ public class Task16 {
                 5 -- Master's
                 other number -- Doctorate""");
 
-        number = Task40.input_int("Education");
+        number = input_int("Education");
 
         EducationLevels education;
         switch (number) {
@@ -56,7 +76,7 @@ public class Task16 {
             default -> education = EducationLevels.DOCTORATE;
         }
 
-        int educationDocId = Task40.input_int("Education document id");
+        int educationDocId = input_int("Education document id");
         System.out.print("Institute: ");
         String institute = in.nextLine();
 

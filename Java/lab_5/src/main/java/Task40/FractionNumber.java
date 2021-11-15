@@ -1,3 +1,5 @@
+package Task40;
+
 import java.util.Objects;
 
 public class FractionNumber extends Fraction {

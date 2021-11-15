@@ -1,3 +1,5 @@
+package Task5;
+
 public interface Readable {
 
     String getAuthor();

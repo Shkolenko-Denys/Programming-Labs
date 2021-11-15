@@ -1,3 +1,5 @@
+package Task5;
+
 public interface Writeable {
 
     void setAuthor(String author);

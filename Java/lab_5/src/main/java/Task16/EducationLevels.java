@@ -1,3 +1,5 @@
+package Task16;
+
 public enum EducationLevels {
     EARLY_CHILDHOOD,
     PRIMARY,

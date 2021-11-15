@@ -1,3 +1,5 @@
+package Task40;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,12 +10,12 @@ public class Task40 {
      * Число с дробной частью.
      * */
 
-    public static int input_int(String name) {
+    private static int input_number(String name) {
         Scanner in = new Scanner(System.in);
         int number;
 
         while (true) {
-            System.out.print("Enter the '" + name + "': ");
+            System.out.print(name + ": ");
             try {
                 number = in.nextInt();
                 in.nextLine();  // for '\n'
@@ -26,8 +28,8 @@ public class Task40 {
     }
 
     public static void main(String[] args) {
-        int numerator = input_int("numerator");
-        int denominator = input_int("denominator");
+        int numerator = input_number("numerator");
+        int denominator = input_number("denominator");
 
         try {
             Fraction fraction = new Fraction(numerator, denominator);
@@ -38,7 +40,7 @@ public class Task40 {
             System.exit(1);
         }
 
-        int whole = input_int("whole");
+        int whole = input_number("whole");
 
         try {
             FractionNumber fractionNumber = new FractionNumber(whole, numerator,

@@ -1,3 +1,5 @@
+package Task1;
+
 import java.util.Objects;
 
 public class Hyperbola implements MathFunction {

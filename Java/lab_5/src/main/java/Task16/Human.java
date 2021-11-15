@@ -1,3 +1,5 @@
+package Task16;
+
 import java.util.Objects;
 
 public abstract class Human implements Formal {

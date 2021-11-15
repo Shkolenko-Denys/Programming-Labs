@@ -1,3 +1,5 @@
+package Task40;
+
 public interface Arithmetic {
 
     void add(double number);
