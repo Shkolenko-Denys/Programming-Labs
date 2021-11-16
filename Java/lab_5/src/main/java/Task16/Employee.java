@@ -4,13 +4,37 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * Class that describes Employee and extends Human
+ *
+ * @author Shkolenko
+ * @version 1.0
+ */
 public class Employee extends Human {
 
+    /** Education level */
     private EducationLevels education;
+
+    /** Education document id */
     private int educationDocId;
+
+    /** Institute */
     private String institute;
+
+    /** Date of employment */
     private final String dateOfEmployment;
 
+    /**
+     * @param surname Employee's surname
+     * @param name Employee's name
+     * @param patronymic Employee's patronymic
+     * @param birthday Employee's birthday
+     * @param gender Employee's gender
+     * @param homeAddress Employee's homeAddress
+     * @param education Employee's education
+     * @param educationDocId Employee's education document id
+     * @param institute Employee's institute
+     */
     public Employee(String surname, String name, String patronymic,
                     String birthday, Genders gender, String homeAddress,
                     EducationLevels education, int educationDocId,

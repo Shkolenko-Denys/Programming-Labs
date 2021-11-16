@@ -2,6 +2,12 @@ package Task40;
 
 import java.util.Objects;
 
+/**
+ * Class that describes fraction with whole part
+ *
+ * @author Shkolenko
+ * @version 1.0
+ */
 public class FractionNumber extends Fraction {
 
     private int whole;
@@ -19,18 +25,30 @@ public class FractionNumber extends Fraction {
         this.whole = whole;
     }
 
+    /**
+     * @param number number for addition
+     */
     public void add(int number) {
         whole += number;
     }
 
+    /**
+     * @param number number for subtraction
+     */
     public void sub(int number) {
         whole -= number;
     }
 
+    /**
+     * @param number number for multiplication
+     */
     public void mult(int number) {
         whole *= number;
     }
 
+    /**
+     * @param number number for division
+     */
     public void div(int number) {
         if (number == 0) {
             throw new IllegalArgumentException("division by zero");
@@ -38,6 +56,9 @@ public class FractionNumber extends Fraction {
         whole /= number;
     }
 
+    /**
+     * @return float-format of the fraction
+     */
     public double get_float() {
         return whole + super.get_float();
     }

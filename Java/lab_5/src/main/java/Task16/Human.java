@@ -2,15 +2,40 @@ package Task16;
 
 import java.util.Objects;
 
+/**
+ * Abstract class that describes Human in Formal style
+ *
+ * @author Shkolenko
+ * @version 1.0
+ */
 public abstract class Human implements Formal {
 
+    /** Human's surname */
     private String surname;
+
+    /** Human's name */
     private String name;
+
+    /** Human's patronymic */
     private String patronymic;
+
+    /** Human's birthday */
     private String birthday;
+
+    /** Human's gender */
     private Genders gender;
+
+    /** Human's homeAddress */
     private String homeAddress;
 
+    /**
+     * @param surname Human's surname
+     * @param name Human's name
+     * @param patronymic Human's patronymic
+     * @param birthday Human's birthday
+     * @param gender Human's gender
+     * @param homeAddress Human's homeAddress
+     */
     public Human(String surname, String name, String patronymic,
                  String birthday, Genders gender, String homeAddress) {
         setSurname(surname);

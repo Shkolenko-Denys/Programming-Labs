@@ -2,11 +2,24 @@ package Task40;
 
 import java.util.Objects;
 
+/**
+ * Class that describes fraction with arithmetic operations
+ *
+ * @author Shkolenko
+ * @version 1.0
+ */
 public class Fraction implements Arithmetic {
 
+    /** the numerator of the fraction */
     private int numerator;
+
+    /** the denominator of the fraction */
     private int denominator;
 
+    /**
+     * @param numerator numerator of the fraction
+     * @param denominator denominator of the fraction
+     */
     public Fraction(int numerator, int denominator) {
         setNumerator(numerator);
         setDenominator(denominator);
@@ -31,18 +44,30 @@ public class Fraction implements Arithmetic {
         this.denominator = denominator;
     }
 
+    /**
+     * @param number number for addition
+     */
     public void add(int number) {
         numerator += number * denominator;
     }
 
+    /**
+     * @param number number for subtraction
+     */
     public void sub(int number) {
         numerator -= number * denominator;
     }
 
+    /**
+     * @param number number for multiplication
+     */
     public void mult(int number) {
         numerator *= number;
     }
 
+    /**
+     * @param number number for division
+     */
     public void div(int number) {
         if (number == 0) {
             throw new IllegalArgumentException("division by zero");
@@ -50,6 +75,9 @@ public class Fraction implements Arithmetic {
         denominator *= number;
     }
 
+    /**
+     * @return float-format of the fraction
+     */
     public double get_float() {
         return Math.round((double) numerator / denominator * 100.0) / 100.0;
     }
