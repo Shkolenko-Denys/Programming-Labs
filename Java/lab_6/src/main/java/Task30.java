@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Изменение размера изображения в графическом окне. В верхней панели окна
@@ -20,8 +19,6 @@ import java.util.Objects;
  * границы бегунков должны иметь значения 10 и 150.
  */
 public class Task30 extends JFrame {
-
-    JLabel imageLabel = new JLabel();
 
     public Task30() {
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -53,6 +50,7 @@ public class Task30 extends JFrame {
 
         JPanel jPanelImage = new JPanel();
         BufferedImage img = null;
+        JLabel imageLabel = new JLabel();
 
         try {
             img = ImageIO.read(new File(".\\src\\main\\resources\\image_lab_6.png"));
