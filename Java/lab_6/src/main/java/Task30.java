@@ -53,7 +53,7 @@ public class Task30 extends JFrame {
         JLabel imageLabel = new JLabel();
 
         try {
-            img = ImageIO.read(new File(".\\src\\main\\resources\\image_lab_6.png"));
+            img = ImageIO.read(new File("./src/main/resources/image_lab_6.png"));
             Image d_img = img.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(d_img));
             jPanelImage.add(imageLabel);
