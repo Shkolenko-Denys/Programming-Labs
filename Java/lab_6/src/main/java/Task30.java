@@ -1,7 +1,10 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.util.Objects;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Изменение размера изображения в графическом окне. В верхней панели окна
@@ -46,10 +49,26 @@ public class Task30 extends JFrame {
         jPanelButton.add(enterButton);
 
         JPanel jPanelImage = new JPanel();
-        ImageIcon icon = new ImageIcon("");
+        BufferedImage img = null;
         JLabel imageLabel = new JLabel();
-        imageLabel.setIcon(icon);
-        jPanelImage.add(enterButton);
+
+        try {
+            img = ImageIO.read(new File(".\\src\\main\\resources\\image_lab_6.png"));
+            Image d_img = img.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(d_img));
+            jPanelImage.add(imageLabel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        BufferedImage finalImg = img;
+        enterButton.addActionListener(e -> {
+            if (finalImg != null) {
+                Image d_img = finalImg.getScaledInstance(sliderWidth.getValue(), sliderHeight.getValue(), Image.SCALE_SMOOTH);
+                imageLabel.setIcon(new ImageIcon(d_img));
+            }
+            frame.pack();
+        });
 
         frame.getContentPane().add(jPanelControl, BorderLayout.NORTH);
         frame.getContentPane().add(jPanelButton, BorderLayout.SOUTH);
