@@ -1,0 +1,74 @@
+[
+    {
+        "unique_number": 1,
+        "topic": "Frontend vs Backend",
+        "price": 220.0,
+        "event_date": "19.11.2021",
+        "purchase_date": "11.11.2021",
+        "type": "LateTicket"
+    },
+    {
+        "unique_number": 2,
+        "topic": "Let's Learn Python",
+        "price": 60.0,
+        "event_date": "13.02.2022",
+        "purchase_date": "11.11.2021",
+        "type": "AdvanceTicket"
+    },
+    {
+        "unique_number": 3,
+        "topic": "Machine Learning with Python",
+        "price": 500.0,
+        "event_date": "19.12.2021",
+        "purchase_date": "11.11.2021",
+        "type": "StudentTicket"
+    },
+    {
+        "unique_number": 4,
+        "topic": "Let's Learn Python",
+        "price": 60.0,
+        "event_date": "13.02.2022",
+        "purchase_date": "11.11.2021",
+        "type": "AdvanceTicket"
+    },
+    {
+        "unique_number": 5,
+        "topic": "Frontend vs Backend",
+        "price": 100.0,
+        "event_date": "19.11.2021",
+        "purchase_date": "11.11.2021",
+        "type": "StudentTicket"
+    },
+    {
+        "unique_number": 6,
+        "topic": "Let's Learn Python",
+        "price": 50.0,
+        "event_date": "13.03.2022",
+        "purchase_date": "11.11.2021",
+        "type": "StudentTicket"
+    },
+    {
+        "unique_number": 7,
+        "topic": "Machine Learning with Python",
+        "price": 1000.0,
+        "event_date": "19.12.2021",
+        "purchase_date": "11.11.2021",
+        "type": "RegularTicket"
+    },
+    {
+        "unique_number": 8,
+        "topic": "Machine Learning with Python",
+        "price": 1000.0,
+        "event_date": "19.12.2021",
+        "purchase_date": "11.11.2021",
+        "type": "RegularTicket"
+    },
+    {
+        "unique_number": 9,
+        "topic": "Machine Learning with Python",
+        "price": 1000.0,
+        "event_date": "19.12.2021",
+        "purchase_date": "12.11.2021",
+        "type": "RegularTicket"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "topic": "Frontend vs Backend",
+        "price": 200.0,
+        "tickets": 28,
+        "date": "19.11.2021"
+    },
+    {
+        "topic": "Machine Learning with Python",
+        "price": 1000.0,
+        "tickets": 6,
+        "date": "19.12.2021"
+    },
+    {
+        "topic": "Let's Learn Python",
+        "price": 100.0,
+        "tickets": 48,
+        "date": "13.03.2022"
+    }
+]

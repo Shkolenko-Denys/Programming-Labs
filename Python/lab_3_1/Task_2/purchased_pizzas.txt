@@ -1,0 +1,15 @@
+CaliforniaPizza, 12.11.2021 17:06:04
+  price: 200.0
+  dough: 350
+  cheese: 60
+  onion: 5
+  beef: 35
+
+CaliforniaPizza, 12.11.2021 17:06:29
+  price: 200.0
+  dough: 350
+  cheese: 60
+  onion: 5
+  beef: 35
+  olive: 20
+
