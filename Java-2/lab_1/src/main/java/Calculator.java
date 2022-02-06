@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,23 +32,19 @@ public class Calculator extends JFrame {
     private JFormattedTextField resultNumeratorTextField;
     private JFormattedTextField resultDenominatorTextField;
 
-    private static int whole1 = 0;
-    private static int numerator1 = 0;
-    private static int denominator1 = 1;
+    private int whole1 = 0;
+    private int numerator1 = 0;
+    private int denominator1 = 1;
 
-    private static int whole2 = 0;
-    private static int numerator2 = 0;
-    private static int denominator2 = 1;
+    private int whole2 = 0;
+    private int numerator2 = 0;
+    private int denominator2 = 1;
 
     // key - name of the math command
     // value - function that will process the math command
-    private static final Map<String, Method> mathCommands = new HashMap<>();
+    private final Map<String, Method> mathCommands = new HashMap<>();
 
-    enum Command {
-        ADD, SUB, MUL, DIV
-    }
-
-    Command current = Command.ADD;
+    private Method currentCommand;
 
     public Calculator(String title) {
         super(title);
@@ -67,69 +61,49 @@ public class Calculator extends JFrame {
         groupOperators.add(mulButton);
         groupOperators.add(divButton);
 
-        resultButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    whole1 = Integer.parseInt(whole1TextField.getText());
-                    numerator1 = Integer.parseInt(numerator1TextField.getText());
-                    denominator1 = Integer.parseInt(denominator1TextField.getText());
+        for (Method m : MixedFraction.class.getDeclaredMethods()) {
+            if (m.isAnnotationPresent(Arithmetic.class)) {
+                Arithmetic command = m.getAnnotation(Arithmetic.class);
+                mathCommands.put(command.name(), m);
+            }
+        }
+        currentCommand = mathCommands.get("Addition");  // default command
 
-                    whole2 = Integer.parseInt(whole2TextField.getText());
-                    numerator2 = Integer.parseInt(numerator2TextField.getText());
-                    denominator2 = Integer.parseInt(denominator2TextField.getText());
+        resultButton.addActionListener(e -> {
+            try {
+                whole1 = Integer.parseInt(whole1TextField.getText());
+                numerator1 = Integer.parseInt(numerator1TextField.getText());
+                denominator1 = Integer.parseInt(denominator1TextField.getText());
 
-                    MixedFraction mixedFraction_1 = new MixedFraction(whole1, numerator1, denominator1);
-                    MixedFraction mixedFraction_2 = new MixedFraction(whole2, numerator2, denominator2);
+                whole2 = Integer.parseInt(whole2TextField.getText());
+                numerator2 = Integer.parseInt(numerator2TextField.getText());
+                denominator2 = Integer.parseInt(denominator2TextField.getText());
 
-                    switch (current) {
-                        case ADD -> mixedFraction_1.add(mixedFraction_2);
-                        case SUB -> mixedFraction_1.sub(mixedFraction_2);
-                        case MUL -> mixedFraction_1.mul(mixedFraction_2);
-                        case DIV -> mixedFraction_1.div(mixedFraction_2);
-                    }
+                MixedFraction mixedFraction_1 = new MixedFraction(whole1, numerator1, denominator1);
+                MixedFraction mixedFraction_2 = new MixedFraction(whole2, numerator2, denominator2);
 
-                    resultWholeTextField.setText(Integer.toString(mixedFraction_1.getWhole()));
-                    int numerator = mixedFraction_1.getNumerator();
-                    if (numerator != 0) {
-                        resultNumeratorTextField.setText(Integer.toString(numerator));
-                        resultDenominatorTextField.setText(Integer.toString(mixedFraction_1.getDenominator()));
-                    }
-                }
-                catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(Calculator.this,
-                            "Error: " + ex);
+                currentCommand.invoke(mixedFraction_1, mixedFraction_2);
+
+                resultWholeTextField.setText(Integer.toString(mixedFraction_1.getWhole()));
+                int numerator = mixedFraction_1.getNumerator();
+                if (numerator != 0) {
+                    resultNumeratorTextField.setText(Integer.toString(numerator));
+                    resultDenominatorTextField.setText(Integer.toString(mixedFraction_1.getDenominator()));
                 }
             }
-        });
-
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                current = Command.ADD;
+            catch (Exception ex) {
+                JOptionPane.showMessageDialog(Calculator.this,
+                        "Check your fractions carefully!\n Error: " + ex);
             }
         });
 
-        subButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                current = Command.SUB;
-            }
-        });
+        addButton.addActionListener(e -> currentCommand = mathCommands.get("Addition"));
 
-        mulButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                current = Command.MUL;
-            }
-        });
+        subButton.addActionListener(e -> currentCommand = mathCommands.get("Subtraction"));
 
-        divButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                current = Command.DIV;
-            }
-        });
+        mulButton.addActionListener(e -> currentCommand = mathCommands.get("Multiplication"));
+
+        divButton.addActionListener(e -> currentCommand = mathCommands.get("Division"));
     }
 
     public static void main(String[] args) {

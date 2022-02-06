@@ -24,8 +24,7 @@ public class MixedFraction extends Fraction {
         super(fraction.getNumerator(), fraction.getDenominator());
     }
 
-    @Arithmetic(name = "Simplifying", minArgs = 0, maxArgs = 0,
-            desc = "Make the mixed fraction as simple as possible")
+    @Arithmetic(name = "Simplifying", desc = "Make the mixed fraction as simple as possible")
     @Override
     public MixedFraction reduce() {
         super.reduce();
@@ -176,14 +175,14 @@ public class MixedFraction extends Fraction {
         return this.mul(getImproper(fraction).invert());
     }
 
-    @Arithmetic(name = "Negative", minArgs = 0, maxArgs = 0, desc = "Finding the negative")
+    @Arithmetic(name = "Negative", desc = "Finding the negative")
     @Override
     public MixedFraction neg() {
         whole = -whole;
         return this;
     }
 
-    @Arithmetic(name = "Reset", minArgs = 0, maxArgs = 0, desc = "Reset the mixed fraction")
+    @Arithmetic(name = "Reset", desc = "Reset the mixed fraction")
     public MixedFraction reset() {
         whole = 0;
         setNumerator(0);

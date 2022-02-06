@@ -11,12 +11,6 @@ public @interface Arithmetic {
     /** Name of the arithmetic function */
     String name();
 
-    /** Minimum number of arguments */
-    int minArgs() default 1;
-
-    /** Maximum number of arguments */
-    int maxArgs() default 1;
-
     /** Array of argument names */
     String[] args() default {};
 

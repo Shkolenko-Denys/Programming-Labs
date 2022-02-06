@@ -32,8 +32,7 @@ public class Fraction implements Mathematics {
     }
 
     /** Reducing fractions means simplifying a fraction. */
-    @Arithmetic(name = "Simplifying", minArgs = 0, maxArgs = 0,
-            desc = "Make the fraction as simple as possible")
+    @Arithmetic(name = "Simplifying", desc = "Make the fraction as simple as possible")
     public Fraction reduce() {
         int gcd = gcd(Math.abs(numerator), denominator);
         // if the numerator is negative, abs is used because
@@ -150,14 +149,14 @@ public class Fraction implements Mathematics {
         return this.mul(fraction);
     }
 
-    @Arithmetic(name = "Negative", minArgs = 0, maxArgs = 0, desc = "Finding the negative")
+    @Arithmetic(name = "Negative", desc = "Finding the negative")
     public Fraction neg() {
         numerator = -numerator;
         return this;
     }
 
     /** Swapping the numerator and denominator. */
-    @Arithmetic(name = "Inverse", minArgs = 0, maxArgs = 0, desc = "Finding the inverse of a fraction")
+    @Arithmetic(name = "Inverse", desc = "Finding the inverse of a fraction")
     public Fraction invert() {
         if (numerator == 0) {
             throw new ArithmeticException("division by zero");
