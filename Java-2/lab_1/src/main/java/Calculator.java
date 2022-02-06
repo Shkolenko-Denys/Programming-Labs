@@ -1,6 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +37,7 @@ public class Calculator extends JFrame {
     private JFormattedTextField resultWholeTextField;
     private JFormattedTextField resultNumeratorTextField;
     private JFormattedTextField resultDenominatorTextField;
+    private JButton infoButton;
 
     private int whole1 = 0;
     private int numerator1 = 0;
@@ -104,6 +111,57 @@ public class Calculator extends JFrame {
         mulButton.addActionListener(e -> currentCommand = mathCommands.get("Multiplication"));
 
         divButton.addActionListener(e -> currentCommand = mathCommands.get("Division"));
+
+        infoButton.addActionListener(e -> {
+            StringBuilder message = new StringBuilder("Class "
+                    + MixedFraction.class.getName() + "\n\n");
+
+            message.append("Constructors:");
+            for (Constructor<?> constructor : MixedFraction.class.getConstructors()) {
+                message.append("\n- ").append(constructor.getName())
+                        .append(Arrays.toString(getParameterTypes(constructor)));
+            }
+
+            message.append("\n\nMethods:\n");
+            Method[] methods = MixedFraction.class.getMethods();
+            for (int i = 0; i < methods.length; i++) {
+                if (methods[i].isAnnotationPresent(Arithmetic.class)) {
+                    message.append(methods[i].getName())
+                            .append(Arrays.toString(getParameterTypes(methods[i])));
+                    if (i != methods.length - 1) {
+                        message.append(", ");
+                        if (i % 8 == 0 && i != 0) {
+                            message.append("\n");
+                        }
+                    }
+                    else {
+                        message.append(".");
+                    }
+                }
+            }
+
+            JOptionPane.showMessageDialog(Calculator.this, message.toString());
+        });
+    }
+
+    public String[] getParameterTypes(Constructor<?> ctor) {
+        Class<?>[] types = ctor.getParameterTypes();
+        String[] typesNames = new String[types.length];
+        for (int i = 0; i < types.length; i++) {
+            Class<?> type = types[i];
+            typesNames[i] = type.getName();
+        }
+        return typesNames;
+    }
+
+    public String[] getParameterTypes(Method method) {
+        Class<?>[] types = method.getParameterTypes();
+        String[] typesNames = new String[types.length];
+        for (int i = 0; i < types.length; i++) {
+            Class<?> type = types[i];
+            typesNames[i] = type.getName();
+        }
+        return typesNames;
     }
 
     public static void main(String[] args) {
