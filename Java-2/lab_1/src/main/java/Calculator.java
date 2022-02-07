@@ -2,11 +2,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.VolatileImage;
 import java.lang.reflect.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -73,11 +69,10 @@ public class Calculator extends JFrame {
         for (Method m : MixedFraction.class.getDeclaredMethods()) {
             if (m.isAnnotationPresent(Arithmetic.class)) {
                 Arithmetic command = m.getAnnotation(Arithmetic.class);
-                System.out.println(command.name());
                 mathCommands.put(command.name(), m);
             }
         }
-        currentCommand = mathCommands.get("Addition");  // default command
+        currentCommand = mathCommands.get("Mixed Fraction Addition");  // default command
 
         resultButton.addActionListener(e -> {
             try {
@@ -92,6 +87,14 @@ public class Calculator extends JFrame {
                 MixedFraction mixedFraction_1 = new MixedFraction(whole1, numerator1, denominator1);
                 MixedFraction mixedFraction_2 = new MixedFraction(whole2, numerator2, denominator2);
 
+                ClassLoader mixedFraction_2ClassLoader = mixedFraction_2.getClass().getClassLoader();
+                Class<?>[] interfaces = mixedFraction_2.getClass().getInterfaces();
+                IntegerNumber proxyMixedFraction_2 =
+                        (IntegerNumber) Proxy.newProxyInstance(mixedFraction_2ClassLoader,
+                                interfaces, new IntegerNumberInvocationHandler(mixedFraction_2));
+
+//                proxyMixedFraction_2.setWhole(1);
+
                 currentCommand.invoke(mixedFraction_1, mixedFraction_2);
 
                 resultWholeTextField.setText(Integer.toString(mixedFraction_1.getWhole()));
@@ -100,6 +103,10 @@ public class Calculator extends JFrame {
                     resultNumeratorTextField.setText(Integer.toString(numerator));
                     resultDenominatorTextField.setText(Integer.toString(mixedFraction_1.getDenominator()));
                 }
+            }
+            catch (UndeclaredThrowableException ex) {
+                JOptionPane.showMessageDialog(Calculator.this,
+                        "Oops!\n Error: " + ex);
             }
             catch (Exception ex) {
                 JOptionPane.showMessageDialog(Calculator.this,

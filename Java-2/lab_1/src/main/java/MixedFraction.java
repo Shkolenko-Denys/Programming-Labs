@@ -1,7 +1,7 @@
 import org.jetbrains.annotations.NotNull;
 
 /** Consists of a whole number and a proper fraction. */
-public class MixedFraction extends Fraction {
+public class MixedFraction extends Fraction implements IntegerNumber {
 
     @Number(name = "Whole", definition = "Integer part of a mixed fraction.")
     private int whole;

@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
  * The fraction class implements a rational number, where
  * the numerator is an integer and the denominator is a natural number.
  */
-public class Fraction implements Mathematics {
+public class Fraction implements Mathematics, Rational {
 
     @Number(name = "Numerator", definition = "The top number in a fraction.")
     private int numerator;
