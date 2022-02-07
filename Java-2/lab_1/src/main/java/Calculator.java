@@ -1,12 +1,11 @@
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.VolatileImage;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -116,32 +115,48 @@ public class Calculator extends JFrame {
         divButton.addActionListener(e -> currentCommand = mathCommands.get("Division"));
 
         infoButton.addActionListener(e -> {
-            StringBuilder message = new StringBuilder("Class name "
-                    + MixedFraction.class.getName() + "\n\n");
+            StringBuilder message = new StringBuilder("Class "
+                    + Modifier.toString(MixedFraction.class.getModifiers()) + " "
+                    + MixedFraction.class.getName() + "\n");
 
-            message.append("Fields:\n")
-                    .append(Arrays.stream(MixedFraction.class.getDeclaredFields())
-                    .map(field -> Modifier.toString(field.getModifiers())
-                            + " " + field.getType().getSimpleName() + " " + field.getName())
-                    .collect(Collectors.joining("\n")));
+            message.append("Fields:\n");
+            for (Field field : MixedFraction.class.getDeclaredFields()) {
+                if (field.isAnnotationPresent(Number.class)) {
+                    message.append("// ").append(field.getAnnotation(Number.class).name())
+                            .append(" -- ").append(field.getAnnotation(Number.class).definition())
+                            .append("\n");
+                }
+                message.append(Modifier.toString(field.getModifiers()))
+                        .append(" ").append(field.getType().getSimpleName())
+                        .append(" ").append(field.getName()).append("\n");
+            }
 
-            message.append("\n\nSuperclass <").append(MixedFraction.class.getSuperclass().getSimpleName())
-                    .append("> Fields:\n");
+            message.append("\nSuperclass ").append(MixedFraction.class.getSuperclass().getSimpleName())
+                    .append(" implements ")
+                    .append(Arrays.stream(MixedFraction.class.getSuperclass().getInterfaces())
+                            .map(Class::getSimpleName)
+                            .collect(Collectors.joining(", ")))
+                    .append("\nFields:\n");
 
-            message.append(Arrays.stream(MixedFraction.class.getSuperclass().getDeclaredFields())
-                            .map(field -> Modifier.toString(field.getModifiers())
-                                    + " " + field.getType().getSimpleName() + " " + field.getName())
-                            .collect(Collectors.joining("\n")));
+            for (Field field : MixedFraction.class.getSuperclass().getDeclaredFields()) {
+                if (field.isAnnotationPresent(Number.class)) {
+                    message.append("// ").append(field.getAnnotation(Number.class).name())
+                            .append(" -- ").append(field.getAnnotation(Number.class).definition())
+                            .append("\n");
+                }
+                message.append(Modifier.toString(field.getModifiers()))
+                        .append(" ").append(field.getType().getSimpleName())
+                        .append(" ").append(field.getName()).append("\n");
+            }
 
-            message.append("\n\nConstructors:\n");
+            message.append("\nConstructors:\n");
             for (Constructor<?> constructor : MixedFraction.class.getConstructors()) {
                 message.append("- ").append(constructor.getName())
                         .append(" (").append(getConstructorParameters(constructor)).append(");\n");
             }
 
             message.append("\nArithmetic Methods:\n");
-            Method[] methods = MixedFraction.class.getDeclaredMethods();
-            for (Method method : methods) {
+            for (Method method : MixedFraction.class.getDeclaredMethods()) {
                 if (method.isAnnotationPresent(Arithmetic.class)) {
                     if (Modifier.isVolatile(method.getModifiers())) {
                         continue;
@@ -157,13 +172,13 @@ public class Calculator extends JFrame {
         });
     }
 
-    public String getConstructorParameters(Constructor<?> ctor) {
+    public String getConstructorParameters(@NotNull Constructor<?> ctor) {
         return Arrays.stream(ctor.getParameters())
                 .map(param -> param.getType() + " " + param.getName())
                 .collect(Collectors.joining(", "));
     }
 
-    private String getMethodParameters(Method method) {
+    private String getMethodParameters(@NotNull Method method) {
         return Arrays.stream(method.getParameters())
                 .map(param -> param.getType() + " " + param.getName())
                 .collect(Collectors.joining(", "));
