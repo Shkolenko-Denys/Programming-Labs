@@ -2,13 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.VolatileImage;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Варіант 21
@@ -113,30 +116,40 @@ public class Calculator extends JFrame {
         divButton.addActionListener(e -> currentCommand = mathCommands.get("Division"));
 
         infoButton.addActionListener(e -> {
-            StringBuilder message = new StringBuilder("Class "
+            StringBuilder message = new StringBuilder("Class name "
                     + MixedFraction.class.getName() + "\n\n");
 
-            message.append("Constructors:");
+            message.append("Fields:\n")
+                    .append(Arrays.stream(MixedFraction.class.getDeclaredFields())
+                    .map(field -> Modifier.toString(field.getModifiers())
+                            + " " + field.getType().getSimpleName() + " " + field.getName())
+                    .collect(Collectors.joining("\n")));
+
+            message.append("\n\nSuperclass <").append(MixedFraction.class.getSuperclass().getSimpleName())
+                    .append("> Fields:\n");
+
+            message.append(Arrays.stream(MixedFraction.class.getSuperclass().getDeclaredFields())
+                            .map(field -> Modifier.toString(field.getModifiers())
+                                    + " " + field.getType().getSimpleName() + " " + field.getName())
+                            .collect(Collectors.joining("\n")));
+
+            message.append("\n\nConstructors:\n");
             for (Constructor<?> constructor : MixedFraction.class.getConstructors()) {
-                message.append("\n- ").append(constructor.getName())
-                        .append(Arrays.toString(getParameterTypes(constructor)));
+                message.append("- ").append(constructor.getName())
+                        .append(" (").append(getConstructorParameters(constructor)).append(");\n");
             }
 
-            message.append("\n\nMethods:\n");
-            Method[] methods = MixedFraction.class.getMethods();
-            for (int i = 0; i < methods.length; i++) {
-                if (methods[i].isAnnotationPresent(Arithmetic.class)) {
-                    message.append(methods[i].getName())
-                            .append(Arrays.toString(getParameterTypes(methods[i])));
-                    if (i != methods.length - 1) {
-                        message.append(", ");
-                        if (i % 8 == 0 && i != 0) {
-                            message.append("\n");
-                        }
+            message.append("\nArithmetic Methods:\n");
+            Method[] methods = MixedFraction.class.getDeclaredMethods();
+            for (Method method : methods) {
+                if (method.isAnnotationPresent(Arithmetic.class)) {
+                    if (Modifier.isVolatile(method.getModifiers())) {
+                        continue;
                     }
-                    else {
-                        message.append(".");
-                    }
+                    message.append(Modifier.toString(method.getModifiers())).append(" ")
+                            .append(method.getReturnType().getSimpleName()).append(" ")
+                            .append(method.getName()).append(" (")
+                            .append(getMethodParameters(method)).append(");\n");
                 }
             }
 
@@ -144,24 +157,16 @@ public class Calculator extends JFrame {
         });
     }
 
-    public String[] getParameterTypes(Constructor<?> ctor) {
-        Class<?>[] types = ctor.getParameterTypes();
-        String[] typesNames = new String[types.length];
-        for (int i = 0; i < types.length; i++) {
-            Class<?> type = types[i];
-            typesNames[i] = type.getName();
-        }
-        return typesNames;
+    public String getConstructorParameters(Constructor<?> ctor) {
+        return Arrays.stream(ctor.getParameters())
+                .map(param -> param.getType() + " " + param.getName())
+                .collect(Collectors.joining(", "));
     }
 
-    public String[] getParameterTypes(Method method) {
-        Class<?>[] types = method.getParameterTypes();
-        String[] typesNames = new String[types.length];
-        for (int i = 0; i < types.length; i++) {
-            Class<?> type = types[i];
-            typesNames[i] = type.getName();
-        }
-        return typesNames;
+    private String getMethodParameters(Method method) {
+        return Arrays.stream(method.getParameters())
+                .map(param -> param.getType() + " " + param.getName())
+                .collect(Collectors.joining(", "));
     }
 
     public static void main(String[] args) {
