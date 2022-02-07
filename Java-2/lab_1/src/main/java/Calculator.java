@@ -135,9 +135,9 @@ public class Calculator extends JFrame {
                     .append(" implements ")
                     .append(Arrays.stream(MixedFraction.class.getSuperclass().getInterfaces())
                             .map(Class::getSimpleName)
-                            .collect(Collectors.joining(", ")))
-                    .append("\nFields:\n");
+                            .collect(Collectors.joining(", ")));
 
+            message.append("\nFields:\n");
             for (Field field : MixedFraction.class.getSuperclass().getDeclaredFields()) {
                 if (field.isAnnotationPresent(Number.class)) {
                     message.append("// ").append(field.getAnnotation(Number.class).name())
