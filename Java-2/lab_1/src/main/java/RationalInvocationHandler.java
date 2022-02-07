@@ -11,7 +11,7 @@ public class RationalInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (method.getName().startsWith("set")) {
+        if (method.getName().startsWith("get")) {
             return method.invoke(rational, args);
         }
         throw new IllegalAccessException("Not allowed");
