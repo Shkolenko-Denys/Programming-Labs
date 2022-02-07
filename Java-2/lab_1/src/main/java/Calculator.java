@@ -73,6 +73,7 @@ public class Calculator extends JFrame {
         for (Method m : MixedFraction.class.getDeclaredMethods()) {
             if (m.isAnnotationPresent(Arithmetic.class)) {
                 Arithmetic command = m.getAnnotation(Arithmetic.class);
+                System.out.println(command.name());
                 mathCommands.put(command.name(), m);
             }
         }
@@ -106,13 +107,21 @@ public class Calculator extends JFrame {
             }
         });
 
-        addButton.addActionListener(e -> currentCommand = mathCommands.get("Addition"));
+        addButton.addActionListener(e ->
+                currentCommand = mathCommands.get("Mixed Fraction Addition")
+        );
 
-        subButton.addActionListener(e -> currentCommand = mathCommands.get("Subtraction"));
+        subButton.addActionListener(e ->
+                currentCommand = mathCommands.get("Mixed Fraction Subtraction")
+        );
 
-        mulButton.addActionListener(e -> currentCommand = mathCommands.get("Multiplication"));
+        mulButton.addActionListener(e ->
+                currentCommand = mathCommands.get("Mixed Fraction Multiplication")
+        );
 
-        divButton.addActionListener(e -> currentCommand = mathCommands.get("Division"));
+        divButton.addActionListener(e ->
+                currentCommand = mathCommands.get("Mixed Fraction Division")
+        );
 
         infoButton.addActionListener(e -> {
             StringBuilder message = new StringBuilder("Class "

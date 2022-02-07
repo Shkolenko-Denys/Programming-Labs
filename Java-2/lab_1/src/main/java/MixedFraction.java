@@ -24,7 +24,7 @@ public class MixedFraction extends Fraction {
         super(fraction.getNumerator(), fraction.getDenominator());
     }
 
-    @Arithmetic(name = "Simplifying", desc = "Make the mixed fraction as simple as possible")
+    @Arithmetic(name = "Mixed Fraction Simplifying", desc = "Make the mixed fraction as simple as possible")
     @Override
     public MixedFraction reduce() {
         super.reduce();
@@ -33,7 +33,12 @@ public class MixedFraction extends Fraction {
 
         if (Math.abs(numerator) >= denominator) {
             this.whole += numerator / denominator;
-            super.setNumerator(Math.abs(numerator) % denominator);
+            if (whole != 0) {
+                super.setNumerator(Math.abs(numerator) % denominator);
+            }
+            else {
+                super.setNumerator(numerator % denominator);
+            }
         }
         return this;
     }
@@ -93,7 +98,7 @@ public class MixedFraction extends Fraction {
         return super.toString();
     }
 
-    @Arithmetic(name = "Addition", args = {"integer summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "Integer Addition", args = {"integer summand"}, desc = "Finding the sum")
     @Override
     public MixedFraction add(int number) {
         if (whole < 0) {
@@ -103,39 +108,47 @@ public class MixedFraction extends Fraction {
         return this;
     }
 
-    @Arithmetic(name = "Addition", args = {"fraction summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "Fraction Addition", args = {"fraction summand"}, desc = "Finding the sum")
     @Override
     public MixedFraction add(@NotNull Fraction fraction) {
         if (whole < 0) {
             super.neg();
         }
-        super.add(fraction);
-        return this;
+        int tempWhole = whole;
+        Fraction tempFraction = this.getFraction().add(fraction);
+        this.reset();
+        super.add(tempFraction);
+        return this.add(tempWhole);
     }
 
-    @Arithmetic(name = "Addition", args = {"mixed fraction summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "Mixed Fraction Addition",
+            args = {"mixed fraction summand"}, desc = "Finding the sum")
     public MixedFraction add(MixedFraction fraction) {
         return this.add(getImproper(fraction));
     }
 
-    @Arithmetic(name = "Subtraction", args = {"integer subtrahend"}, desc = "Finding the difference")
+    @Arithmetic(name = "Integer Subtraction",
+            args = {"integer subtrahend"}, desc = "Finding the difference")
     @Override
     public MixedFraction sub(int number) {
         return this.add(-number);
     }
 
-    @Arithmetic(name = "Subtraction", args = {"fraction subtrahend"}, desc = "Finding the difference")
+    @Arithmetic(name = "Fraction Subtraction",
+            args = {"fraction subtrahend"}, desc = "Finding the difference")
     @Override
     public MixedFraction sub(@NotNull Fraction fraction) {
         return this.add(fraction.neg());
     }
 
-    @Arithmetic(name = "Subtraction", args = {"mixed fraction subtrahend"}, desc = "Finding the difference")
+    @Arithmetic(name = "Mixed Fraction Subtraction",
+            args = {"mixed fraction subtrahend"}, desc = "Finding the difference")
     public MixedFraction sub(@NotNull MixedFraction fraction) {
         return this.add(fraction.neg());
     }
 
-    @Arithmetic(name = "Multiplication", args = {"integer multiplier"}, desc = "Finding the product")
+    @Arithmetic(name = "Integer Multiplication",
+            args = {"integer multiplier"}, desc = "Finding the product")
     @Override
     public MixedFraction mul(int number) {
         if (whole < 0) {
@@ -146,43 +159,48 @@ public class MixedFraction extends Fraction {
         return this;
     }
 
-    @Arithmetic(name = "Multiplication", args = {"fraction multiplier"}, desc = "Finding the product")
+    @Arithmetic(name = "Fraction Multiplication",
+            args = {"fraction multiplier"}, desc = "Finding the product")
     @Override
     public MixedFraction mul(@NotNull Fraction fraction) {
         fraction.mul(getImproper(this));
         return this.reset().add(fraction);
     }
 
-    @Arithmetic(name = "Multiplication", args = {"mixed fraction multiplier"}, desc = "Finding the product")
+    @Arithmetic(name = "Mixed Fraction Multiplication",
+            args = {"mixed fraction multiplier"}, desc = "Finding the product")
     public MixedFraction mul(MixedFraction fraction) {
         return this.mul(getImproper(fraction));
     }
 
-    @Arithmetic(name = "Division", args = {"integer divisor"}, desc = "Finding the quotient")
+    @Arithmetic(name = "Integer Division",
+            args = {"integer divisor"}, desc = "Finding the quotient")
     @Override
     public MixedFraction div(int number) {
         return this.mul(new Fraction(1, number));
     }
 
-    @Arithmetic(name = "Division", args = {"fraction divisor"}, desc = "Finding the quotient")
+    @Arithmetic(name = "Fraction Division",
+            args = {"fraction divisor"}, desc = "Finding the quotient")
     @Override
     public MixedFraction div(@NotNull Fraction fraction) {
         return this.mul(fraction.invert());
     }
 
-    @Arithmetic(name = "Division", args = {"mixed fraction divisor"}, desc = "Finding the quotient")
+    @Arithmetic(name = "Mixed Fraction Division",
+            args = {"mixed fraction divisor"}, desc = "Finding the quotient")
     public MixedFraction div(MixedFraction fraction) {
         return this.mul(getImproper(fraction).invert());
     }
 
-    @Arithmetic(name = "Negative", desc = "Finding the negative")
+    @Arithmetic(name = "Mixed Fraction Negative", desc = "Finding the negative")
     @Override
     public MixedFraction neg() {
         whole = -whole;
         return this;
     }
 
-    @Arithmetic(name = "Reset", desc = "Reset the mixed fraction")
+    @Arithmetic(name = "Mixed Fraction Reset", desc = "Reset the mixed fraction")
     public MixedFraction reset() {
         whole = 0;
         setNumerator(0);
@@ -191,7 +209,8 @@ public class MixedFraction extends Fraction {
     }
 
     /** Converting Mixed Fraction to Improper Fraction. */
-    @Arithmetic(name = "Improper", args = {"mixed fraction"}, desc = "Finding the improper")
+    @Arithmetic(name = "Mixed Fraction Improper",
+            args = {"mixed fraction"}, desc = "Finding the improper")
     public Fraction getImproper(@NotNull MixedFraction fraction) {
         if (fraction.whole < 0) {
             return new Fraction(

@@ -32,7 +32,7 @@ public class Fraction implements Mathematics {
     }
 
     /** Reducing fractions means simplifying a fraction. */
-    @Arithmetic(name = "Simplifying", desc = "Make the fraction as simple as possible")
+    @Arithmetic(name = "Fraction Simplifying", desc = "Make the fraction as simple as possible")
     public Fraction reduce() {
         int gcd = gcd(Math.abs(numerator), denominator);
         // if the numerator is negative, abs is used because
@@ -100,13 +100,13 @@ public class Fraction implements Mathematics {
         }
     }
 
-    @Arithmetic(name = "Addition", args = {"integer summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "Integer Addition", args = {"integer summand"}, desc = "Finding the sum")
     public Fraction add(int number) {
         numerator += number * denominator;
         return this.reduce();
     }
 
-    @Arithmetic(name = "Addition", args = {"fraction summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "Fraction Addition", args = {"fraction summand"}, desc = "Finding the sum")
     public Fraction add(@NotNull Fraction fraction) {
         numerator *= fraction.denominator;
         numerator += fraction.numerator * denominator;
@@ -114,49 +114,49 @@ public class Fraction implements Mathematics {
         return this.reduce();
     }
 
-    @Arithmetic(name = "Subtraction", args = {"integer subtrahend"}, desc = "Finding the difference")
+    @Arithmetic(name = "Integer Subtraction", args = {"integer subtrahend"}, desc = "Finding the difference")
     public Fraction sub(int number) {
         return this.add(-number);
     }
 
-    @Arithmetic(name = "Subtraction", args = {"fraction subtrahend"}, desc = "Finding the difference")
+    @Arithmetic(name = "Fraction Subtraction", args = {"fraction subtrahend"}, desc = "Finding the difference")
     public Fraction sub(@NotNull Fraction fraction) {
         fraction.neg();
         return this.add(fraction);
     }
 
-    @Arithmetic(name = "Multiplication", args = {"integer multiplier"}, desc = "Finding the product")
+    @Arithmetic(name = "Integer Multiplication", args = {"integer multiplier"}, desc = "Finding the product")
     public Fraction mul(int number) {
         numerator *= number;
         return this.reduce();
     }
 
-    @Arithmetic(name = "Multiplication", args = {"fraction multiplier"}, desc = "Finding the product")
+    @Arithmetic(name = "Fraction Multiplication", args = {"fraction multiplier"}, desc = "Finding the product")
     public Fraction mul(@NotNull Fraction fraction) {
         numerator *= fraction.numerator;
         denominator *= fraction.denominator;
         return this.reduce();
     }
 
-    @Arithmetic(name = "Division", args = {"integer divisor"}, desc = "Finding the quotient")
+    @Arithmetic(name = "Integer Division", args = {"integer divisor"}, desc = "Finding the quotient")
     public Fraction div(int number) {
         return this.mul(new Fraction(1, number));
     }
 
-    @Arithmetic(name = "Division", args = {"fraction divisor"}, desc = "Finding the quotient")
+    @Arithmetic(name = "Fraction Division", args = {"fraction divisor"}, desc = "Finding the quotient")
     public Fraction div(@NotNull Fraction fraction) {
         fraction.invert();
         return this.mul(fraction);
     }
 
-    @Arithmetic(name = "Negative", desc = "Finding the negative")
+    @Arithmetic(name = "Fraction Negative", desc = "Finding the negative")
     public Fraction neg() {
         numerator = -numerator;
         return this;
     }
 
     /** Swapping the numerator and denominator. */
-    @Arithmetic(name = "Inverse", desc = "Finding the inverse of a fraction")
+    @Arithmetic(name = "Fraction Inverse", desc = "Finding the inverse of a fraction")
     public Fraction invert() {
         if (numerator == 0) {
             throw new ArithmeticException("division by zero");
