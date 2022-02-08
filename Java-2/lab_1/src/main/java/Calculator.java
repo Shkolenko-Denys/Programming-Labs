@@ -87,13 +87,13 @@ public class Calculator extends JFrame {
                 MixedFraction mixedFraction_1 = new MixedFraction(whole1, numerator1, denominator1);
                 MixedFraction mixedFraction_2 = new MixedFraction(whole2, numerator2, denominator2);
 
-                ClassLoader mixedFraction_2ClassLoader = mixedFraction_2.getClass().getClassLoader();
-                Class<?>[] interfaces = mixedFraction_2.getClass().getInterfaces();
-                IntegerNumber proxyMixedFraction_2 =
-                        (IntegerNumber) Proxy.newProxyInstance(mixedFraction_2ClassLoader,
-                                interfaces, new IntegerNumberInvocationHandler(mixedFraction_2));
-
-//                proxyMixedFraction_2.setWhole(1);
+//                ClassLoader mixedFraction_2ClassLoader = mixedFraction_2.getClass().getClassLoader();
+//                Class<?>[] interfaces = mixedFraction_2.getClass().getInterfaces();
+//                IntegerNumber proxyMixedFraction_2 =
+//                        (IntegerNumber) Proxy.newProxyInstance(mixedFraction_2ClassLoader,
+//                                interfaces, new IntegerNumberInvocationHandler(mixedFraction_2));
+//
+//                proxyMixedFraction_2.setWhole();
 
                 currentCommand.invoke(mixedFraction_1, mixedFraction_2);
 
@@ -106,11 +106,11 @@ public class Calculator extends JFrame {
             }
             catch (UndeclaredThrowableException ex) {
                 JOptionPane.showMessageDialog(Calculator.this,
-                        "Oops!\n Error: " + ex);
+                        "Oops!\nError: " + ex);
             }
             catch (Exception ex) {
                 JOptionPane.showMessageDialog(Calculator.this,
-                        "Check your fractions carefully!\n Error: " + ex);
+                        "Check your fractions carefully!\nError: " + ex);
             }
         });
 
