@@ -12,80 +12,70 @@ class FractionTest {
     @DisplayName("Reduce positive & positive")
     void reducePositivePositive() {
         Fraction fraction = new Fraction(3, 9);
-        fraction.reduce();
-        assertEquals(new Fraction(1, 3), fraction);
+        assertEquals(new Fraction(1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Reduce negative & positive")
     void reduceNegativePositive() {
         Fraction fraction = new Fraction(-3, 9);
-        fraction.reduce();
-        assertEquals(new Fraction(-1, 3), fraction);
+        assertEquals(new Fraction(-1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Reduce positive & negative")
     void reducePositiveNegative() {
         Fraction fraction = new Fraction(3, -9);
-        fraction.reduce();
-        assertEquals(new Fraction(-1, 3), fraction);
+        assertEquals(new Fraction(-1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Reduce negative & negative")
     void reduceNegativeNegative() {
         Fraction fraction = new Fraction(-3, -9);
-        fraction.reduce();
-        assertEquals(new Fraction(1, 3), fraction);
+        assertEquals(new Fraction(1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Already reduced positive & positive")
     void reducedPositivePositive() {
         Fraction fraction = new Fraction(1, 3);
-        fraction.reduce();
-        assertEquals(new Fraction(1, 3), fraction);
+        assertEquals(new Fraction(1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Already reduced negative & positive")
     void reducedNegativePositive() {
         Fraction fraction = new Fraction(-1, 3);
-        fraction.reduce();
-        assertEquals(new Fraction(-1, 3), fraction);
+        assertEquals(new Fraction(-1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Already reduced positive & negative")
     void reducedPositiveNegative() {
         Fraction fraction = new Fraction(1, -3);
-        fraction.reduce();
-        assertEquals(new Fraction(-1, 3), fraction);
+        assertEquals(new Fraction(-1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Already reduced negative & negative")
     void reducedNegativeNegative() {
         Fraction fraction = new Fraction(-1, -3);
-        fraction.reduce();
-        assertEquals(new Fraction(1, 3), fraction);
+        assertEquals(new Fraction(1, 3), fraction.reduce());
     }
 
     @Test
     @DisplayName("Reduce zero & positive")
     void reduceZeroPositive() {
         Fraction fraction = new Fraction(0, 3);
-        fraction.reduce();
-        assertEquals(new Fraction(0, 1), fraction);
+        assertEquals(new Fraction(0, 1), fraction.reduce());
     }
 
     @Test
     @DisplayName("Reduce zero & negative")
     void reduceZeroNegative() {
         Fraction fraction = new Fraction(0, -3);
-        fraction.reduce();
-        assertEquals(new Fraction(0, 1), fraction);
+        assertEquals(new Fraction(0, 1), fraction.reduce());
     }
 
     @Test
@@ -141,40 +131,35 @@ class FractionTest {
     @DisplayName("Set numerator without reducing")
     void setNumerator() {
         Fraction fraction = new Fraction(3, 10);
-        fraction.setNumerator(7);
-        assertEquals(new Fraction(7, 10), fraction);
+        assertEquals(new Fraction(7, 10), fraction.setNumerator(7));
     }
 
     @Test
     @DisplayName("Set numerator and reduce")
     void setReduceNumerator() {
         Fraction fraction = new Fraction(3, 10);
-        fraction.setNumerator(4);
-        assertEquals(new Fraction(2, 5), fraction);
+        assertEquals(new Fraction(2, 5), fraction.setNumerator(4));
     }
 
     @Test
     @DisplayName("Set denominator without reducing")
     void setDenominator() {
         Fraction fraction = new Fraction(3, 10);
-        fraction.setDenominator(7);
-        assertEquals(new Fraction(3, 7), fraction);
+        assertEquals(new Fraction(3, 7), fraction.setDenominator(7));
     }
 
     @Test
     @DisplayName("Set denominator and reduce")
     void setReduceDenominator() {
         Fraction fraction = new Fraction(3, 10);
-        fraction.setDenominator(9);
-        assertEquals(new Fraction(1, 3), fraction);
+        assertEquals(new Fraction(1, 3), fraction.setDenominator(9));
     }
 
     @Test
     @DisplayName("Set negative denominator")
     void setNegativeDenominator() {
         Fraction fraction = new Fraction(3, 10);
-        fraction.setDenominator(-10);
-        assertEquals(new Fraction(-3, 10), fraction);
+        assertEquals(new Fraction(-3, 10), fraction.setDenominator(-10));
     }
 
     @Test
@@ -211,6 +196,14 @@ class FractionTest {
     }
 
     @Test
+    @DisplayName("Compare with other obj")
+    void compareOtherObj() {
+        Fraction fraction1 = new Fraction(1, 3);
+        double obj = 0.33;
+        assertFalse(fraction1.equals(obj));
+    }
+
+    @Test
     @DisplayName("To string Fraction where denominator is 1")
     void toStringWholeFraction() {
         Fraction fraction = new Fraction(3, 1);
@@ -228,16 +221,14 @@ class FractionTest {
     @DisplayName("Add positive integer")
     void addPositiveInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.add(2);
-        assertEquals(new Fraction(17, 7), fraction);
+        assertEquals(new Fraction(17, 7), fraction.add(2));
     }
 
     @Test
     @DisplayName("Add negative integer")
     void addNegativeInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.add(-2);
-        assertEquals(new Fraction(-11, 7), fraction);
+        assertEquals(new Fraction(-11, 7), fraction.add(-2));
     }
 
     @Test
@@ -260,16 +251,14 @@ class FractionTest {
     @DisplayName("Sub positive integer")
     void subPositiveInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.sub(2);
-        assertEquals(new Fraction(-11, 7), fraction);
+        assertEquals(new Fraction(-11, 7), fraction.sub(2));
     }
 
     @Test
     @DisplayName("Sub negative integer")
     void subNegativeInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.sub(-2);
-        assertEquals(new Fraction(17, 7), fraction);
+        assertEquals(new Fraction(17, 7), fraction.sub(-2));
     }
 
     @Test
@@ -292,16 +281,14 @@ class FractionTest {
     @DisplayName("Mul positive integer")
     void mulPositiveInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.mul(2);
-        assertEquals(new Fraction(6, 7), fraction);
+        assertEquals(new Fraction(6, 7), fraction.mul(2));
     }
 
     @Test
     @DisplayName("Mul negative integer")
     void mulNegativeInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.mul(-2);
-        assertEquals(new Fraction(-6, 7), fraction);
+        assertEquals(new Fraction(-6, 7), fraction.mul(-2));
     }
 
     @Test
@@ -324,16 +311,14 @@ class FractionTest {
     @DisplayName("Div positive integer")
     void divPositiveInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.div(2);
-        assertEquals(new Fraction(3, 14), fraction);
+        assertEquals(new Fraction(3, 14), fraction.div(2));
     }
 
     @Test
     @DisplayName("Div negative integer")
     void divNegativeInteger() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.div(-2);
-        assertEquals(new Fraction(-3, 14), fraction);
+        assertEquals(new Fraction(-3, 14), fraction.div(-2));
     }
 
     @Test
@@ -374,32 +359,28 @@ class FractionTest {
     @DisplayName("Find neg for positive fraction")
     void negPositive() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.neg();
-        assertEquals(new Fraction(-3, 7), fraction);
+        assertEquals(new Fraction(-3, 7), fraction.neg());
     }
 
     @Test
     @DisplayName("Find neg for negative fraction")
     void negNegative() {
         Fraction fraction = new Fraction(-3, 7);
-        fraction.neg();
-        assertEquals(new Fraction(3, 7), fraction);
+        assertEquals(new Fraction(3, 7), fraction.neg());
     }
 
     @Test
     @DisplayName("Invert fraction where numerator is positive")
     void invertPositive() {
         Fraction fraction = new Fraction(3, 7);
-        fraction.invert();
-        assertEquals(new Fraction(7, 3), fraction);
+        assertEquals(new Fraction(7, 3), fraction.invert());
     }
 
     @Test
     @DisplayName("Invert fraction where numerator is negative")
     void invertNegative() {
         Fraction fraction = new Fraction(-3, 7);
-        fraction.invert();
-        assertEquals(new Fraction(-7, 3), fraction);
+        assertEquals(new Fraction(-7, 3), fraction.invert());
     }
 
     @Test

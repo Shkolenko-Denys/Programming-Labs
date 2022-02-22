@@ -72,7 +72,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
     @Override
     public double getDouble() {
         if (whole < 0) {
-            return -(whole + super.getDouble());
+            return whole - super.getDouble();
         }
         return whole + super.getDouble();
     }
