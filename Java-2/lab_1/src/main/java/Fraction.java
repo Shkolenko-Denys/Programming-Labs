@@ -1,3 +1,4 @@
+import org.apache.commons.math3.util.Precision;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -79,7 +80,7 @@ public class Fraction implements Mathematics, Rational {
 
     /** @return the fraction in floating-point format */
     public double getDouble() {
-        return (double) numerator / denominator;
+        return Precision.round((double) numerator / denominator, 2);
     }
 
     @Override

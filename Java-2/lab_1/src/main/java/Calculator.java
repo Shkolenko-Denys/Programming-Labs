@@ -93,7 +93,7 @@ public class Calculator extends JFrame {
 //                        (IntegerNumber) Proxy.newProxyInstance(mixedFraction_2ClassLoader,
 //                                interfaces, new IntegerNumberInvocationHandler(mixedFraction_2));
 //
-//                proxyMixedFraction_2.setWhole();
+//                proxyMixedFraction_2.setWhole(1);
 
                 currentCommand.invoke(mixedFraction_1, mixedFraction_2);
 
