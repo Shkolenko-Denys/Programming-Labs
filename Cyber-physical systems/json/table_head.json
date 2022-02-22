@@ -1,0 +1,40 @@
+{
+    "eng": {
+        "Day": "Day",
+        "Time": "Time",
+        "Temperature": "Temperature",
+        "Direction": "Direction",
+        "Speed": "Speed",
+        "Weather code": "Weather",
+        "Clouds": "Clouds",
+        "Visibility": "Visibility",
+        "Pressure": "Pressure",
+        "Cloud base": "Cloud base"
+    },
+
+    "ukr": {
+        "Day": "День",
+        "Time": "Час",
+        "Temperature": "t°C",
+        "Direction": "Вітер",
+        "Speed": "v м/с",
+        "Weather code": "Погода",
+        "Clouds": "Хмарність",
+        "Visibility": "Видимість",
+        "Pressure": "Тиск",
+        "Cloud base": "Границя хмарності"
+    },
+
+    "rus": {
+        "Day": "День",
+        "Time": "Время",
+        "Temperature": "t°C",
+        "Direction": "Ветер",
+        "Speed": "v м/с",
+        "Weather code": "Погода",
+        "Clouds": "Облачность",
+        "Visibility": "Видимость",
+        "Pressure": "Давление",
+        "Cloud base": "Граница облачности"
+    }
+}
