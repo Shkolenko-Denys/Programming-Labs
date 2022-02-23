@@ -82,9 +82,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         if (!(obj instanceof MixedFraction m)) {
             return false;
         }
-        return whole == m.getWhole()
-                && getNumerator() == m.getNumerator()
-                && getDenominator() == m.getDenominator();
+        return whole == m.getWhole() && getNumerator() == m.getNumerator() && getDenominator() == m.getDenominator();
     }
 
     @Override
