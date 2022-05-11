@@ -1,3 +1,5 @@
+package model;
+
 import org.apache.commons.math3.util.Precision;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,7 +35,7 @@ public class Fraction implements Mathematics, Rational {
     }
 
     /** Reducing fractions means simplifying a fraction. */
-    @Arithmetic(name = "Fraction Simplifying", desc = "Make the fraction as simple as possible")
+    @Arithmetic(name = "model.Fraction Simplifying", desc = "Make the fraction as simple as possible")
     public Fraction reduce() {
         int gcd = gcd(Math.abs(numerator), denominator);
         // if the numerator is negative, abs is used because
@@ -107,7 +109,7 @@ public class Fraction implements Mathematics, Rational {
         return this.reduce();
     }
 
-    @Arithmetic(name = "Fraction Addition", args = {"fraction summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "model.Fraction Addition", args = {"fraction summand"}, desc = "Finding the sum")
     public Fraction add(@NotNull Fraction fraction) {
         numerator *= fraction.denominator;
         numerator += fraction.numerator * denominator;
@@ -120,7 +122,7 @@ public class Fraction implements Mathematics, Rational {
         return this.add(-number);
     }
 
-    @Arithmetic(name = "Fraction Subtraction", args = {"fraction subtrahend"}, desc = "Finding the difference")
+    @Arithmetic(name = "model.Fraction Subtraction", args = {"fraction subtrahend"}, desc = "Finding the difference")
     public Fraction sub(@NotNull Fraction fraction) {
         fraction.neg();
         return this.add(fraction);
@@ -132,7 +134,7 @@ public class Fraction implements Mathematics, Rational {
         return this.reduce();
     }
 
-    @Arithmetic(name = "Fraction Multiplication", args = {"fraction multiplier"}, desc = "Finding the product")
+    @Arithmetic(name = "model.Fraction Multiplication", args = {"fraction multiplier"}, desc = "Finding the product")
     public Fraction mul(@NotNull Fraction fraction) {
         numerator *= fraction.numerator;
         denominator *= fraction.denominator;
@@ -144,20 +146,20 @@ public class Fraction implements Mathematics, Rational {
         return this.mul(new Fraction(1, number));
     }
 
-    @Arithmetic(name = "Fraction Division", args = {"fraction divisor"}, desc = "Finding the quotient")
+    @Arithmetic(name = "model.Fraction Division", args = {"fraction divisor"}, desc = "Finding the quotient")
     public Fraction div(@NotNull Fraction fraction) {
         fraction.invert();
         return this.mul(fraction);
     }
 
-    @Arithmetic(name = "Fraction Negative", desc = "Finding the negative")
+    @Arithmetic(name = "model.Fraction Negative", desc = "Finding the negative")
     public Fraction neg() {
         numerator = -numerator;
         return this;
     }
 
     /** Swapping the numerator and denominator. */
-    @Arithmetic(name = "Fraction Inverse", desc = "Finding the inverse of a fraction")
+    @Arithmetic(name = "model.Fraction Inverse", desc = "Finding the inverse of a fraction")
     public Fraction invert() {
         if (numerator == 0) {
             throw new ArithmeticException("division by zero");

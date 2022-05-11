@@ -1,11 +1,15 @@
+package view;
+
+import controller.Calculation;
+import model.Arithmetic;
+import model.MixedFraction;
+import model.Number;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.*;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -37,19 +41,29 @@ public class Calculator extends JFrame {
     private JFormattedTextField resultDenominatorTextField;
     private JButton infoButton;
 
-    private int whole1 = 0;
-    private int numerator1 = 0;
-    private int denominator1 = 1;
+    public JFormattedTextField getWhole1TextField() {
+        return whole1TextField;
+    }
 
-    private int whole2 = 0;
-    private int numerator2 = 0;
-    private int denominator2 = 1;
+    public JFormattedTextField getNumerator1TextField() {
+        return numerator1TextField;
+    }
 
-    // key - name of the math command
-    // value - function that will process the math command
-    private final Map<String, Method> mathCommands = new HashMap<>();
+    public JFormattedTextField getDenominator1TextField() {
+        return denominator1TextField;
+    }
 
-    private Method currentCommand;
+    public JFormattedTextField getWhole2TextField() {
+        return whole2TextField;
+    }
+
+    public JFormattedTextField getNumerator2TextField() {
+        return numerator2TextField;
+    }
+
+    public JFormattedTextField getDenominator2TextField() {
+        return denominator2TextField;
+    }
 
     public Calculator(String title) {
         super(title);
@@ -66,42 +80,18 @@ public class Calculator extends JFrame {
         groupOperators.add(mulButton);
         groupOperators.add(divButton);
 
-        for (Method m : MixedFraction.class.getDeclaredMethods()) {
-            if (m.isAnnotationPresent(Arithmetic.class)) {
-                Arithmetic command = m.getAnnotation(Arithmetic.class);
-                mathCommands.put(command.name(), m);
-            }
-        }
-        currentCommand = mathCommands.get("Mixed Fraction Addition");  // default command
+        Calculation calculation = new Calculation();
 
         resultButton.addActionListener(e -> {
             try {
-                whole1 = Integer.parseInt(whole1TextField.getText());
-                numerator1 = Integer.parseInt(numerator1TextField.getText());
-                denominator1 = Integer.parseInt(denominator1TextField.getText());
+                MixedFraction result = calculation.getResult(calculation.getMixedFraction1(),
+                        calculation.getMixedFraction2());
 
-                whole2 = Integer.parseInt(whole2TextField.getText());
-                numerator2 = Integer.parseInt(numerator2TextField.getText());
-                denominator2 = Integer.parseInt(denominator2TextField.getText());
-
-                MixedFraction mixedFraction_1 = new MixedFraction(whole1, numerator1, denominator1);
-                MixedFraction mixedFraction_2 = new MixedFraction(whole2, numerator2, denominator2);
-
-//                ClassLoader mixedFraction_2ClassLoader = mixedFraction_2.getClass().getClassLoader();
-//                Class<?>[] interfaces = mixedFraction_2.getClass().getInterfaces();
-//                IntegerNumber proxyMixedFraction_2 =
-//                        (IntegerNumber) Proxy.newProxyInstance(mixedFraction_2ClassLoader,
-//                                interfaces, new IntegerNumberInvocationHandler(mixedFraction_2));
-//
-//                proxyMixedFraction_2.setWhole(1);
-
-                currentCommand.invoke(mixedFraction_1, mixedFraction_2);
-
-                resultWholeTextField.setText(Integer.toString(mixedFraction_1.getWhole()));
-                int numerator = mixedFraction_1.getNumerator();
+                resultWholeTextField.setText(Integer.toString(result.getWhole()));
+                int numerator = result.getNumerator();
                 if (numerator != 0) {
                     resultNumeratorTextField.setText(Integer.toString(numerator));
-                    resultDenominatorTextField.setText(Integer.toString(mixedFraction_1.getDenominator()));
+                    resultDenominatorTextField.setText(Integer.toString(result.getDenominator()));
                 }
             }
             catch (UndeclaredThrowableException ex) {
@@ -115,19 +105,19 @@ public class Calculator extends JFrame {
         });
 
         addButton.addActionListener(e ->
-                currentCommand = mathCommands.get("Mixed Fraction Addition")
+                calculation.setCurrentCommand("Mixed model.Fraction Addition")
         );
 
         subButton.addActionListener(e ->
-                currentCommand = mathCommands.get("Mixed Fraction Subtraction")
+                calculation.setCurrentCommand("Mixed model.Fraction Subtraction")
         );
 
         mulButton.addActionListener(e ->
-                currentCommand = mathCommands.get("Mixed Fraction Multiplication")
+                calculation.setCurrentCommand("Mixed model.Fraction Multiplication")
         );
 
         divButton.addActionListener(e ->
-                currentCommand = mathCommands.get("Mixed Fraction Division")
+                calculation.setCurrentCommand("Mixed model.Fraction Division")
         );
 
         infoButton.addActionListener(e -> {
@@ -171,7 +161,7 @@ public class Calculator extends JFrame {
                         .append(" (").append(getConstructorParameters(constructor)).append(");\n");
             }
 
-            message.append("\nArithmetic Methods:\n");
+            message.append("\nmodel.Arithmetic Methods:\n");
             for (Method method : MixedFraction.class.getDeclaredMethods()) {
                 if (method.isAnnotationPresent(Arithmetic.class)) {
                     if (Modifier.isVolatile(method.getModifiers())) {
@@ -198,10 +188,5 @@ public class Calculator extends JFrame {
         return Arrays.stream(method.getParameters())
                 .map(param -> param.getType() + " " + param.getName())
                 .collect(Collectors.joining(", "));
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new Calculator("Fraction Calculator");
-        frame.setVisible(true);
     }
 }

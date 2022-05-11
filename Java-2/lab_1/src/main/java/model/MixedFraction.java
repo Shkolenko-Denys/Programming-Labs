@@ -1,3 +1,5 @@
+package model;
+
 import org.jetbrains.annotations.NotNull;
 
 /** Consists of a whole number and a proper fraction. */
@@ -24,7 +26,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         super(fraction.getNumerator(), fraction.getDenominator());
     }
 
-    @Arithmetic(name = "Mixed Fraction Simplifying", desc = "Make the mixed fraction as simple as possible")
+    @Arithmetic(name = "Mixed model.Fraction Simplifying", desc = "Make the mixed fraction as simple as possible")
     @Override
     public MixedFraction reduce() {
         super.reduce();
@@ -106,7 +108,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this;
     }
 
-    @Arithmetic(name = "Fraction Addition", args = {"fraction summand"}, desc = "Finding the sum")
+    @Arithmetic(name = "model.Fraction Addition", args = {"fraction summand"}, desc = "Finding the sum")
     @Override
     public MixedFraction add(@NotNull Fraction fraction) {
         if (whole < 0) {
@@ -119,7 +121,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this.add(tempWhole);
     }
 
-    @Arithmetic(name = "Mixed Fraction Addition",
+    @Arithmetic(name = "Mixed model.Fraction Addition",
             args = {"mixed fraction summand"}, desc = "Finding the sum")
     public MixedFraction add(MixedFraction fraction) {
         return this.add(getImproper(fraction));
@@ -132,14 +134,14 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this.add(-number);
     }
 
-    @Arithmetic(name = "Fraction Subtraction",
+    @Arithmetic(name = "model.Fraction Subtraction",
             args = {"fraction subtrahend"}, desc = "Finding the difference")
     @Override
     public MixedFraction sub(@NotNull Fraction fraction) {
         return this.add(fraction.neg());
     }
 
-    @Arithmetic(name = "Mixed Fraction Subtraction",
+    @Arithmetic(name = "Mixed model.Fraction Subtraction",
             args = {"mixed fraction subtrahend"}, desc = "Finding the difference")
     public MixedFraction sub(@NotNull MixedFraction fraction) {
         return this.add(fraction.neg());
@@ -157,7 +159,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this;
     }
 
-    @Arithmetic(name = "Fraction Multiplication",
+    @Arithmetic(name = "model.Fraction Multiplication",
             args = {"fraction multiplier"}, desc = "Finding the product")
     @Override
     public MixedFraction mul(@NotNull Fraction fraction) {
@@ -165,7 +167,7 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this.reset().add(fraction);
     }
 
-    @Arithmetic(name = "Mixed Fraction Multiplication",
+    @Arithmetic(name = "Mixed model.Fraction Multiplication",
             args = {"mixed fraction multiplier"}, desc = "Finding the product")
     public MixedFraction mul(MixedFraction fraction) {
         return this.mul(getImproper(fraction));
@@ -178,27 +180,27 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this.mul(new Fraction(1, number));
     }
 
-    @Arithmetic(name = "Fraction Division",
+    @Arithmetic(name = "model.Fraction Division",
             args = {"fraction divisor"}, desc = "Finding the quotient")
     @Override
     public MixedFraction div(@NotNull Fraction fraction) {
         return this.mul(fraction.invert());
     }
 
-    @Arithmetic(name = "Mixed Fraction Division",
+    @Arithmetic(name = "Mixed model.Fraction Division",
             args = {"mixed fraction divisor"}, desc = "Finding the quotient")
     public MixedFraction div(MixedFraction fraction) {
         return this.mul(getImproper(fraction).invert());
     }
 
-    @Arithmetic(name = "Mixed Fraction Negative", desc = "Finding the negative")
+    @Arithmetic(name = "Mixed model.Fraction Negative", desc = "Finding the negative")
     @Override
     public MixedFraction neg() {
         whole = -whole;
         return this;
     }
 
-    @Arithmetic(name = "Mixed Fraction Reset", desc = "Reset the mixed fraction")
+    @Arithmetic(name = "Mixed model.Fraction Reset", desc = "Reset the mixed fraction")
     public MixedFraction reset() {
         whole = 0;
         setNumerator(0);
@@ -206,8 +208,8 @@ public class MixedFraction extends Fraction implements IntegerNumber {
         return this;
     }
 
-    /** Converting Mixed Fraction to Improper Fraction. */
-    @Arithmetic(name = "Mixed Fraction Improper",
+    /** Converting Mixed model.Fraction to Improper model.Fraction. */
+    @Arithmetic(name = "Mixed model.Fraction Improper",
             args = {"mixed fraction"}, desc = "Finding the improper")
     public Fraction getImproper(@NotNull MixedFraction fraction) {
         if (fraction.whole < 0) {

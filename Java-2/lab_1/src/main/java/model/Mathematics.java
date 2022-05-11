@@ -1,3 +1,5 @@
+package model;
+
 public interface Mathematics {
 
     Fraction add(int number);

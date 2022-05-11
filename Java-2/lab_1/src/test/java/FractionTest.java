@@ -1,3 +1,4 @@
+import model.Fraction;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -204,14 +205,14 @@ class FractionTest {
     }
 
     @Test
-    @DisplayName("To string Fraction where denominator is 1")
+    @DisplayName("To string model.Fraction where denominator is 1")
     void toStringWholeFraction() {
         Fraction fraction = new Fraction(3, 1);
         assertEquals("3", fraction.toString());
     }
 
     @Test
-    @DisplayName("To string Fraction where denominator is not 1")
+    @DisplayName("To string model.Fraction where denominator is not 1")
     void toStringRationalFraction() {
         Fraction fraction = new Fraction(1, 3);
         assertEquals("1/3", fraction.toString());

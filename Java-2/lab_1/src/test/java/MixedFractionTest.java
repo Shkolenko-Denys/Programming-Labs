@@ -1,3 +1,5 @@
+import model.Fraction;
+import model.MixedFraction;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
