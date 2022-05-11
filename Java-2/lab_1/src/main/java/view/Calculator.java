@@ -41,28 +41,28 @@ public class Calculator extends JFrame {
     private JFormattedTextField resultDenominatorTextField;
     private JButton infoButton;
 
-    public JFormattedTextField getWhole1TextField() {
-        return whole1TextField;
+    public String getWhole1Text() {
+        return whole1TextField.getText();
     }
 
-    public JFormattedTextField getNumerator1TextField() {
-        return numerator1TextField;
+    public String getNumerator1Text() {
+        return numerator1TextField.getText();
     }
 
-    public JFormattedTextField getDenominator1TextField() {
-        return denominator1TextField;
+    public String getDenominator1Text() {
+        return denominator1TextField.getText();
     }
 
-    public JFormattedTextField getWhole2TextField() {
-        return whole2TextField;
+    public String getWhole2Text() {
+        return whole2TextField.getText();
     }
 
-    public JFormattedTextField getNumerator2TextField() {
-        return numerator2TextField;
+    public String getNumerator2Text() {
+        return numerator2TextField.getText();
     }
 
-    public JFormattedTextField getDenominator2TextField() {
-        return denominator2TextField;
+    public String getDenominator2Text() {
+        return denominator2TextField.getText();
     }
 
     public Calculator(String title) {
@@ -84,14 +84,17 @@ public class Calculator extends JFrame {
 
         resultButton.addActionListener(e -> {
             try {
-                MixedFraction result = calculation.getResult(calculation.getMixedFraction1(),
-                        calculation.getMixedFraction2());
+                MixedFraction result = calculation.getResult(calculation.getMixedFraction1(Runner.frame),
+                        calculation.getMixedFraction2(Runner.frame));
 
                 resultWholeTextField.setText(Integer.toString(result.getWhole()));
                 int numerator = result.getNumerator();
                 if (numerator != 0) {
                     resultNumeratorTextField.setText(Integer.toString(numerator));
                     resultDenominatorTextField.setText(Integer.toString(result.getDenominator()));
+                } else {
+                    resultNumeratorTextField.setText("");
+                    resultDenominatorTextField.setText("");
                 }
             }
             catch (UndeclaredThrowableException ex) {
