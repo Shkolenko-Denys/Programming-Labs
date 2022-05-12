@@ -2,6 +2,7 @@ import model.Fraction;
 import model.MixedFraction;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -398,13 +399,31 @@ class MixedFractionTest {
     @DisplayName("Get improper from positive mixed fraction")
     void getImproperFromPositive() {
         MixedFraction mf = new MixedFraction(2, 3, 5);
-        assertEquals(new Fraction(13, 5), mf.getImproper(mf));
+        assertEquals(new Fraction(13, 5), MixedFraction.getImproper(mf));
     }
 
     @Test
     @DisplayName("Get improper from negative mixed fraction")
     void getImproperFromNegative() {
         MixedFraction mf = new MixedFraction(-2, 3, 5);
-        assertEquals(new Fraction(-13, 5), mf.getImproper(mf));
+        assertEquals(new Fraction(-13, 5), MixedFraction.getImproper(mf));
     }
+
+    @Test
+    @DisplayName("Get improper from negative improper mixed fraction")
+    void getImproperFromNegativeImproper() {
+        MixedFraction mf = new MixedFraction(-2, -9, 5);
+        assertEquals(new Fraction(-19, 5), MixedFraction.getImproper(mf));
+    }
+
+//    @Test
+//    @DisplayName("Get improper from negative improper mixed fraction [HACK]")
+//    void getImproperFromNegativeImproperHack() {
+//        MixedFraction mf = Mockito.mock(MixedFraction.class);
+//        Mockito.when(mf.getWhole()).thenReturn(-2);
+//        Mockito.when(mf.getNumerator()).thenReturn(-9);
+//        Mockito.when(mf.getDenominator()).thenReturn(5);
+//
+//        assertEquals(new Fraction(-19, 5), MixedFraction.getImproper(mf));
+//    }
 }

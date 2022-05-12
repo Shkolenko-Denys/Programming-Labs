@@ -211,14 +211,14 @@ public class MixedFraction extends Fraction implements IntegerNumber {
     /** Converting Mixed model.Fraction to Improper model.Fraction. */
     @Arithmetic(name = "Mixed model.Fraction Improper",
             args = {"mixed fraction"}, desc = "Finding the improper")
-    public Fraction getImproper(@NotNull MixedFraction fraction) {
-        if (fraction.whole < 0) {
+    public static Fraction getImproper(@NotNull MixedFraction fraction) {
+        if (fraction.getWhole() < 0) {
             return new Fraction(
-                -(-fraction.whole * fraction.getDenominator() + fraction.getNumerator()),
+                -(-fraction.getWhole() * fraction.getDenominator() + fraction.getNumerator()),
                 fraction.getDenominator());
         }
         return new Fraction(
-                fraction.whole * fraction.getDenominator() + fraction.getNumerator(),
+                fraction.getWhole() * fraction.getDenominator() + fraction.getNumerator(),
                 fraction.getDenominator());
     }
 }
