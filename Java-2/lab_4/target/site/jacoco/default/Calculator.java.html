@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Calculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab_1</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Calculator.java</span></div><h1>Calculator.java</h1><pre class="source lang-java linenums">import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import java.awt.*;
+import java.lang.reflect.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+/**
+ * Варіант 21
+ * Базовий клас - дріб (чисельник, знаменник, арифметичні операції,
+ * перетворення в дійсний тип). Похідний клас - ціле число з дробовою частиною.
+ */
+public class Calculator extends JFrame {
+
+    private JPanel mainPanel;
+
+    private JFormattedTextField whole1TextField;
+    private JFormattedTextField numerator1TextField;
+    private JFormattedTextField denominator1TextField;
+
+    private JRadioButton addButton;
+    private JRadioButton mulButton;
+    private JRadioButton subButton;
+    private JRadioButton divButton;
+
+    private JFormattedTextField whole2TextField;
+    private JFormattedTextField numerator2TextField;
+    private JFormattedTextField denominator2TextField;
+
+    private JButton resultButton;
+
+    private JFormattedTextField resultWholeTextField;
+    private JFormattedTextField resultNumeratorTextField;
+    private JFormattedTextField resultDenominatorTextField;
+    private JButton infoButton;
+
+<span class="nc" id="L40">    private int whole1 = 0;</span>
+<span class="nc" id="L41">    private int numerator1 = 0;</span>
+<span class="nc" id="L42">    private int denominator1 = 1;</span>
+
+<span class="nc" id="L44">    private int whole2 = 0;</span>
+<span class="nc" id="L45">    private int numerator2 = 0;</span>
+<span class="nc" id="L46">    private int denominator2 = 1;</span>
+
+    // key - name of the math command
+    // value - function that will process the math command
+<span class="nc" id="L50">    private final Map&lt;String, Method&gt; mathCommands = new HashMap&lt;&gt;();</span>
+
+    private Method currentCommand;
+
+    public Calculator(String title) {
+<span class="nc" id="L55">        super(title);</span>
+
+<span class="nc" id="L57">        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L58">        this.setContentPane(mainPanel);</span>
+<span class="nc" id="L59">        this.setPreferredSize(new Dimension(1000, 300));</span>
+<span class="nc" id="L60">        this.setLocation(500, 100);</span>
+<span class="nc" id="L61">        this.pack();</span>
+
+<span class="nc" id="L63">        ButtonGroup groupOperators = new ButtonGroup();</span>
+<span class="nc" id="L64">        groupOperators.add(addButton);</span>
+<span class="nc" id="L65">        groupOperators.add(subButton);</span>
+<span class="nc" id="L66">        groupOperators.add(mulButton);</span>
+<span class="nc" id="L67">        groupOperators.add(divButton);</span>
+
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        for (Method m : MixedFraction.class.getDeclaredMethods()) {</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            if (m.isAnnotationPresent(Arithmetic.class)) {</span>
+<span class="nc" id="L71">                Arithmetic command = m.getAnnotation(Arithmetic.class);</span>
+<span class="nc" id="L72">                mathCommands.put(command.name(), m);</span>
+            }
+        }
+<span class="nc" id="L75">        currentCommand = mathCommands.get(&quot;Mixed Fraction Addition&quot;);  // default command</span>
+
+<span class="nc" id="L77">        resultButton.addActionListener(e -&gt; {</span>
+            try {
+<span class="nc" id="L79">                whole1 = Integer.parseInt(whole1TextField.getText());</span>
+<span class="nc" id="L80">                numerator1 = Integer.parseInt(numerator1TextField.getText());</span>
+<span class="nc" id="L81">                denominator1 = Integer.parseInt(denominator1TextField.getText());</span>
+
+<span class="nc" id="L83">                whole2 = Integer.parseInt(whole2TextField.getText());</span>
+<span class="nc" id="L84">                numerator2 = Integer.parseInt(numerator2TextField.getText());</span>
+<span class="nc" id="L85">                denominator2 = Integer.parseInt(denominator2TextField.getText());</span>
+
+<span class="nc" id="L87">                MixedFraction mixedFraction_1 = new MixedFraction(whole1, numerator1, denominator1);</span>
+<span class="nc" id="L88">                MixedFraction mixedFraction_2 = new MixedFraction(whole2, numerator2, denominator2);</span>
+
+//                ClassLoader mixedFraction_2ClassLoader = mixedFraction_2.getClass().getClassLoader();
+//                Class&lt;?&gt;[] interfaces = mixedFraction_2.getClass().getInterfaces();
+//                IntegerNumber proxyMixedFraction_2 =
+//                        (IntegerNumber) Proxy.newProxyInstance(mixedFraction_2ClassLoader,
+//                                interfaces, new IntegerNumberInvocationHandler(mixedFraction_2));
+//
+//                proxyMixedFraction_2.setWhole(1);
+
+<span class="nc" id="L98">                currentCommand.invoke(mixedFraction_1, mixedFraction_2);</span>
+
+<span class="nc" id="L100">                resultWholeTextField.setText(Integer.toString(mixedFraction_1.getWhole()));</span>
+<span class="nc" id="L101">                int numerator = mixedFraction_1.getNumerator();</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">                if (numerator != 0) {</span>
+<span class="nc" id="L103">                    resultNumeratorTextField.setText(Integer.toString(numerator));</span>
+<span class="nc" id="L104">                    resultDenominatorTextField.setText(Integer.toString(mixedFraction_1.getDenominator()));</span>
+                }
+            }
+<span class="nc" id="L107">            catch (UndeclaredThrowableException ex) {</span>
+<span class="nc" id="L108">                JOptionPane.showMessageDialog(Calculator.this,</span>
+                        &quot;Oops!\nError: &quot; + ex);
+            }
+<span class="nc" id="L111">            catch (Exception ex) {</span>
+<span class="nc" id="L112">                JOptionPane.showMessageDialog(Calculator.this,</span>
+                        &quot;Check your fractions carefully!\nError: &quot; + ex);
+<span class="nc" id="L114">            }</span>
+<span class="nc" id="L115">        });</span>
+
+<span class="nc" id="L117">        addButton.addActionListener(e -&gt;</span>
+<span class="nc" id="L118">                currentCommand = mathCommands.get(&quot;Mixed Fraction Addition&quot;)</span>
+        );
+
+<span class="nc" id="L121">        subButton.addActionListener(e -&gt;</span>
+<span class="nc" id="L122">                currentCommand = mathCommands.get(&quot;Mixed Fraction Subtraction&quot;)</span>
+        );
+
+<span class="nc" id="L125">        mulButton.addActionListener(e -&gt;</span>
+<span class="nc" id="L126">                currentCommand = mathCommands.get(&quot;Mixed Fraction Multiplication&quot;)</span>
+        );
+
+<span class="nc" id="L129">        divButton.addActionListener(e -&gt;</span>
+<span class="nc" id="L130">                currentCommand = mathCommands.get(&quot;Mixed Fraction Division&quot;)</span>
+        );
+
+<span class="nc" id="L133">        infoButton.addActionListener(e -&gt; {</span>
+<span class="nc" id="L134">            StringBuilder message = new StringBuilder(&quot;Class &quot;</span>
+<span class="nc" id="L135">                    + Modifier.toString(MixedFraction.class.getModifiers()) + &quot; &quot;</span>
+<span class="nc" id="L136">                    + MixedFraction.class.getName() + &quot;\n&quot;);</span>
+
+<span class="nc" id="L138">            message.append(&quot;Fields:\n&quot;);</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">            for (Field field : MixedFraction.class.getDeclaredFields()) {</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">                if (field.isAnnotationPresent(Number.class)) {</span>
+<span class="nc" id="L141">                    message.append(&quot;// &quot;).append(field.getAnnotation(Number.class).name())</span>
+<span class="nc" id="L142">                            .append(&quot; -- &quot;).append(field.getAnnotation(Number.class).definition())</span>
+<span class="nc" id="L143">                            .append(&quot;\n&quot;);</span>
+                }
+<span class="nc" id="L145">                message.append(Modifier.toString(field.getModifiers()))</span>
+<span class="nc" id="L146">                        .append(&quot; &quot;).append(field.getType().getSimpleName())</span>
+<span class="nc" id="L147">                        .append(&quot; &quot;).append(field.getName()).append(&quot;\n&quot;);</span>
+            }
+
+<span class="nc" id="L150">            message.append(&quot;\nSuperclass &quot;).append(MixedFraction.class.getSuperclass().getSimpleName())</span>
+<span class="nc" id="L151">                    .append(&quot; implements &quot;)</span>
+<span class="nc" id="L152">                    .append(Arrays.stream(MixedFraction.class.getSuperclass().getInterfaces())</span>
+<span class="nc" id="L153">                            .map(Class::getSimpleName)</span>
+<span class="nc" id="L154">                            .collect(Collectors.joining(&quot;, &quot;)));</span>
+
+<span class="nc" id="L156">            message.append(&quot;\nFields:\n&quot;);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">            for (Field field : MixedFraction.class.getSuperclass().getDeclaredFields()) {</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">                if (field.isAnnotationPresent(Number.class)) {</span>
+<span class="nc" id="L159">                    message.append(&quot;// &quot;).append(field.getAnnotation(Number.class).name())</span>
+<span class="nc" id="L160">                            .append(&quot; -- &quot;).append(field.getAnnotation(Number.class).definition())</span>
+<span class="nc" id="L161">                            .append(&quot;\n&quot;);</span>
+                }
+<span class="nc" id="L163">                message.append(Modifier.toString(field.getModifiers()))</span>
+<span class="nc" id="L164">                        .append(&quot; &quot;).append(field.getType().getSimpleName())</span>
+<span class="nc" id="L165">                        .append(&quot; &quot;).append(field.getName()).append(&quot;\n&quot;);</span>
+            }
+
+<span class="nc" id="L168">            message.append(&quot;\nConstructors:\n&quot;);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">            for (Constructor&lt;?&gt; constructor : MixedFraction.class.getConstructors()) {</span>
+<span class="nc" id="L170">                message.append(&quot;- &quot;).append(constructor.getName())</span>
+<span class="nc" id="L171">                        .append(&quot; (&quot;).append(getConstructorParameters(constructor)).append(&quot;);\n&quot;);</span>
+            }
+
+<span class="nc" id="L174">            message.append(&quot;\nArithmetic Methods:\n&quot;);</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">            for (Method method : MixedFraction.class.getDeclaredMethods()) {</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">                if (method.isAnnotationPresent(Arithmetic.class)) {</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">                    if (Modifier.isVolatile(method.getModifiers())) {</span>
+<span class="nc" id="L178">                        continue;</span>
+                    }
+<span class="nc" id="L180">                    message.append(Modifier.toString(method.getModifiers())).append(&quot; &quot;)</span>
+<span class="nc" id="L181">                            .append(method.getReturnType().getSimpleName()).append(&quot; &quot;)</span>
+<span class="nc" id="L182">                            .append(method.getName()).append(&quot; (&quot;)</span>
+<span class="nc" id="L183">                            .append(getMethodParameters(method)).append(&quot;);\n&quot;);</span>
+                }
+            }
+
+<span class="nc" id="L187">            JOptionPane.showMessageDialog(Calculator.this, message.toString());</span>
+<span class="nc" id="L188">        });</span>
+<span class="nc" id="L189">    }</span>
+
+    public String getConstructorParameters(@NotNull Constructor&lt;?&gt; ctor) {
+<span class="nc" id="L192">        return Arrays.stream(ctor.getParameters())</span>
+<span class="nc" id="L193">                .map(param -&gt; param.getType() + &quot; &quot; + param.getName())</span>
+<span class="nc" id="L194">                .collect(Collectors.joining(&quot;, &quot;));</span>
+    }
+
+    private String getMethodParameters(@NotNull Method method) {
+<span class="nc" id="L198">        return Arrays.stream(method.getParameters())</span>
+<span class="nc" id="L199">                .map(param -&gt; param.getType() + &quot; &quot; + param.getName())</span>
+<span class="nc" id="L200">                .collect(Collectors.joining(&quot;, &quot;));</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L204">        JFrame frame = new Calculator(&quot;Fraction Calculator&quot;);</span>
+<span class="nc" id="L205">        frame.setVisible(true);</span>
+<span class="nc" id="L206">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

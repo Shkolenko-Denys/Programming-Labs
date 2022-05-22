@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MixedFraction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jacoco.exec</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">MixedFraction.java</span></div><h1>MixedFraction.java</h1><pre class="source lang-java linenums">import org.jetbrains.annotations.NotNull;
+
+/** Consists of a whole number and a proper fraction. */
+public class MixedFraction extends Fraction implements IntegerNumber {
+
+    @Number(name = &quot;Whole&quot;, definition = &quot;Integer part of a mixed fraction.&quot;)
+    private int whole;
+
+    public MixedFraction(int number) {
+<span class="nc" id="L10">        super(0);</span>
+<span class="nc" id="L11">        whole = number;</span>
+<span class="nc" id="L12">    }</span>
+
+    public MixedFraction(int numerator, int denominator) {
+<span class="nc" id="L15">        super(numerator, denominator);</span>
+<span class="nc" id="L16">    }</span>
+
+    public MixedFraction(int whole, int numerator, int denominator) {
+<span class="fc" id="L19">        super(numerator, denominator);</span>
+<span class="fc" id="L20">        this.whole += whole;</span>
+<span class="fc" id="L21">    }</span>
+
+    public MixedFraction(@NotNull Fraction fraction) {
+<span class="nc" id="L24">        super(fraction.getNumerator(), fraction.getDenominator());</span>
+<span class="nc" id="L25">    }</span>
+
+    @Arithmetic(name = &quot;Mixed Fraction Simplifying&quot;, desc = &quot;Make the mixed fraction as simple as possible&quot;)
+    @Override
+    public MixedFraction reduce() {
+<span class="fc" id="L30">        super.reduce();</span>
+<span class="fc" id="L31">        int numerator = super.getNumerator();</span>
+<span class="fc" id="L32">        int denominator = super.getDenominator();</span>
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (Math.abs(numerator) &gt;= denominator) {</span>
+<span class="fc" id="L35">            this.whole += numerator / denominator;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            if (whole != 0) {</span>
+<span class="fc" id="L37">                super.setNumerator(Math.abs(numerator) % denominator);</span>
+            }
+            else {
+<span class="fc" id="L40">                super.setNumerator(numerator % denominator);</span>
+            }
+        }
+<span class="fc" id="L43">        return this;</span>
+    }
+
+    public int getWhole() {
+<span class="fc" id="L47">        return whole;</span>
+    }
+
+    public MixedFraction setWhole(int whole) {
+<span class="fc" id="L51">        this.whole = whole;</span>
+<span class="fc" id="L52">        return this;</span>
+    }
+
+    @Override
+    public MixedFraction setNumerator(int numerator) {
+<span class="fc" id="L57">        super.setNumerator(numerator);</span>
+<span class="fc" id="L58">        return this.reduce();</span>
+    }
+
+    @Override
+    public MixedFraction setDenominator(int denominator) {
+<span class="fc" id="L63">        super.setDenominator(denominator);</span>
+<span class="fc" id="L64">        return this.reduce();</span>
+    }
+
+    /** @return the fractional part */
+    public Fraction getFraction() {
+<span class="fc" id="L69">        return new Fraction(getNumerator(), getDenominator());</span>
+    }
+
+    @Override
+    public double getDouble() {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (whole &lt; 0) {</span>
+<span class="fc" id="L75">            return whole - super.getDouble();</span>
+        }
+<span class="fc" id="L77">        return whole + super.getDouble();</span>
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if (!(obj instanceof MixedFraction m)) {</span>
+<span class="fc" id="L83">            return false;</span>
+        }
+<span class="pc bpc" id="L85" title="2 of 6 branches missed.">        return whole == m.getWhole() &amp;&amp; getNumerator() == m.getNumerator() &amp;&amp; getDenominator() == m.getDenominator();</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc bfc" id="L90" title="All 4 branches covered.">        if (whole != 0 &amp;&amp; super.getNumerator() != 0) {</span>
+<span class="fc" id="L91">            return whole + &quot;(&quot; + super.toString() + &quot;)&quot;;</span>
+        }
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if (whole != 0) {</span>
+<span class="fc" id="L94">            return whole + &quot;&quot;;</span>
+        }
+<span class="fc" id="L96">        return super.toString();</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Addition&quot;, args = {&quot;integer summand&quot;}, desc = &quot;Finding the sum&quot;)
+    @Override
+    public MixedFraction add(int number) {
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (whole &lt; 0) {</span>
+<span class="fc" id="L103">            super.neg();</span>
+        }
+<span class="fc" id="L105">        super.add(number);</span>
+<span class="fc" id="L106">        return this;</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Addition&quot;, args = {&quot;fraction summand&quot;}, desc = &quot;Finding the sum&quot;)
+    @Override
+    public MixedFraction add(@NotNull Fraction fraction) {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (whole &lt; 0) {</span>
+<span class="fc" id="L113">            super.neg();</span>
+        }
+<span class="fc" id="L115">        int tempWhole = whole;</span>
+<span class="fc" id="L116">        Fraction tempFraction = this.getFraction().add(fraction);</span>
+<span class="fc" id="L117">        this.reset();</span>
+<span class="fc" id="L118">        super.add(tempFraction);</span>
+<span class="fc" id="L119">        return this.add(tempWhole);</span>
+    }
+
+    @Arithmetic(name = &quot;Mixed Fraction Addition&quot;,
+            args = {&quot;mixed fraction summand&quot;}, desc = &quot;Finding the sum&quot;)
+    public MixedFraction add(MixedFraction fraction) {
+<span class="fc" id="L125">        return this.add(getImproper(fraction));</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Subtraction&quot;,
+            args = {&quot;integer subtrahend&quot;}, desc = &quot;Finding the difference&quot;)
+    @Override
+    public MixedFraction sub(int number) {
+<span class="fc" id="L132">        return this.add(-number);</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Subtraction&quot;,
+            args = {&quot;fraction subtrahend&quot;}, desc = &quot;Finding the difference&quot;)
+    @Override
+    public MixedFraction sub(@NotNull Fraction fraction) {
+<span class="fc" id="L139">        return this.add(fraction.neg());</span>
+    }
+
+    @Arithmetic(name = &quot;Mixed Fraction Subtraction&quot;,
+            args = {&quot;mixed fraction subtrahend&quot;}, desc = &quot;Finding the difference&quot;)
+    public MixedFraction sub(@NotNull MixedFraction fraction) {
+<span class="fc" id="L145">        return this.add(fraction.neg());</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Multiplication&quot;,
+            args = {&quot;integer multiplier&quot;}, desc = &quot;Finding the product&quot;)
+    @Override
+    public MixedFraction mul(int number) {
+<span class="fc bfc" id="L152" title="All 2 branches covered.">        if (whole &lt; 0) {</span>
+<span class="fc" id="L153">            super.neg();</span>
+        }
+<span class="fc" id="L155">        whole *= number;</span>
+<span class="fc" id="L156">        super.mul(number);</span>
+<span class="fc" id="L157">        return this;</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Multiplication&quot;,
+            args = {&quot;fraction multiplier&quot;}, desc = &quot;Finding the product&quot;)
+    @Override
+    public MixedFraction mul(@NotNull Fraction fraction) {
+<span class="fc" id="L164">        fraction.mul(getImproper(this));</span>
+<span class="fc" id="L165">        return this.reset().add(fraction);</span>
+    }
+
+    @Arithmetic(name = &quot;Mixed Fraction Multiplication&quot;,
+            args = {&quot;mixed fraction multiplier&quot;}, desc = &quot;Finding the product&quot;)
+    public MixedFraction mul(MixedFraction fraction) {
+<span class="fc" id="L171">        return this.mul(getImproper(fraction));</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Division&quot;,
+            args = {&quot;integer divisor&quot;}, desc = &quot;Finding the quotient&quot;)
+    @Override
+    public MixedFraction div(int number) {
+<span class="fc" id="L178">        return this.mul(new Fraction(1, number));</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Division&quot;,
+            args = {&quot;fraction divisor&quot;}, desc = &quot;Finding the quotient&quot;)
+    @Override
+    public MixedFraction div(@NotNull Fraction fraction) {
+<span class="fc" id="L185">        return this.mul(fraction.invert());</span>
+    }
+
+    @Arithmetic(name = &quot;Mixed Fraction Division&quot;,
+            args = {&quot;mixed fraction divisor&quot;}, desc = &quot;Finding the quotient&quot;)
+    public MixedFraction div(MixedFraction fraction) {
+<span class="fc" id="L191">        return this.mul(getImproper(fraction).invert());</span>
+    }
+
+    @Arithmetic(name = &quot;Mixed Fraction Negative&quot;, desc = &quot;Finding the negative&quot;)
+    @Override
+    public MixedFraction neg() {
+<span class="fc" id="L197">        whole = -whole;</span>
+<span class="fc" id="L198">        return this;</span>
+    }
+
+    @Arithmetic(name = &quot;Mixed Fraction Reset&quot;, desc = &quot;Reset the mixed fraction&quot;)
+    public MixedFraction reset() {
+<span class="fc" id="L203">        whole = 0;</span>
+<span class="fc" id="L204">        setNumerator(0);</span>
+<span class="fc" id="L205">        setDenominator(1);</span>
+<span class="fc" id="L206">        return this;</span>
+    }
+
+    /** Converting Mixed Fraction to Improper Fraction. */
+    @Arithmetic(name = &quot;Mixed Fraction Improper&quot;,
+            args = {&quot;mixed fraction&quot;}, desc = &quot;Finding the improper&quot;)
+    public Fraction getImproper(@NotNull MixedFraction fraction) {
+<span class="fc bfc" id="L213" title="All 2 branches covered.">        if (fraction.whole &lt; 0) {</span>
+<span class="fc" id="L214">            return new Fraction(</span>
+<span class="fc" id="L215">                -(-fraction.whole * fraction.getDenominator() + fraction.getNumerator()),</span>
+<span class="fc" id="L216">                fraction.getDenominator());</span>
+        }
+<span class="fc" id="L218">        return new Fraction(</span>
+<span class="fc" id="L219">                fraction.whole * fraction.getDenominator() + fraction.getNumerator(),</span>
+<span class="fc" id="L220">                fraction.getDenominator());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

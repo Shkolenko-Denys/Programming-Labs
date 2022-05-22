@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="FractionTest" time="0.045" tests="52" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/test-classes:/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/classes:/home/den/.m2/repository/org/jetbrains/annotations/22.0.0/annotations-22.0.0.jar:/home/den/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/den/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.2/junit-jupiter-5.8.2.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/home/den/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/den/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/home/den/.m2/repository/org/junit/vintage/junit-vintage-engine/5.8.2/junit-vintage-engine-5.8.2.jar:/home/den/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/home/den/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/den/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/home/den/.jdks/openjdk-17.0.2/lib"/>
+    <property name="sun.java.command" value="/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/surefire/surefirebooter5584877276474651876.jar /home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/surefire 2022-02-23T12-59-29_306-jvmRun1 surefire16719956777123253944tmp surefire_016232135710174525746tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/test-classes:/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/classes:/home/den/.m2/repository/org/jetbrains/annotations/22.0.0/annotations-22.0.0.jar:/home/den/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/den/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.2/junit-jupiter-5.8.2.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/home/den/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/den/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/home/den/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/home/den/.m2/repository/org/junit/vintage/junit-vintage-engine/5.8.2/junit-vintage-engine-5.8.2.jar:/home/den/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/home/den/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/den/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/den"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2022-01-18"/>
+    <property name="java.home" value="/home/den/.jdks/openjdk-17.0.2"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1/target/surefire/surefirebooter5584877276474651876.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.2+8-86"/>
+    <property name="user.name" value="den"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.13.0-28-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/den/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="idea.version" value="2021.3.2"/>
+    <property name="java.version" value="17.0.2"/>
+    <property name="user.dir" value="/home/den/Documents/GitHub/Programming-Labs/Java-2/lab_1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.2+8-86"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="reduceNegativeNegative" classname="FractionTest" time="0"/>
+  <testcase name="setZeroDenominator" classname="FractionTest" time="0"/>
+  <testcase name="gcdNegativePositive" classname="FractionTest" time="0"/>
+  <testcase name="invertPositive" classname="FractionTest" time="0"/>
+  <testcase name="gcdNegativeNegative" classname="FractionTest" time="0"/>
+  <testcase name="invertNegative" classname="FractionTest" time="0"/>
+  <testcase name="setReduceDenominator" classname="FractionTest" time="0"/>
+  <testcase name="getDoubleAndCheckRounding" classname="FractionTest" time="0"/>
+  <testcase name="toStringRationalFraction" classname="FractionTest" time="0.001"/>
+  <testcase name="subPositiveInteger" classname="FractionTest" time="0"/>
+  <testcase name="reduceZeroPositive" classname="FractionTest" time="0"/>
+  <testcase name="subNegativeInteger" classname="FractionTest" time="0"/>
+  <testcase name="reduceZeroNegative" classname="FractionTest" time="0"/>
+  <testcase name="toStringWholeFraction" classname="FractionTest" time="0"/>
+  <testcase name="setReduceNumerator" classname="FractionTest" time="0"/>
+  <testcase name="setNegativeDenominator" classname="FractionTest" time="0"/>
+  <testcase name="reducedNegativePositive" classname="FractionTest" time="0"/>
+  <testcase name="setNumerator" classname="FractionTest" time="0"/>
+  <testcase name="reducePositivePositive" classname="FractionTest" time="0"/>
+  <testcase name="reducedNegativeNegative" classname="FractionTest" time="0"/>
+  <testcase name="reducePositiveNegative" classname="FractionTest" time="0"/>
+  <testcase name="subNegativeFraction" classname="FractionTest" time="0"/>
+  <testcase name="divZeroFraction" classname="FractionTest" time="0"/>
+  <testcase name="divNegativeFraction" classname="FractionTest" time="0"/>
+  <testcase name="gcdPositivePositive" classname="FractionTest" time="0"/>
+  <testcase name="mulPositiveInteger" classname="FractionTest" time="0"/>
+  <testcase name="compareNotEqualsFractions" classname="FractionTest" time="0"/>
+  <testcase name="gcdPositiveNegative" classname="FractionTest" time="0"/>
+  <testcase name="mulNegativeInteger" classname="FractionTest" time="0"/>
+  <testcase name="addNegativeFraction" classname="FractionTest" time="0"/>
+  <testcase name="setDenominator" classname="FractionTest" time="0"/>
+  <testcase name="divPositiveInteger" classname="FractionTest" time="0.008"/>
+  <testcase name="compareOtherObj" classname="FractionTest" time="0"/>
+  <testcase name="divNegativeInteger" classname="FractionTest" time="0"/>
+  <testcase name="reducedPositivePositive" classname="FractionTest" time="0"/>
+  <testcase name="reducedPositiveNegative" classname="FractionTest" time="0"/>
+  <testcase name="subPositiveFraction" classname="FractionTest" time="0.001"/>
+  <testcase name="mulNegativeFraction" classname="FractionTest" time="0.001"/>
+  <testcase name="divPositiveFraction" classname="FractionTest" time="0"/>
+  <testcase name="negPositive" classname="FractionTest" time="0"/>
+  <testcase name="divZeroInteger" classname="FractionTest" time="0.001"/>
+  <testcase name="negNegative" classname="FractionTest" time="0.001"/>
+  <testcase name="addPositiveFraction" classname="FractionTest" time="0.001"/>
+  <testcase name="addPositiveInteger" classname="FractionTest" time="0.005"/>
+  <testcase name="addNegativeInteger" classname="FractionTest" time="0.001"/>
+  <testcase name="gcdZeroPositive" classname="FractionTest" time="0.001"/>
+  <testcase name="compareEqualsFractions" classname="FractionTest" time="0.001"/>
+  <testcase name="gcdZeroNegative" classname="FractionTest" time="0.002"/>
+  <testcase name="invertZero" classname="FractionTest" time="0.001"/>
+  <testcase name="mulPositiveFraction" classname="FractionTest" time="0"/>
+  <testcase name="reduceNegativePositive" classname="FractionTest" time="0.001"/>
+  <testcase name="gcdZeroZero" classname="FractionTest" time="0.001"/>
+</testsuite>

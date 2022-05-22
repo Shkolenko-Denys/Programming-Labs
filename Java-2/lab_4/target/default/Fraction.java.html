@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fraction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jacoco.exec</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Fraction.java</span></div><h1>Fraction.java</h1><pre class="source lang-java linenums">import org.apache.commons.math3.util.Precision;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * The fraction class implements a rational number, where
+ * the numerator is an integer and the denominator is a natural number.
+ */
+public class Fraction implements Mathematics, Rational {
+
+    @Number(name = &quot;Numerator&quot;, definition = &quot;The top number in a fraction.&quot;)
+    private int numerator;
+
+<span class="pc" id="L13">    @Number(name = &quot;Denominator&quot;, definition = &quot;The bottom number in a fraction.&quot;)</span>
+    private int denominator = 1;
+
+<span class="nc" id="L16">    public Fraction(int numerator) {</span>
+<span class="nc" id="L17">        this.numerator = numerator;</span>
+<span class="nc" id="L18">    }</span>
+
+<span class="fc" id="L20">    public Fraction(int numerator, int denominator) {</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (denominator == 0) {</span>
+<span class="fc" id="L22">            throw new IllegalArgumentException(&quot;the denominator is zero&quot;);</span>
+        }
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (denominator &lt; 0) {</span>
+<span class="fc" id="L25">            this.numerator = -numerator;</span>
+<span class="fc" id="L26">            this.denominator = -denominator;</span>
+        }
+        else {
+<span class="fc" id="L29">            this.numerator = numerator;</span>
+<span class="fc" id="L30">            this.denominator = denominator;</span>
+        }
+<span class="fc" id="L32">        this.reduce();</span>
+<span class="fc" id="L33">    }</span>
+
+    /** Reducing fractions means simplifying a fraction. */
+    @Arithmetic(name = &quot;Fraction Simplifying&quot;, desc = &quot;Make the fraction as simple as possible&quot;)
+    public Fraction reduce() {
+<span class="fc" id="L38">        int gcd = gcd(Math.abs(numerator), denominator);</span>
+        // if the numerator is negative, abs is used because
+        // the numerator must remain negative
+<span class="fc" id="L41">        numerator /= gcd;</span>
+<span class="fc" id="L42">        denominator /= gcd;</span>
+<span class="fc" id="L43">        return this;</span>
+    }
+
+    /** Euclid's algorithm to find the GCD. */
+    public static int gcd(int n1, int n2) {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (n2 == 0) {</span>
+<span class="fc" id="L49">            return n1;</span>
+        }
+<span class="fc" id="L51">        return gcd(n2, n1 % n2);</span>
+    }
+
+    public int getNumerator() {
+<span class="fc" id="L55">        return numerator;</span>
+    }
+
+    public int getDenominator() {
+<span class="fc" id="L59">        return denominator;</span>
+    }
+
+    public Fraction setNumerator(int numerator) {
+<span class="fc" id="L63">        this.numerator = numerator;</span>
+<span class="fc" id="L64">        return this.reduce();</span>
+    }
+
+    public Fraction setDenominator(int denominator) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (denominator == 0) {</span>
+<span class="fc" id="L69">            throw new IllegalArgumentException(&quot;the denominator is zero&quot;);</span>
+        }
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (denominator &lt; 0) {</span>
+<span class="fc" id="L72">            this.numerator = -this.numerator;</span>
+<span class="fc" id="L73">            this.denominator = -denominator;</span>
+        }
+        else {
+<span class="fc" id="L76">            this.denominator = denominator;</span>
+        }
+<span class="fc" id="L78">        return this.reduce();</span>
+    }
+
+    /** @return the fraction in floating-point format */
+    public double getDouble() {
+<span class="fc" id="L83">        return Precision.round((double) numerator / denominator, 2);</span>
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (!(obj instanceof Fraction f)) {</span>
+<span class="fc" id="L89">            return false;</span>
+        }
+<span class="pc bpc" id="L91" title="1 of 4 branches missed.">        return numerator == f.numerator &amp;&amp; denominator == f.denominator;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        if (denominator != 1) {</span>
+<span class="fc" id="L97">            return numerator + &quot;/&quot; + denominator;</span>
+        }
+        else {
+<span class="fc" id="L100">            return numerator + &quot;&quot;;</span>
+        }
+    }
+
+    @Arithmetic(name = &quot;Integer Addition&quot;, args = {&quot;integer summand&quot;}, desc = &quot;Finding the sum&quot;)
+    public Fraction add(int number) {
+<span class="fc" id="L106">        numerator += number * denominator;</span>
+<span class="fc" id="L107">        return this.reduce();</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Addition&quot;, args = {&quot;fraction summand&quot;}, desc = &quot;Finding the sum&quot;)
+    public Fraction add(@NotNull Fraction fraction) {
+<span class="fc" id="L112">        numerator *= fraction.denominator;</span>
+<span class="fc" id="L113">        numerator += fraction.numerator * denominator;</span>
+<span class="fc" id="L114">        denominator *= fraction.denominator;</span>
+<span class="fc" id="L115">        return this.reduce();</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Subtraction&quot;, args = {&quot;integer subtrahend&quot;}, desc = &quot;Finding the difference&quot;)
+    public Fraction sub(int number) {
+<span class="fc" id="L120">        return this.add(-number);</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Subtraction&quot;, args = {&quot;fraction subtrahend&quot;}, desc = &quot;Finding the difference&quot;)
+    public Fraction sub(@NotNull Fraction fraction) {
+<span class="fc" id="L125">        fraction.neg();</span>
+<span class="fc" id="L126">        return this.add(fraction);</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Multiplication&quot;, args = {&quot;integer multiplier&quot;}, desc = &quot;Finding the product&quot;)
+    public Fraction mul(int number) {
+<span class="fc" id="L131">        numerator *= number;</span>
+<span class="fc" id="L132">        return this.reduce();</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Multiplication&quot;, args = {&quot;fraction multiplier&quot;}, desc = &quot;Finding the product&quot;)
+    public Fraction mul(@NotNull Fraction fraction) {
+<span class="fc" id="L137">        numerator *= fraction.numerator;</span>
+<span class="fc" id="L138">        denominator *= fraction.denominator;</span>
+<span class="fc" id="L139">        return this.reduce();</span>
+    }
+
+    @Arithmetic(name = &quot;Integer Division&quot;, args = {&quot;integer divisor&quot;}, desc = &quot;Finding the quotient&quot;)
+    public Fraction div(int number) {
+<span class="fc" id="L144">        return this.mul(new Fraction(1, number));</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Division&quot;, args = {&quot;fraction divisor&quot;}, desc = &quot;Finding the quotient&quot;)
+    public Fraction div(@NotNull Fraction fraction) {
+<span class="fc" id="L149">        fraction.invert();</span>
+<span class="fc" id="L150">        return this.mul(fraction);</span>
+    }
+
+    @Arithmetic(name = &quot;Fraction Negative&quot;, desc = &quot;Finding the negative&quot;)
+    public Fraction neg() {
+<span class="fc" id="L155">        numerator = -numerator;</span>
+<span class="fc" id="L156">        return this;</span>
+    }
+
+    /** Swapping the numerator and denominator. */
+    @Arithmetic(name = &quot;Fraction Inverse&quot;, desc = &quot;Finding the inverse of a fraction&quot;)
+    public Fraction invert() {
+<span class="fc bfc" id="L162" title="All 2 branches covered.">        if (numerator == 0) {</span>
+<span class="fc" id="L163">            throw new ArithmeticException(&quot;division by zero&quot;);</span>
+        }
+<span class="fc" id="L165">        int temp = numerator;</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">        if (temp &lt; 0) {</span>
+<span class="fc" id="L167">            numerator = -denominator;</span>
+        } else {
+<span class="fc" id="L169">            numerator = denominator;</span>
+        }
+<span class="fc" id="L171">        denominator = Math.abs(temp);</span>
+<span class="fc" id="L172">        return this;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
