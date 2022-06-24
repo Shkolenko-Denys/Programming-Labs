@@ -1,5 +1,5 @@
-import model.classes.Fraction;
-import model.classes.MixedFraction;
+package injection.model.classes;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

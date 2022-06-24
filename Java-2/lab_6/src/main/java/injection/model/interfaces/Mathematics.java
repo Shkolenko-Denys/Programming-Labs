@@ -1,4 +1,6 @@
-package model;
+package injection.model.interfaces;
+
+import injection.model.classes.Fraction;
 
 public interface Mathematics {
 

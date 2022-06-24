@@ -1,10 +1,12 @@
-package view;
+package injection.view;
 
-import controller.*;
-import model.interfaces.Arithmetic;
-import model.classes.MixedFraction;
-import model.interfaces.Number;
+import injection.controller.*;
+import injection.model.classes.MixedFraction;
+import injection.model.interfaces.Arithmetic;
+import injection.model.interfaces.Number;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
  * Базовий клас - дріб (чисельник, знаменник, арифметичні операції,
  * перетворення в дійсний тип). Похідний клас - ціле число з дробовою частиною.
  */
+@Component
 public class Calculator extends JFrame {
 
     private JPanel mainPanel;
@@ -40,6 +43,8 @@ public class Calculator extends JFrame {
     private JFormattedTextField resultNumeratorTextField;
     private JFormattedTextField resultDenominatorTextField;
     private JButton infoButton;
+
+    private final Calculation calculation;
 
     public String getWhole1Text() {
         return whole1TextField.getText();
@@ -65,10 +70,14 @@ public class Calculator extends JFrame {
         return denominator2TextField.getText();
     }
 
-    private static Calculator instance = null;
+    public Calculation getCalculation() {
+        return calculation;
+    }
 
-    private Calculator(String title) {
-        super(title);
+    @Autowired
+    public Calculator(Calculation calculation) {
+        super("Fraction Calculator");
+        this.calculation = calculation;
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
@@ -82,7 +91,6 @@ public class Calculator extends JFrame {
         groupOperators.add(mulButton);
         groupOperators.add(divButton);
 
-        Calculation calculation = Calculation.getInstance();
         Command getFirst = new MixedFraction1(calculation);
         Command getSecond = new MixedFraction2(calculation);
         Switch s = new Switch(getFirst, getSecond);  // create invoker
@@ -184,13 +192,6 @@ public class Calculator extends JFrame {
 
             JOptionPane.showMessageDialog(Calculator.this, message.toString());
         });
-    }
-
-    public static Calculator getInstance(String title) {
-        if (instance == null) {
-            instance = new Calculator(title);
-        }
-        return instance;
     }
 
     public String getConstructorParameters(@NotNull Constructor<?> ctor) {

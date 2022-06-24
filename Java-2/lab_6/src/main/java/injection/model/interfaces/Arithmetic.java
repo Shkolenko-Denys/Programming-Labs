@@ -1,4 +1,4 @@
-package model;
+package injection.model.interfaces;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

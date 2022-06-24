@@ -1,12 +1,12 @@
-package controller;
+package injection.controller;
 
-import model.classes.MixedFraction;
+import injection.model.classes.MixedFraction;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import view.Calculator;
+import injection.view.Calculator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculationTest {
 
@@ -18,7 +18,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("");
         Mockito.when(calc.getDenominator1Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(0, 0, 1),
                 calculation.getMixedFraction1(calc));
     }
@@ -31,7 +31,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("");
         Mockito.when(calc.getDenominator1Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(2, 0, 1),
                 calculation.getMixedFraction1(calc));
     }
@@ -44,7 +44,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("5");
         Mockito.when(calc.getDenominator1Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(5, 0, 1),
                 calculation.getMixedFraction1(calc));
     }
@@ -57,7 +57,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("");
         Mockito.when(calc.getDenominator1Text()).thenReturn("4");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(0, 0, 1),
                 calculation.getMixedFraction1(calc));
     }
@@ -70,7 +70,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("3");
         Mockito.when(calc.getDenominator1Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(5, 0, 1),
                 calculation.getMixedFraction1(calc));
     }
@@ -83,7 +83,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("");
         Mockito.when(calc.getDenominator1Text()).thenReturn("3");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(2, 0, 1),
                 calculation.getMixedFraction1(calc));
     }
@@ -96,7 +96,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator1Text()).thenReturn("2");
         Mockito.when(calc.getDenominator1Text()).thenReturn("3");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(0, 2, 3),
                 calculation.getMixedFraction1(calc));
     }
@@ -109,7 +109,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("");
         Mockito.when(calc.getDenominator2Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(0, 0, 1),
                 calculation.getMixedFraction2(calc));
     }
@@ -122,7 +122,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("");
         Mockito.when(calc.getDenominator2Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(2, 0, 1),
                 calculation.getMixedFraction2(calc));
     }
@@ -135,7 +135,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("5");
         Mockito.when(calc.getDenominator2Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(5, 0, 1),
                 calculation.getMixedFraction2(calc));
     }
@@ -148,7 +148,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("");
         Mockito.when(calc.getDenominator2Text()).thenReturn("4");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(0, 0, 1),
                 calculation.getMixedFraction2(calc));
     }
@@ -161,7 +161,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("3");
         Mockito.when(calc.getDenominator2Text()).thenReturn("");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(5, 0, 1),
                 calculation.getMixedFraction2(calc));
     }
@@ -174,7 +174,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("");
         Mockito.when(calc.getDenominator2Text()).thenReturn("3");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(2, 0, 1),
                 calculation.getMixedFraction2(calc));
     }
@@ -187,7 +187,7 @@ class CalculationTest {
         Mockito.when(calc.getNumerator2Text()).thenReturn("2");
         Mockito.when(calc.getDenominator2Text()).thenReturn("3");
 
-        Calculation calculation = Calculation.getInstance();
+        Calculation calculation = new Calculation();
         assertEquals(new MixedFraction(0, 2, 3),
                 calculation.getMixedFraction2(calc));
     }

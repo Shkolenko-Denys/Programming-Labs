@@ -1,14 +1,16 @@
-package controller;
+package injection.controller;
 
-import model.interfaces.Arithmetic;
-import model.classes.MixedFraction;
-import view.Calculator;
+import injection.model.classes.MixedFraction;
+import injection.model.interfaces.Arithmetic;
+import org.springframework.stereotype.Component;
+import injection.view.Calculator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class Calculation {
 
     // key - name of the math command
@@ -17,9 +19,7 @@ public class Calculation {
 
     private Method currentCommand;
 
-    private static Calculation instance = null;
-
-    private Calculation() {
+    public Calculation() {
         for (Method m : MixedFraction.class.getDeclaredMethods()) {
             if (m.isAnnotationPresent(Arithmetic.class)) {
                 Arithmetic command = m.getAnnotation(Arithmetic.class);
@@ -28,13 +28,6 @@ public class Calculation {
         }
 
         currentCommand = mathCommands.get("Mixed model.classes.Fraction Addition");  // default command
-    }
-
-    public static Calculation getInstance() {
-        if (instance == null) {
-            instance = new Calculation();
-        }
-        return instance;
     }
 
     public MixedFraction getMixedFraction1(Calculator calc) {

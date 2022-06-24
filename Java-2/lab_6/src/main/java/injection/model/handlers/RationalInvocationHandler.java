@@ -1,4 +1,6 @@
-package model;
+package injection.model.handlers;
+
+import injection.model.interfaces.Rational;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
